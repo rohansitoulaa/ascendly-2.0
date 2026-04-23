@@ -3,6 +3,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLayoutEffect, useRef } from "react";
+import { Parallax } from "@/animations/Parallax";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -211,15 +212,22 @@ export function WhyChooseSection() {
     <section
       id="why-ascendly"
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#06090d] px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32"
+      className="section-perf-skip relative overflow-hidden bg-[#06090d] px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32"
     >
       {/* ── top divider ── */}
       <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-[1360px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 
-      {/* ── ambient glow ── */}
+      {/* ── parallax ambient glows ── */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-0 top-1/3 h-[440px] w-[440px] rounded-full bg-cyan-500/[0.03] blur-[140px]" />
-        <div className="absolute bottom-20 right-1/4 h-[340px] w-[340px] rounded-full bg-sky-500/[0.025] blur-[110px]" />
+        <Parallax offset={120} className="absolute left-0 top-1/3 h-[440px] w-[440px]">
+          <div className="h-full w-full rounded-full bg-cyan-500/[0.04] blur-[140px]" />
+        </Parallax>
+        <Parallax offset={-90} className="absolute bottom-20 right-1/4 h-[340px] w-[340px]">
+          <div className="h-full w-full rounded-full bg-sky-500/[0.035] blur-[110px]" />
+        </Parallax>
+        <Parallax offset={60} className="absolute right-0 top-10 h-[280px] w-[280px]">
+          <div className="h-full w-full rounded-full bg-violet-500/[0.03] blur-[120px]" />
+        </Parallax>
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1360px]">

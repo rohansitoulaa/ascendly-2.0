@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollFloat from "@/animations/ScrollFloat";
+import { Parallax } from "@/animations/Parallax";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRouter } from "next/navigation";
@@ -433,18 +434,18 @@ export const RevenueSystemsSection = forwardRef<
     <section
       id={id}
       ref={setSectionRef}
-      className={`theme-shift-transition relative overflow-hidden bg-[color:var(--services-bg)] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20 ${className}`.trim()}
+      className={`section-perf-skip theme-shift-transition relative overflow-hidden bg-[color:var(--services-bg)] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20 ${className}`.trim()}
       {...props}
     >
-      <div
-        className="theme-shift-transition pointer-events-none absolute left-[-4rem] top-12 h-72 w-72 rounded-full bg-[color:var(--services-glow-one)] blur-[110px]"
-      />
-      <div
-        className="theme-shift-transition pointer-events-none absolute right-[-3rem] top-20 h-80 w-80 rounded-full bg-[color:var(--services-glow-two)] blur-[120px]"
-      />
-      <div
-        className="theme-shift-transition pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[color:var(--services-glow-one)] blur-[110px]"
-      />
+      <Parallax offset={100} className="pointer-events-none absolute left-[-4rem] top-12 h-72 w-72">
+        <div className="theme-shift-transition h-full w-full rounded-full bg-[color:var(--services-glow-one)] blur-[110px]" />
+      </Parallax>
+      <Parallax offset={-80} className="pointer-events-none absolute right-[-3rem] top-20 h-80 w-80">
+        <div className="theme-shift-transition h-full w-full rounded-full bg-[color:var(--services-glow-two)] blur-[120px]" />
+      </Parallax>
+      <Parallax offset={60} className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72">
+        <div className="theme-shift-transition h-full w-full rounded-full bg-[color:var(--services-glow-one)] blur-[110px]" />
+      </Parallax>
 
       <div className="relative z-10 mx-auto max-w-[1480px]">
         <div className="mx-auto max-w-4xl text-center">

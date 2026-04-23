@@ -2,6 +2,7 @@
 
 import BorderGlow from "@/animations/BorderGlow";
 import BrandBar from "@/animations/BrandBar";
+import { Reveal } from "@/animations/Reveal";
 import clientReviews, { type Review } from "@/landingPage/lib/clientReviews";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -671,19 +672,25 @@ export function ClientProofSection() {
 
         <div className="mx-auto max-w-[1360px] px-4 pt-8 sm:px-6 sm:pt-12 md:pt-16">
           <div className="relative z-10 w-full max-w-none">
-            <span className="theme-shift-transition inline-flex rounded-full border border-[color:var(--review-chip-border)] bg-[var(--review-chip-bg)] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-[color:var(--review-chip-text)]">
-              Client reviews
-            </span>
+            <Reveal direction="up" distance={24}>
+              <span className="theme-shift-transition inline-flex rounded-full border border-[color:var(--review-chip-border)] bg-[var(--review-chip-bg)] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-[color:var(--review-chip-text)]">
+                Client reviews
+              </span>
+            </Reveal>
 
-            <h2 className="theme-shift-transition mt-4 w-full max-w-none text-[clamp(2rem,6vw,5.75rem)] font-semibold tracking-[-0.07em] text-[color:var(--review-title)] leading-[1.05] sm:mt-6 md:leading-[0.98]">
-              10+ happy clients already see better engagement daily.
-            </h2>
+            <Reveal direction="up" distance={42} delay={0.08} duration={1}>
+              <h2 className="theme-shift-transition mt-4 w-full max-w-none text-[clamp(2rem,6vw,5.75rem)] font-semibold tracking-[-0.07em] text-[color:var(--review-title)] leading-[1.05] sm:mt-6 md:leading-[0.98]">
+                10+ happy clients already see better engagement daily.
+              </h2>
+            </Reveal>
 
-            <p className="theme-shift-transition mt-4 max-w-[68ch] text-sm leading-7 text-[color:var(--review-copy)] sm:mt-6 sm:text-base sm:leading-8 md:text-[1.05rem]">
-              Featured testimonials anchor the section, while regular reviews
-              stack opposite and the whole composition drifts with the scroll.
-              One featured story per block keeps the rhythm clean.
-            </p>
+            <Reveal direction="up" distance={28} delay={0.18}>
+              <p className="theme-shift-transition mt-4 max-w-[68ch] text-sm leading-7 text-[color:var(--review-copy)] sm:mt-6 sm:text-base sm:leading-8 md:text-[1.05rem]">
+                Featured testimonials anchor the section, while regular reviews
+                stack opposite and the whole composition drifts with the scroll.
+                One featured story per block keeps the rhythm clean.
+              </p>
+            </Reveal>
           </div>
           <div className="relative z-10 mt-6 sm:mt-8 md:mt-10">
             <BrandBar />

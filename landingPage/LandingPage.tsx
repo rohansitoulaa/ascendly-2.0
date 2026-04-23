@@ -1,6 +1,7 @@
 "use client";
 
 import Silk from "@/animations/Silk";
+import GradientMesh from "@/animations/GradientMesh";
 import { ClientProofSection } from "@/landingPage/components/ClientProofSection";
 import Hero from "@/landingPage/components/Hero";
 import Navbar from "@/landingPage/components/Navbar";
@@ -106,6 +107,7 @@ export default function LandingPage() {
           color="#869299"
           noiseIntensity={1.15}
         />
+        <GradientMesh palette="aurora" opacity={0.55} blur={110} grain={0.45} speed={0.9} />
         <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(134,146,153,0.22),transparent_24%),radial-gradient(circle_at_78%_14%,rgba(255,255,255,0.08),transparent_18%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-[-14rem] z-0 h-[32rem] bg-[radial-gradient(circle_at_center,rgba(134,146,153,0.22),transparent_62%)]" />
 
@@ -122,12 +124,32 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <PrimaryFeaturesSection />
+      <div className="relative">
+        <GradientMesh
+          palette="violet"
+          opacity={0.35}
+          blur={120}
+          grain={0.25}
+          speed={0.5}
+          className="z-0"
+        />
+        <PrimaryFeaturesSection />
+      </div>
       <ClientProofSection />
       <RevenueSystemsSection ref={themeTriggerRef} />
 
-      <HowItWorksSection />
-      <IndustriesSection />
+      <div className="relative">
+        <GradientMesh
+          palette="cyan"
+          opacity={0.3}
+          blur={130}
+          grain={0.2}
+          speed={0.4}
+          className="z-0"
+        />
+        <HowItWorksSection />
+        <IndustriesSection />
+      </div>
       <WhyChooseSection />
       <PipelineReviewSection />
 

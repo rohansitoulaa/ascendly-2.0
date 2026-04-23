@@ -256,7 +256,7 @@ export function HowItWorksSection() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#06090d] px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32"
+      className="section-perf-skip relative overflow-hidden bg-[#06090d] px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32"
     >
       {/* ── top divider ── */}
       <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-[1360px] bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" />

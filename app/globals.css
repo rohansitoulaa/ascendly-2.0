@@ -38,6 +38,57 @@
   animation: pipeline-cta-breathe 3.6s ease-in-out infinite;
 }
 
+/* ── Gradient mesh blob drift (used by GradientMesh.tsx) ───── */
+@keyframes gradient-mesh-drift-a {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-50%, -50%) translate3d(6%, -4%, 0) scale(1.08);
+  }
+  66% {
+    transform: translate(-50%, -50%) translate3d(-4%, 6%, 0) scale(0.94);
+  }
+}
+
+@keyframes gradient-mesh-drift-b {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) translate3d(-6%, 8%, 0) scale(1.12);
+  }
+}
+
+.gradient-mesh-blob {
+  animation-name: gradient-mesh-drift-a;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  animation-iteration-count: infinite;
+}
+.gradient-mesh-blob:nth-child(even) {
+  animation-name: gradient-mesh-drift-b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-mesh-blob {
+    animation: none !important;
+  }
+}
+
+/* ── Viewport perf: skip off-screen paint for heavy sections ── */
+.section-perf-skip {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+/* ── Horizontal scroll track ─────────────────────────────────── */
+.horizontal-scroll-track {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
 /* ── Responsive foundation ─────────────────────────────────── */
 *,
 *::before,
