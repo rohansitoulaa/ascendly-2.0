@@ -4,7 +4,9 @@
       "Bash(xargs ls *)",
       "Bash(xargs cat *)",
       "Bash(npx tsc *)",
-      "Bash(npx eslint *)"
+      "Bash(npx eslint *)",
+      "Bash(npx --no-install tsc --noEmit -p .)",
+      "Bash(npx --no-install eslint \"animations/**/*.tsx\" \"design/**/*.tsx\" \"landingPage/sections/**/*.tsx\" \"landingPage/LandingPage.tsx\")"
     ]
   }
 }

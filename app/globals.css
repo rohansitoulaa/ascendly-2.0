@@ -117,8 +117,14 @@ canvas {
 }
 
 :root {
-  --page-bg: #0c0e10;
+  --page-bg: #05060A;
   --page-ink: #f7f9fb;
+  --accent-cyan: #7dd3fc;
+  --accent-violet: #a78bfa;
+  --accent-sky: #22d3ee;
+  --surface-1: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.08);
+  --hairline: rgba(255, 255, 255, 0.08);
   --review-bg:
     linear-gradient(
       180deg,
@@ -255,9 +261,43 @@ html {
 
 body {
   background:
-    radial-gradient(circle at top, rgba(134, 146, 153, 0.16), transparent 22%),
-    linear-gradient(180deg, #0d1012 0%, #090b0d 42%, #050608 100%);
+    radial-gradient(circle at 14% 4%, rgba(34, 211, 238, 0.05), transparent 28%),
+    radial-gradient(circle at 86% 92%, rgba(167, 139, 250, 0.05), transparent 32%),
+    linear-gradient(180deg, #06070B 0%, #05060A 46%, #04050A 100%);
   color: var(--page-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Premium scrollbar ────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05060A;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.35), rgba(167, 139, 250, 0.35));
+  border-radius: 999px;
+  border: 2px solid #05060A;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.55), rgba(167, 139, 250, 0.55));
+}
+
+/* ── Focus ring ───────────────────────────────────────────── */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(5, 6, 10, 1), 0 0 0 4px rgba(125, 211, 252, 0.55);
+  border-radius: 8px;
+}
+
+/* ── Utility: text-balance for headings ───────────────────── */
+.text-balance {
+  text-wrap: balance;
 }
 
 .theme-shift-transition {
