@@ -240,7 +240,7 @@ export function WhyChooseSection() {
             Why Ascendly
           </span>
 
-          <h2
+          {/* <h2
             data-why-heading=""
             className="mt-6 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.05em] text-white"
           >
@@ -248,7 +248,7 @@ export function WhyChooseSection() {
             <span className="bg-gradient-to-r from-cyan-300 to-sky-400 bg-clip-text text-transparent">
               Ascendly
             </span>
-          </h2>
+          </h2> */}
         </div>
 
         {/* ── value propositions ── */}
