@@ -103,7 +103,7 @@ export default function ServicesHero() {
               Outbound alone doesn&rsquo;t scale. Tools alone don&rsquo;t fix pipeline.
             </p>
             <p className="mt-2 text-[clamp(0.95rem,1.8vw,1.2rem)] leading-[1.7] text-white/70">
-              We design and operate your full revenue engine — from lead capture to deal conversion.
+              We design and operate your full revenue engine  from lead capture to deal conversion.
             </p>
           </div>
 

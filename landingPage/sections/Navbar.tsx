@@ -3,15 +3,14 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiPhone } from "react-icons/fi";
 import { Button } from "@/design/Button";
 import { AnimatedLink } from "@/design/AnimatedLink";
 
 const nav = [
-  { label: "Systems", href: "#systems" },
-  { label: "Process", href: "#process" },
-  { label: "Industries", href: "#industries" },
-  { label: "Proof", href: "#proof" },
+  { label: "Services", href: "/services" },
+  { label: "About Us", href: "/aboutus" },
+  { label: "Testimonials", href: "/testimonials" },
 ];
 
 export function Navbar() {
@@ -38,18 +37,13 @@ export function Navbar() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="fixed inset-x-0 top-0 z-[80] flex justify-center px-4 pt-4 sm:pt-5"
       >
-        <motion.nav
-          animate={{
-            width: scrolled ? "min(94vw, 1080px)" : "min(96vw, 1180px)",
-            paddingTop: scrolled ? 10 : 14,
-            paddingBottom: scrolled ? 10 : 14,
-          }}
-          transition={{ type: "spring", stiffness: 220, damping: 28 }}
+        <nav
           className={[
             "relative flex w-full items-center justify-between gap-6 rounded-full border px-4 sm:px-5",
+            "transition-[max-width,padding,background-color,border-color,box-shadow] duration-300 ease-out",
             scrolled
-              ? "border-white/10 bg-black/50 shadow-[0_18px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
-              : "border-white/[0.06] bg-white/[0.02] backdrop-blur-md",
+              ? "max-w-[1080px] py-2.5 border-white/10 bg-black/50 shadow-[0_18px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+              : "max-w-[1180px] py-3.5 border-white/[0.06] bg-white/[0.02] backdrop-blur-md",
           ].join(" ")}
         >
           <Link
@@ -58,7 +52,9 @@ export function Navbar() {
           >
             <span className="relative inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-cyan-300 via-sky-400 to-violet-500 shadow-[0_0_18px_rgba(125,211,252,0.45)]">
               <span className="absolute inset-[2px] rounded-full bg-[#05060A]" />
-              <span className="relative text-[0.62rem] font-bold text-white">A</span>
+              <span className="relative text-[0.62rem] font-bold text-white">
+                A
+              </span>
             </span>
             <span>
               ascendly<span className="text-cyan-300">.</span>
@@ -81,10 +77,13 @@ export function Navbar() {
           </div>
 
           <div className="hidden items-center gap-2 md:flex">
-            <Button variant="ghost" size="sm" magnetic={false}>
-              Sign in
-            </Button>
-            <Button variant="primary" size="sm">
+            <Button
+              variant="primary"
+              size="sm"
+              icon={<FiPhone />}
+              iconAnimation="shake"
+              // secondaryText="Book a 15"
+            >
               Book a call
             </Button>
           </div>
@@ -96,7 +95,7 @@ export function Navbar() {
           >
             {open ? <FiX /> : <FiMenu />}
           </button>
-        </motion.nav>
+        </nav>
       </motion.header>
 
       <motion.div
@@ -128,10 +127,13 @@ export function Navbar() {
             </motion.a>
           ))}
           <div className="mt-6 flex gap-3">
-            <Button variant="glass" size="md" magnetic={false}>
-              Sign in
-            </Button>
-            <Button variant="primary" size="md" magnetic={false}>
+            <Button
+              variant="primary"
+              size="md"
+              magnetic={false}
+              icon={<FiPhone />}
+              iconAnimation="shake"
+            >
               Book a call
             </Button>
           </div>

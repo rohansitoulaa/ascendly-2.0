@@ -254,7 +254,7 @@ export default function LightRays({
       return;
     }
 
-    // Skip WebGL on mobile — saves GPU and battery
+    // Skip WebGL on mobile  saves GPU and battery
     if (window.innerWidth < 768) {
       return;
     }

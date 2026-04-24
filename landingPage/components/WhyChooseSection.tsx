@@ -151,7 +151,7 @@ export function WhyChooseSection() {
         );
       });
 
-      /* contrast columns — slide in */
+      /* contrast columns  slide in */
       const contrasts = gsap.utils.toArray<HTMLElement>(
         "[data-why-contrast]",
       );

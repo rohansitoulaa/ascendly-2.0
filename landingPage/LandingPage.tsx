@@ -1,31 +1,31 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { ScrollProgress } from "@/animations/ScrollProgress";
-import { SpotlightCursor } from "@/animations/SpotlightCursor";
-import { NoiseOverlay } from "@/animations/NoiseOverlay";
 import { Navbar } from "./sections/Navbar";
 import { Hero } from "./sections/Hero";
-import { Brands } from "./sections/Brands";
-import { Bento } from "./sections/Bento";
-import { Process } from "./sections/Process";
-import { Testimonials } from "./sections/Testimonials";
-import { Industries } from "./sections/Industries";
-import { WhyUs } from "./sections/WhyUs";
-import { CTA } from "./sections/CTA";
-import { Footer } from "./sections/Footer";
+
+const Brands = dynamic(() => import("./sections/Brands").then((m) => m.Brands));
+const Features = dynamic(() => import("./sections/Features").then((m) => m.Features), { ssr: false });
+const Services = dynamic(() => import("./sections/Services").then((m) => m.Services));
+const Process = dynamic(() => import("./sections/Process").then((m) => m.Process));
+const Testimonials = dynamic(() => import("./sections/Testimonials").then((m) => m.Testimonials));
+const Industries = dynamic(() => import("./sections/Industries").then((m) => m.Industries));
+const WhyUs = dynamic(() => import("./sections/WhyUs").then((m) => m.WhyUs));
+const CTA = dynamic(() => import("./sections/CTA").then((m) => m.CTA));
+const Footer = dynamic(() => import("./sections/Footer").then((m) => m.Footer));
 
 export default function LandingPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#05060A] text-white">
       <ScrollProgress gradient />
-      <SpotlightCursor size={520} color="rgba(125,211,252,0.14)" />
-      <NoiseOverlay opacity={0.05} blend="overlay" />
 
       <Navbar />
 
       <Hero />
       <Brands />
-      <Bento />
+      <Features />
+      <Services />
       <Process />
       <Testimonials />
       <Industries />

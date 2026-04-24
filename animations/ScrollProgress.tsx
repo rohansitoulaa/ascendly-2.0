@@ -35,7 +35,6 @@ export function ScrollProgress({
         height,
         scaleX,
         background: bg,
-        boxShadow: `0 0 12px ${color}, 0 0 22px ${color}`,
       }}
     />
   );

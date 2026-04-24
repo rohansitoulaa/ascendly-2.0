@@ -15,7 +15,7 @@ export function Bento() {
           kicker="The operating system"
           title="One stack."
           highlight="Every growth lever."
-          subtitle="Each module is instrumented, composable, and tuned to your motion. Together they form a compounding revenue system — not another disconnected tool."
+          subtitle="Each module is instrumented, composable, and tuned to your motion. Together they form a compounding revenue system  not another disconnected tool."
           align="left"
           size="lg"
         />
@@ -39,7 +39,7 @@ export function Bento() {
                 <LiveChart />
                 <p className="max-w-[52ch] text-[0.98rem] leading-[1.7] text-white/60">
                   ICP scoring, intent fusion, and account routing work together
-                  — so reps touch opportunities the moment they heat up.
+                   so reps touch opportunities the moment they heat up.
                 </p>
               </div>
             </GlassCard>
@@ -78,7 +78,7 @@ export function Bento() {
                   Deterministic forecast
                 </h4>
                 <p className="text-[0.92rem] leading-[1.6] text-white/60">
-                  Committed, best case, and stretch — backed by signal decay,
+                  Committed, best case, and stretch  backed by signal decay,
                   not gut feel.
                 </p>
                 <ForecastBars />

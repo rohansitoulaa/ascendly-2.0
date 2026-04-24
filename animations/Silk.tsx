@@ -1,8 +1,8 @@
 "use client";
 import React, { forwardRef, useMemo, useRef, useLayoutEffect, useState, useEffect } from "react";
-import { Canvas, useFrame, useThree, RootState } from "@react-three/fiber";
+import { Canvas, useFrame, useThree, type RootState } from "@react-three/fiber";
 import { Color, Mesh, ShaderMaterial } from "three";
-import { IUniform } from "three";
+import type { IUniform } from "three";
 
 type NormalizedRGB = [number, number, number];
 
@@ -147,10 +147,27 @@ const Silk: React.FC<SilkProps> = ({
   rotation = 0,
 }) => {
   const meshRef = useRef<Mesh>(null);
+  const hostRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = () => setIsMobile(mq.matches);
+    handler();
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: "200px" },
+    );
+    observer.observe(host);
+    return () => observer.disconnect();
   }, []);
 
   const uniforms = useMemo<SilkUniforms>(
@@ -165,10 +182,10 @@ const Silk: React.FC<SilkProps> = ({
     [speed, scale, noiseIntensity, color, rotation],
   );
 
-  // On mobile: render a static gradient fallback instead of the WebGL canvas
   if (isMobile) {
     return (
       <div
+        aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background: `radial-gradient(ellipse at center, ${color}22, ${color}08, transparent 70%), #090b0d`,
@@ -178,8 +195,12 @@ const Silk: React.FC<SilkProps> = ({
   }
 
   return (
-    <div className="absolute inset-0 w-full h-full -z-10 bg-black">
-      <Canvas dpr={[1, 2]} frameloop="always">
+    <div ref={hostRef} className="absolute inset-0 w-full h-full -z-10 bg-black">
+      <Canvas
+        dpr={1}
+        frameloop={isVisible ? "always" : "never"}
+        gl={{ antialias: false, powerPreference: "low-power" }}
+      >
         <SilkPlane ref={meshRef} uniforms={uniforms} />
       </Canvas>
     </div>

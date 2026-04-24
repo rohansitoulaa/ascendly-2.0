@@ -61,7 +61,7 @@ const ScrollFloat = ({
       return;
     }
 
-    // Disable animation on mobile — show text statically
+    // Disable animation on mobile  show text statically
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {

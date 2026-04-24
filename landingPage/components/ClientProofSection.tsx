@@ -560,7 +560,7 @@ export function ClientProofSection() {
       return;
     }
 
-    // Disable all GSAP animations on mobile — static rendering only
+    // Disable all GSAP animations on mobile  static rendering only
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {

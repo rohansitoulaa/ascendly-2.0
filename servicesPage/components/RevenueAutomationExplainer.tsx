@@ -84,7 +84,7 @@ export default function RevenueAutomationExplainer() {
             <span className="text-white/50">Actually Means</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-[clamp(0.9rem,1.5vw,1.05rem)] leading-7 text-white/45 sm:mt-6 sm:leading-8">
-            Not disconnected tools. A single system where every stage feeds the next — and nothing falls through the cracks.
+            Not disconnected tools. A single system where every stage feeds the next  and nothing falls through the cracks.
           </p>
         </div>
 

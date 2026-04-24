@@ -60,7 +60,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="max-w-[38ch] text-[0.92rem] leading-[1.7] text-white/55">
-              Revenue systems, engineered. We design and operate the loop —
+              Revenue systems, engineered. We design and operate the loop 
               your team runs it.
             </p>
             <div className="flex items-center gap-2">
@@ -110,12 +110,21 @@ export function Footer() {
         <div className="mt-6 flex flex-col items-start justify-between gap-3 text-[0.78rem] text-white/40 sm:flex-row sm:items-center">
           <span>© 2026 Ascendly. All rights reserved.</span>
           <div className="flex items-center gap-5">
-            <a href="#" className="transition-colors hover:text-white/80">
+            <Link href="/privacy" className="transition-colors hover:text-white/80">
               Privacy
-            </a>
-            <a href="#" className="transition-colors hover:text-white/80">
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-white/80">
               Terms
-            </a>
+            </Link>
+            <Link
+              href="/cookies"
+              className="transition-colors hover:text-white/80"
+            >
+              Cookies
+            </Link>
+            <Link href="/faq" className="transition-colors hover:text-white/80">
+              FAQ
+            </Link>
             <a href="#" className="transition-colors hover:text-white/80">
               Security
             </a>

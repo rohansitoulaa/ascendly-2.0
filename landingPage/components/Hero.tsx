@@ -55,7 +55,7 @@ export default function Hero({
       ref={sectionRef}
       className="relative z-10 flex flex-1 items-center px-4 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8 md:pt-14"
     >
-      {/* Hero parallax backdrop layers — stacked, drift at different speeds */}
+      {/* Hero parallax backdrop layers  stacked, drift at different speeds */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-[30rem] bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.14),transparent_62%)]"

@@ -22,7 +22,7 @@ const rightSteps: PipelineStep[] = [
   {
     title: "Capture",
     description:
-      "Inbound sources go live — every lead is captured, enriched, and routed automatically.",
+      "Inbound sources go live  every lead is captured, enriched, and routed automatically.",
   },
   {
     title: "Generate",
@@ -54,8 +54,7 @@ const leftSteps: PipelineStep[] = [
   },
   {
     title: "Multi-Channel Execution",
-    description:
-      "Email + LinkedIn + inbound working together — not in silos.",
+    description: "Email + LinkedIn + inbound working together  not in silos.",
   },
   {
     title: "Deal Intelligence Layer",
@@ -65,7 +64,7 @@ const leftSteps: PipelineStep[] = [
   {
     title: "Pipeline Visibility",
     description:
-      "Every deal, stage, and next step tracked — full transparency.",
+      "Every deal, stage, and next step tracked  full transparency.",
   },
 ];
 
@@ -105,7 +104,9 @@ function StepCard({
           <span
             className={`absolute h-[15px] w-[15px] rounded-full border bg-[#06090d] ${dotBorder}`}
           />
-          <span className={`absolute h-[5px] w-[5px] rounded-full ${dotColor}`} />
+          <span
+            className={`absolute h-[5px] w-[5px] rounded-full ${dotColor}`}
+          />
         </div>
       </div>
 
@@ -148,9 +149,7 @@ export function HowItWorksSection() {
 
     mm.add("(min-width: 768px)", () => {
       /* heading reveal */
-      const headingEls = gsap.utils.toArray<HTMLElement>(
-        "[data-hiw-heading]",
-      );
+      const headingEls = gsap.utils.toArray<HTMLElement>("[data-hiw-heading]");
       headingEls.forEach((el, i) => {
         gsap.fromTo(
           el,
@@ -270,20 +269,15 @@ export function HowItWorksSection() {
       <div className="relative z-10 mx-auto max-w-[1360px]">
         {/* ── section header ── */}
         <div className="mx-auto max-w-3xl text-center">
-          <span
-            data-hiw-heading=""
-            className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-slate-400"
-          >
-            How it works
-          </span>
+
 
           <h2
             data-hiw-heading=""
             className="mt-6 text-[clamp(2.2rem,5.5vw,4.8rem)] font-semibold leading-[1.02] tracking-[-0.06em] text-white"
           >
-            Revenue System{" "}
+            How the System{" "}
             <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">
-              Activated
+              Works
             </span>
           </h2>
 
@@ -291,7 +285,7 @@ export function HowItWorksSection() {
             data-hiw-heading=""
             className="mx-auto mt-5 max-w-[52ch] text-[clamp(0.92rem,1.6vw,1.08rem)] leading-7 text-slate-400"
           >
-            From first touch to closed deal — one continuous pipeline.
+            From first touch to closed deal  one continuous pipeline.
           </p>
         </div>
 
@@ -331,14 +325,14 @@ export function HowItWorksSection() {
           </div>
 
           <div className="grid gap-4 lg:grid-cols-2 lg:gap-0">
-            {/* ── LEFT COLUMN — System / Infrastructure ── */}
+            {/* ── LEFT COLUMN  System / Infrastructure ── */}
             <div className="flex flex-col gap-4 lg:pr-10 xl:pr-16">
               {leftSteps.map((step, i) => (
                 <StepCard key={step.title} step={step} index={i} side="left" />
               ))}
             </div>
 
-            {/* ── RIGHT COLUMN — Revenue Pipeline ── */}
+            {/* ── RIGHT COLUMN  Revenue Pipeline ── */}
             <div className="flex flex-col gap-4 lg:pl-10 xl:pl-16">
               {/* mobile label for right column */}
               <div className="mt-6 lg:hidden">

@@ -1,7 +1,6 @@
 "use client";
 
 import { FiArrowRight } from "react-icons/fi";
-import { motion } from "motion/react";
 import { Button } from "@/design/Button";
 import { Badge } from "@/design/Badge";
 import { SplitText } from "@/animations/SplitText";
@@ -12,10 +11,8 @@ export function CTA() {
     <section className="relative overflow-hidden py-32 sm:py-44">
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_35%,rgba(34,211,238,0.22),transparent_45%),radial-gradient(circle_at_70%_65%,rgba(167,139,250,0.22),transparent_50%)]" />
-        <motion.div
+        <div
           className="absolute inset-0"
-          animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
-          transition={{ duration: 22, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
           style={{
             backgroundImage:
               "conic-gradient(from 120deg at 50% 50%, rgba(125,211,252,0.08), rgba(167,139,250,0.08), rgba(125,211,252,0.08))",

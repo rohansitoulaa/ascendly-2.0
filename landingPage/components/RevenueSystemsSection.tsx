@@ -177,7 +177,7 @@ export const RevenueSystemsSection = forwardRef<
   };
 
   useLayoutEffect(() => {
-    // Skip arrow layout computation on mobile — arrows are hidden anyway
+    // Skip arrow layout computation on mobile  arrows are hidden anyway
     if (window.innerWidth < 1280) {
       return;
     }
@@ -274,7 +274,7 @@ export const RevenueSystemsSection = forwardRef<
     };
   }, []);
 
-  // Card reveal animation — desktop only
+  // Card reveal animation  desktop only
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) {
@@ -317,7 +317,7 @@ export const RevenueSystemsSection = forwardRef<
     };
   }, []);
 
-  // Heading char animation — desktop only
+  // Heading char animation  desktop only
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) {
@@ -385,7 +385,7 @@ export const RevenueSystemsSection = forwardRef<
     };
   }, []);
 
-  // Arrow draw animation — desktop only (arrows are hidden below xl)
+  // Arrow draw animation  desktop only (arrows are hidden below xl)
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section || !arrowLayout) {

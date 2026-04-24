@@ -267,9 +267,7 @@ body {
   color: var(--page-ink);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Lenis owns smooth scrolling on desktop; native CSS smooth-scroll would fight it. */
 
 /* ── Premium scrollbar ────────────────────────────────────── */
 ::-webkit-scrollbar {

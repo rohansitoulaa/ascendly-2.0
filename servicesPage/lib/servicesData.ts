@@ -75,7 +75,7 @@ export const flowNodes: FlowNode[] = [
   },
   {
     title: "Automation",
-    description: "Ensures nothing drops — every lead followed up, every deal pushed forward.",
+    description: "Ensures nothing drops  every lead followed up, every deal pushed forward.",
     icon: FiCpu,
     accentClass: "border-amber-500/20",
     iconBgClass: "bg-amber-500/10 text-amber-400",
@@ -101,7 +101,7 @@ export const gearCards: GearCard[] = [
     points: [
       "ICP sourcing & list building",
       "Precision multi-channel outreach",
-      "Calendar pipeline — meetings booked directly",
+      "Calendar pipeline  meetings booked directly",
     ],
     accentColor: "sky",
     borderClass: "border-sky-500/15",
@@ -124,7 +124,7 @@ export const gearCards: GearCard[] = [
   },
 ];
 
-/* ── What we build — 8 boxes (Section 5) ───────────────────── */
+/* ── What we build  8 boxes (Section 5) ───────────────────── */
 
 export interface ServiceBox {
   title: string;
@@ -160,7 +160,7 @@ export const serviceBoxes: ServiceBox[] = [
   },
   {
     title: "CRM Optimization",
-    description: "Clean data, smart stages, automated workflows — a CRM that actually drives revenue.",
+    description: "Clean data, smart stages, automated workflows  a CRM that actually drives revenue.",
     icon: FiGitMerge,
     accentClass: "text-cyan-400",
   },
@@ -178,7 +178,7 @@ export const serviceBoxes: ServiceBox[] = [
   },
   {
     title: "Revenue Leak Detection",
-    description: "Find and fix the gaps where deals drop off — before they cost you revenue.",
+    description: "Find and fix the gaps where deals drop off  before they cost you revenue.",
     icon: FiSearch,
     accentClass: "text-fuchsia-400",
   },
@@ -314,7 +314,7 @@ export interface FAQItem {
 export const faqItems: FAQItem[] = [
   {
     question: "How is this different from hiring an SDR team?",
-    answer: "SDRs execute. We build the system they execute inside. Without the right infrastructure — targeting, sequencing, CRM routing, follow-up automation — even great SDRs underperform. We build the machine that makes every rep more effective.",
+    answer: "SDRs execute. We build the system they execute inside. Without the right infrastructure  targeting, sequencing, CRM routing, follow-up automation  even great SDRs underperform. We build the machine that makes every rep more effective.",
   },
   {
     question: "Do you replace our CRM?",
@@ -326,11 +326,11 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "What's the minimum engagement?",
-    answer: "We typically work in 90-day engagements. The first 30 days are system setup and launch; the remaining 60 are optimization, scaling, and handoff if needed. We don't do month-to-month retainers — systems take time to compound.",
+    answer: "We typically work in 90-day engagements. The first 30 days are system setup and launch; the remaining 60 are optimization, scaling, and handoff if needed. We don't do month-to-month retainers  systems take time to compound.",
   },
   {
     question: "Can we start with just outbound?",
-    answer: "Yes. Our standalone Outbound Engine works independently. However, most clients upgrade to the full Revenue Automation System within 60 days once they see the pipeline it generates — because converting that pipeline requires the rest of the system.",
+    answer: "Yes. Our standalone Outbound Engine works independently. However, most clients upgrade to the full Revenue Automation System within 60 days once they see the pipeline it generates  because converting that pipeline requires the rest of the system.",
   },
   {
     question: "What industries do you work with?",
@@ -338,6 +338,6 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "Do you guarantee results?",
-    answer: "We guarantee the system will be built and operational. We don't guarantee specific revenue numbers because your close rate, offer strength, and market fit matter. That said — every client who's run the system for 90+ days has generated measurable pipeline.",
+    answer: "We guarantee the system will be built and operational. We don't guarantee specific revenue numbers because your close rate, offer strength, and market fit matter. That said  every client who's run the system for 90+ days has generated measurable pipeline.",
   },
 ];

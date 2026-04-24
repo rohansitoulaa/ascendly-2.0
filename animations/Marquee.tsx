@@ -1,11 +1,17 @@
 "use client";
 
-import { type ReactNode, Children, useMemo } from "react";
-import { motion } from "motion/react";
+import { type ReactNode, Children, useEffect, useRef, useMemo } from "react";
+import {
+  motion,
+  useAnimationFrame,
+  useMotionValue,
+  useSpring,
+} from "motion/react";
 
 interface MarqueeProps {
   children: ReactNode;
   direction?: "left" | "right";
+  /** Pixels per second */
   speed?: number;
   pauseOnHover?: boolean;
   gap?: number;
@@ -17,7 +23,7 @@ interface MarqueeProps {
 export function Marquee({
   children,
   direction = "left",
-  speed = 40,
+  speed = 60,
   pauseOnHover = true,
   gap = 32,
   fade = true,
@@ -25,31 +31,67 @@ export function Marquee({
   itemClassName = "",
 }: MarqueeProps) {
   const items = useMemo(() => Children.toArray(children), [children]);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const xRef = useRef(0);
+  const halfWidthRef = useRef(0);
+  const x = useMotionValue("0px");
 
-  const distance = direction === "left" ? "-50%" : "50%";
+  const targetSpeed = useMotionValue(1);
+  const speedMultiplier = useSpring(targetSpeed, {
+    stiffness: 28,
+    damping: 14,
+    mass: 0.6,
+  });
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const measure = () => {
+      halfWidthRef.current = track.scrollWidth / 2;
+    };
+    measure();
+
+    const resizeObserver =
+      typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
+    resizeObserver?.observe(track);
+    window.addEventListener("resize", measure);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [items]);
+
+  useAnimationFrame((_, delta) => {
+    const halfWidth = halfWidthRef.current;
+    if (halfWidth === 0) return;
+    const sign = direction === "left" ? -1 : 1;
+    xRef.current += sign * (speed / 1000) * delta * speedMultiplier.get();
+    if (direction === "left" && xRef.current <= -halfWidth) {
+      xRef.current += halfWidth;
+    } else if (direction === "right" && xRef.current >= 0) {
+      xRef.current -= halfWidth;
+    }
+    x.set(`${xRef.current}px`);
+  });
 
   return (
     <div
       className={[
-        "group relative flex w-full overflow-hidden",
+        "relative flex w-full overflow-hidden",
         fade
-          ? "[mask-image:linear-gradient(to_right,transparent,#000_10%,#000_90%,transparent)]"
+          ? "mask-[linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]"
           : "",
         className,
       ].join(" ")}
+      onMouseEnter={() => pauseOnHover && targetSpeed.set(0)}
+      onMouseLeave={() => pauseOnHover && targetSpeed.set(1)}
     >
       <motion.div
+        ref={trackRef}
         className="flex shrink-0 items-center"
-        style={{ gap }}
-        animate={{ x: ["0%", distance] }}
-        transition={{
-          duration: speed,
-          ease: "linear",
-          repeat: Infinity,
-        }}
-        {...(pauseOnHover
-          ? { whileHover: { animationPlayState: "paused" } }
-          : {})}
+        style={{ gap, x }}
       >
         {[...items, ...items].map((item, i) => (
           <div key={i} className={["shrink-0", itemClassName].join(" ")}>
@@ -57,13 +99,6 @@ export function Marquee({
           </div>
         ))}
       </motion.div>
-      {pauseOnHover && (
-        <style jsx>{`
-          .group:hover :global(> div) {
-            animation-play-state: paused;
-          }
-        `}</style>
-      )}
     </div>
   );
 }

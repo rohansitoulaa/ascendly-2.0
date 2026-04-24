@@ -134,16 +134,6 @@ export function GlassCard({
         />
       )}
 
-      {/* Noise grain */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.025] mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>\")",
-        }}
-      />
-
       <div className={["relative z-10", innerClassName].join(" ")}>
         {children}
       </div>

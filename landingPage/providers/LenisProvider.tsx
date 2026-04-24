@@ -20,7 +20,7 @@ export function LenisProvider({ children }: PropsWithChildren) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Skip Lenis smooth scroll on mobile — native scroll is better for touch
+    // Skip Lenis smooth scroll on mobile  native scroll is better for touch
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
       return;
