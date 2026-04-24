@@ -4,7 +4,8 @@
       "Bash(npx tsc *)",
       "Bash(npx next *)",
       "Bash(echo \"EXIT:$?\")",
-      "Bash(npx eslint *)"
+      "Bash(npx eslint *)",
+      "Bash(npm show *)"
     ]
   }
 }
