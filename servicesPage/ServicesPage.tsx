@@ -170,31 +170,38 @@ function Gears() {
   const gears = [
     {
       label: "Gear 01",
-      title: "Pipeline Conversion System",
-      body: "Inbound signals, CRM hygiene, routing and follow-up discipline  everything that turns an opportunity into a closed deal.",
+      title: "Revenue Conversion System",
+      body: "Everything that turns existing demand into revenue, inbound capture, routing, qualification, and deal progression. Built for teams already generating opportunities, but lacking structure to convert them consistently.",
     },
     {
       label: "Gear 02",
-      title: "Outbound Engine",
-      body: "Precision prospecting built around ICP and intent. Multi-channel, measured, and operated like a system  not a volume game.",
+      title: "The GTM Pipeline System",
+      body: "Structured outbound built around ICP, intent, and timing. Multi-channel, continuously optimised, and run as infrastructure, not campaigns.",
     },
   ];
 
   return (
     <Section id="systems" className="py-28 sm:py-36">
       <Reveal direction="up">
-        <Kicker>The System</Kicker>
+        <Kicker>THE REVENUE SYSTEM</Kicker>
       </Reveal>
       <Reveal direction="up" delay={0.05}>
         <ProximityHeading
           lines={[
-            "Pipeline is built in two gears.",
-            "Revenue comes from both.",
+            "Revenue is built in two systems.",
+            "Both need to work.",
           ]}
           mutedLineIndexes={[1]}
           containerClassName="mt-6 w-full"
           className="text-balance text-[2rem] font-light leading-[1.05] tracking-[-0.03em] sm:text-[2.75rem] lg:text-[3.25rem]"
         />
+      </Reveal>
+
+      <Reveal direction="up" delay={0.12}>
+        <p className="mt-8 max-w-[54ch] text-[0.98rem] leading-[1.7] text-white/50">
+          We don&rsquo;t rely on volume. We build structured systems that generate and
+          convert demand consistently.
+        </p>
       </Reveal>
 
       <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
@@ -220,7 +227,8 @@ function Gears() {
 
       <Reveal direction="up" delay={0.25}>
         <p className="mt-14 max-w-[48ch] text-[0.95rem] leading-[1.65] text-white/45">
-          We treat outreach as a precision system, not a volume game.
+          One system generates demand. The other converts it.
+          Most companies only have one.
         </p>
       </Reveal>
     </Section>
