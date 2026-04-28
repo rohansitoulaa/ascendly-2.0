@@ -134,7 +134,7 @@ function Hero() {
         .fromTo(
           line2Ref.current,
           { opacity: 0, y: 48, clipPath: "inset(0 0 100% 0)" },
-          { opacity: 0.4, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1.0 },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1.0 },
           0.4,
         )
         .fromTo(
@@ -208,7 +208,7 @@ function Hero() {
           ref={kickerRef as React.RefObject<HTMLDivElement>}
           style={{ opacity: 0 }}
         >
-          <Kicker color="cyan">About Ascendly · Revenue Systems</Kicker>
+          <Kicker color="cyan">WHO THIS IS FOR · REVENUE SYSTEMS</Kicker>
         </div>
 
         <h1
@@ -217,7 +217,7 @@ function Hero() {
         >
           <VariableProximity
             ref={line1Ref}
-            label={"Most teams don\u2019t have a lead problem."}
+            label={"Most teams think they need more leads."}
             fromFontVariationSettings={
               ABOUT_HERO_PROXIMITY.fromFontVariationSettings
             }
@@ -232,7 +232,7 @@ function Hero() {
           />
           <VariableProximity
             ref={line2Ref}
-            label="They have a conversion problem."
+            label="They don’t."
             fromFontVariationSettings={
               ABOUT_HERO_PROXIMITY.fromFontVariationSettings
             }
@@ -249,19 +249,24 @@ function Hero() {
 
         <div
           ref={bodyRef as React.RefObject<HTMLDivElement>}
-          className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16"
+          className="mt-12"
           style={{ opacity: 0 }}
         >
-          <p className="max-w-[52ch] text-[1.05rem] leading-[1.75] text-white/65 sm:text-[1.125rem]">
-            Pipeline gets generated, but not followed up, not worked properly,
-            and not converted. That&rsquo;s where most revenue is lost.
+          <p className="max-w-[58ch] text-[1.1rem] leading-[1.65] text-white/50 italic sm:text-[1.2rem]">
+            They lack the systems to turn pipeline into revenue.
           </p>
-          <p className="max-w-[52ch] text-[1.05rem] leading-[1.75] text-white/55 sm:text-[1.125rem]">
-            We built Ascendly to fix that. Not by sending more emails, but by
-            building systems that ensure every opportunity is captured, worked,
-            and converted. Today, we work with B2B companies where each deal
-            matters, helping them turn pipeline into predictable revenue.
-          </p>
+          <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+            <p className="max-w-[52ch] text-[1.05rem] leading-[1.75] text-white/65 sm:text-[1.125rem]">
+              Pipeline exists, but it&rsquo;s inconsistent, unstructured, and
+              under-converted. That&rsquo;s where growth stalls.
+            </p>
+            <p className="max-w-[52ch] text-[1.05rem] leading-[1.75] text-white/55 sm:text-[1.125rem]">
+              Ascendly is built for companies that already have demand
+              but lack a system to scale it. We don&rsquo;t add more noise. We
+              install the infrastructure that turns pipeline into predictable
+              revenue.
+            </p>
+          </div>
         </div>
 
         <div
@@ -270,8 +275,7 @@ function Hero() {
           style={{ opacity: 0 }}
         >
           <p className="text-[0.98rem] leading-[1.65] text-white/40 italic">
-            We built Ascendly to fix that. Not by sending more emails  by
-            building systems.
+            This only works if you already have deal flow.
           </p>
         </div>
 
@@ -282,7 +286,7 @@ function Hero() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/25 bg-cyan-500/[0.07] px-5 py-2 text-[0.82rem] font-medium tracking-[0.12em] text-cyan-400/80 uppercase">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            Not a lead gen agency. Built for revenue generation.
+            Not for early-stage teams. Built for companies ready to scale revenue.
           </span>
         </div>
 

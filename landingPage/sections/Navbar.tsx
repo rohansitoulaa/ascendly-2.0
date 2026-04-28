@@ -1,14 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
-import { FiMenu, FiX, FiPhone } from "react-icons/fi";
+import { FiMenu, FiX, FiPhone, FiChevronDown } from "react-icons/fi";
 import { Button } from "@/design/Button";
 import { AnimatedLink } from "@/design/AnimatedLink";
 
+const services = [
+  {
+    label: "Revenue Automation System",
+    description: "For companies with demand but inconsistent conversion.",
+    href: "/services/revenue-automation",
+  },
+  {
+    label: "Outbound Pipeline System",
+    description: "For companies that need qualified meetings without relying on referrals.",
+    href: "/services/outbound-pipeline",
+  },
+];
+
 const nav = [
-  { label: "Services", href: "/services" },
   { label: "About Us", href: "/aboutus" },
   { label: "Testimonials", href: "/testimonials" },
 ];
@@ -16,6 +28,9 @@ const nav = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (v) => {
@@ -28,6 +43,16 @@ export function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -63,6 +88,61 @@ export function Navbar() {
           </Link>
 
           <div className="hidden items-center gap-7 md:flex">
+            {/* Services dropdown */}
+            <div
+              ref={dropdownRef}
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                onClick={() => setServicesOpen((o) => !o)}
+                className="flex items-center gap-1 text-[0.88rem] text-white/65 transition-colors duration-150 hover:text-white"
+              >
+                Services
+                <motion.span
+                  animate={{ rotate: servicesOpen ? 180 : 0 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  className="inline-flex"
+                >
+                  <FiChevronDown size={13} />
+                </motion.span>
+              </button>
+
+              <AnimatePresence>
+                {servicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.97 }}
+                    transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute left-1/2 top-full mt-3 w-[300px] -translate-x-1/2 overflow-hidden rounded-2xl border border-white/9 bg-[#080A10]/95 shadow-[0_24px_64px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+                  >
+                    <div className="px-2 py-2">
+                      <p className="px-3 pb-2 pt-1 text-[0.66rem] font-medium uppercase tracking-[0.22em] text-white/30">
+                        Services
+                      </p>
+                      {services.map((s) => (
+                        <Link
+                          key={s.href}
+                          href={s.href}
+                          onClick={() => setServicesOpen(false)}
+                          className="group flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors duration-150 hover:bg-white/5"
+                        >
+                          <span className="text-[0.86rem] font-medium text-white/85 transition-colors duration-150 group-hover:text-white">
+                            {s.label}
+                          </span>
+                          <span className="text-[0.75rem] leading-normal text-white/40">
+                            {s.description}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             {nav.map((n) => (
               <AnimatedLink
                 key={n.href}
@@ -82,7 +162,6 @@ export function Navbar() {
               size="sm"
               icon={<FiPhone />}
               iconAnimation="shake"
-              // secondaryText="Book a 15"
             >
               Book a call
             </Button>
@@ -111,8 +190,58 @@ export function Navbar() {
           initial={false}
           animate={{ y: open ? 0 : -30, opacity: open ? 1 : 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="flex h-full flex-col items-start justify-center gap-7 px-8"
+          className="flex h-full flex-col items-start justify-center gap-6 px-8"
         >
+          {/* Services mobile accordion */}
+          <div className="flex flex-col gap-0">
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: open ? 1 : 0, x: open ? 0 : -20 }}
+              transition={{ delay: 0.08, duration: 0.5 }}
+              onClick={() => setMobileServicesOpen((o) => !o)}
+              className="flex items-center gap-2 text-[2rem] font-semibold tracking-[-0.035em] text-white"
+            >
+              Services
+              <motion.span
+                animate={{ rotate: mobileServicesOpen ? 180 : 0 }}
+                transition={{ duration: 0.22 }}
+                className="inline-flex"
+              >
+                <FiChevronDown size={22} />
+              </motion.span>
+            </motion.button>
+
+            <AnimatePresence>
+              {mobileServicesOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="flex flex-col gap-4 pb-2 pl-2 pt-4">
+                    {services.map((s) => (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        onClick={() => { setOpen(false); setMobileServicesOpen(false); }}
+                        className="flex flex-col gap-0.5"
+                      >
+                        <span className="text-[1.1rem] font-medium text-white/80">
+                          {s.label}
+                        </span>
+                        <span className="text-[0.82rem] leading-normal text-white/35">
+                          {s.description}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           {nav.map((n, i) => (
             <motion.a
               key={n.href}
@@ -120,12 +249,13 @@ export function Navbar() {
               onClick={() => setOpen(false)}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: open ? 1 : 0, x: open ? 0 : -20 }}
-              transition={{ delay: 0.08 + i * 0.05, duration: 0.5 }}
+              transition={{ delay: 0.13 + i * 0.05, duration: 0.5 }}
               className="text-[2rem] font-semibold tracking-[-0.035em] text-white"
             >
               {n.label}
             </motion.a>
           ))}
+
           <div className="mt-6 flex gap-3">
             <Button
               variant="primary"

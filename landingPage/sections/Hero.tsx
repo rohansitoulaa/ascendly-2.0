@@ -6,12 +6,36 @@ import {
   useScroll,
   useTransform,
   useReducedMotion,
+  useInView,
 } from "motion/react";
-import { FiArrowRight, FiPlay } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import { Button } from "@/design/Button";
 import { SplitText } from "@/animations/SplitText";
 import { Counter } from "@/animations/Counter";
 import Silk from "@/landingPage/components/Silk";
+
+function SpinningDollarStat() {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <span ref={ref} className="inline-flex items-baseline">
+      <motion.span
+        className="inline-block"
+        animate={
+          inView && !prefersReducedMotion
+            ? { rotate: [0, 360, 720] }
+            : { rotate: 0 }
+        }
+        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+      >
+        $
+      </motion.span>
+      <Counter to={12} suffix="M+" />
+    </span>
+  );
+}
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
@@ -36,7 +60,7 @@ export function Hero() {
   return (
     <section
       ref={ref as never}
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-28 sm:pt-36"
+      className="relative isolate flex min-h-svh items-center overflow-hidden pt-28 sm:pt-36"
     >
       {/* Layered background  static, no scroll transform (huge gradients + paint = stutter) */}
       <div
@@ -77,7 +101,7 @@ export function Hero() {
           className="flex flex-col items-start"
         >
 
-          <h1 className="mt-7 max-w-[18ch] text-[clamp(2.8rem,8.2vw,6.4rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-white">
+          <h1 className="mt-7 max-w-[34ch] text-[clamp(2rem,4.2vw,4.2rem)] font-semibold leading-[1.05] tracking-[-0.06em] text-white">
             <SplitText
               split="word"
               animation="rise"
@@ -85,7 +109,7 @@ export function Hero() {
               duration={0.9}
               className="block"
             >
-              Predictable revenue,
+              For B2B firms with strong LTV,
             </SplitText>
             <motion.span
               className="block bg-linear-to-r from-cyan-200 via-sky-300 to-violet-300 bg-clip-text pt-2 text-transparent"
@@ -97,7 +121,7 @@ export function Hero() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              engineered to scale.
+              but inconsistent pipeline and lost/stalled deals.
             </motion.span>
           </h1>
 
@@ -107,30 +131,23 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-8 max-w-[58ch] text-[clamp(1rem,1.6vw,1.2rem)] leading-[1.65] text-white/66"
           >
-            Ascendly designs and operates premium revenue systems that compound
-            pipeline activity into predictable growth instrumented end-to-end
-            by teams who have shipped at scale.
+            Ascendly builds and runs revenue systems (inbound and outbound) that
+            generate qualified pipelines and turn existing opportunities into
+            predictable growth.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.75 }}
-            className="mt-10 flex flex-wrap items-center gap-3"
+            className="mt-10 flex flex-wrap items-center gap-4"
           >
             <Button variant="primary" size="lg" icon={<FiArrowRight />}>
-              Start a revenue audit
+              Apply for a Revenue Audit
             </Button>
-            <Button
-              variant="glass"
-              size="lg"
-              icon={<FiPlay className="h-4 w-4" />}
-              iconPosition="left"
-              magnetic={false}
-              iconAnimation="pulse"
-            >
-              Watch the loop
-            </Button>
+            <p className="max-w-[44ch] text-[0.78rem] leading-[1.55] text-white/44 italic">
+              (For B2B service companies with $3M–$100M revenue and $15k+ customer lifetime value. Not for early-stage teams or low-ticket offers.)
+            </p>
           </motion.div>
 
           <motion.div
@@ -139,28 +156,41 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.95 }}
             className="mt-16 grid w-full max-w-[720px] grid-cols-2 gap-8 sm:grid-cols-4"
           >
-            {[
-              { n: 2.4, suf: "x", label: "Pipeline lift" },
-              { n: 48, suf: "d", label: "Avg ramp" },
-              { n: 96, suf: "%", label: "Retention" },
-              { n: 12, suf: "M+", label: "Managed ARR" },
-            ].map((s) => (
-              <div
-                key={s.label}
-                className="flex flex-col border-l border-white/10 pl-4"
-              >
-                <span className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold tracking-[-0.04em] text-white">
-                  <Counter
-                    to={s.n}
-                    decimals={s.n % 1 === 0 ? 0 : 1}
-                    suffix={s.suf}
-                  />
-                </span>
-                <span className="mt-1 text-[0.72rem] uppercase tracking-[0.26em] text-white/45">
-                  {s.label}
-                </span>
-              </div>
-            ))}
+            <div className="flex flex-col border-l border-white/10 pl-4">
+              <span className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold tracking-[-0.04em] text-white">
+                <Counter to={2.4} decimals={1} suffix="x" />
+              </span>
+              <span className="mt-1 text-[0.72rem] uppercase tracking-[0.26em] text-white/45">
+                Pipeline Growth
+              </span>
+            </div>
+
+            <div className="flex flex-col border-l border-white/10 pl-4">
+              <span className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold tracking-[-0.04em] text-white">
+                30–60d
+              </span>
+              <span className="mt-1 text-[0.72rem] uppercase tracking-[0.26em] text-white/45">
+                Day Ramp
+              </span>
+            </div>
+
+            <div className="flex flex-col border-l border-white/10 pl-4">
+              <span className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold tracking-[-0.04em] text-white">
+                <Counter to={96} suffix="%" />
+              </span>
+              <span className="mt-1 text-[0.72rem] uppercase tracking-[0.26em] text-white/45">
+                Retention
+              </span>
+            </div>
+
+            <div className="flex flex-col border-l border-white/10 pl-4">
+              <span className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold tracking-[-0.04em] text-white">
+                <SpinningDollarStat />
+              </span>
+              <span className="mt-1 text-[0.72rem] uppercase tracking-[0.26em] text-white/45">
+                Pipeline Managed
+              </span>
+            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -181,7 +211,7 @@ export function Hero() {
               repeat: Infinity,
               ease: [0.65, 0, 0.35, 1],
             }}
-            className="absolute inset-x-0 h-1/2 rounded-full bg-gradient-to-b from-transparent via-cyan-200 to-transparent"
+            className="absolute inset-x-0 h-1/2 rounded-full bg-linear-to-b from-transparent via-cyan-200 to-transparent"
           />
         </span>
         Scroll

@@ -45,15 +45,14 @@ const features: Feature[] = [
   {
     number: "01",
     title: "Inbound Capture System",
-    hook: "Never miss a high-intent lead again",
+    hook: "Never lose high-intent opportunities already in your pipeline",
     paragraphs: [
-      "Your best leads are already interacting with your business. Visiting your site, checking your pricing, engaging on LinkedIn. Most companies never see this in time.",
-      "We build a system that identifies those people, enriches them, and routes them into outreach automatically. Within minutes, not days.",
-      "By the time someone else is manually checking forms or inboxes, you've already reached out.",
+      "Your best prospects are already interacting with your business, visiting your site, checking pricing, engaging on LinkedIn. Most teams don't act on this in time.",
+      "We identify, enrich, and route them into the right outbound flow automatically, within minutes, not days.",
+      "By the time someone else reacts manually, you've already engaged.",
     ],
-    focusLine: "Small gap. Big difference.",
-    proofLine:
-      "Website visitors are identified and routed into your system within ~15 minutes.",
+    focusLine: "Small gap. Compounded revenue loss.",
+    proofLine: "High-intent visitors identified and routed in ~15 minutes.",
     gradient: { from: "#22d3ee", via: "#3b82f6", to: "#6366f1" },
     hookRevealStyle: "blur-in",
     surface: {
@@ -70,13 +69,13 @@ const features: Feature[] = [
   {
     number: "02",
     title: "Lead Qualification Framework",
-    hook: "More meetings doesn't fix pipeline. Better meetings do.",
+    hook: "More meetings don't fix pipeline. Better pipeline does.",
     paragraphs: [
-      "Most pipelines are inflated with low-quality calls that were never going to close.",
-      "We filter that out before it ever hits your calendar.",
-      "Every lead is enriched with context. Company size, role relevance, buying signals. Then it's scored and prioritised so you only speak to people who actually make sense.",
+      "Most pipelines are filled with low-fit calls that never convert.",
+      "We filter, enrich, and prioritise before anything hits your calendar.",
+      "Every lead is scored using company data, role relevance, and buying signals, so your team only speaks with qualified opportunities.",
     ],
-    focusLine: "This is where conversion starts, not after the call.",
+    focusLine: "Pipeline quality determines revenue, not meeting volume.",
     gradient: { from: "#a78bfa", via: "#d946ef", to: "#ec4899" },
     hookRevealStyle: "fade-up",
     surface: {
@@ -93,14 +92,12 @@ const features: Feature[] = [
   {
     number: "03",
     title: "Smart Routing Engine",
-    hook: "Some prospects reply to email. Others ignore it completely but respond instantly on LinkedIn.",
+    hook: "Prospects don't respond on one channel, so we don't rely on one",
     paragraphs: [
-      "Instead of guessing, we run both in parallel and let the system do the work.",
-      "Email sequences and LinkedIn touchpoints are coordinated, not separate. Leads are routed based on behaviour, profile, and engagement.",
+      "Instead of guessing, we run coordinated outbound across email and LinkedIn.",
+      "Touchpoints are sequenced and aligned. Leads move based on behaviour, profile, and engagement.",
     ],
-    focusLine: "That alone lifts response rates without increasing volume.",
-    proofLine:
-      "3-step email + 4-touch LinkedIn sequences running together, not in isolation.",
+    focusLine: "Higher response rates without increasing volume.",
     gradient: { from: "#38bdf8", via: "#6366f1", to: "#a855f7" },
     hookRevealStyle: "mask-sweep",
     surface: {
@@ -117,15 +114,13 @@ const features: Feature[] = [
   {
     number: "04",
     title: "Outbound Pipeline Engine",
-    hook: "This is where consistency comes from",
+    hook: "Pipeline doesn't grow from campaigns. It grows from systems.",
     paragraphs: [
-      "Outbound fails when it's treated like a campaign. It works when it's treated like infrastructure.",
-      "We don't send blasts. We build a system that runs every day.",
-      "Lists are enriched continuously. Signals are monitored. Outreach is personalised and sequenced properly. Replies are handled instantly.",
+      "Outbound fails when it's treated like a one-off effort.",
+      "We build infrastructure that runs continuously, lists enriched, signals tracked, outreach personalised.",
     ],
-    focusLine: "The result is simple. Pipeline doesn't spike. It flows.",
-    proofLine:
-      "Positive replies are responded to with booking links in ~60 seconds.",
+    focusLine: "No spikes. Just consistent pipeline flow.",
+    proofLine: "Positive replies handled and routed in ~60 seconds.",
     gradient: { from: "#34d399", via: "#14b8a6", to: "#06b6d4" },
     hookRevealStyle: "scale-char",
     surface: {
@@ -141,39 +136,13 @@ const features: Feature[] = [
   },
   {
     number: "05",
-    title: "AI-Powered Deal Follow-Up",
-    hook: "The deal doesn't end when the call does",
+    title: "Deal Reactivation",
+    hook: "Most deals don't get rejected. They stall.",
     paragraphs: [
-      "Most teams lose deals in the gap between conversations.",
-      "One follow-up. Then nothing.",
-      "We remove that gap completely.",
-      "Every call is recorded and analysed. Interest level, objections, timeline, next steps. Then a personalised follow-up is drafted within minutes, based on the actual conversation.",
+      "Revenue is lost in the gaps between conversations.",
+      "We track pipeline movement daily and trigger re-engagement when timing shifts, hiring, funding, or activity.",
     ],
-    focusLine: "Nothing generic. Nothing forgotten.",
-    proofLine: "Follow-up is ready within ~2 minutes of the call ending.",
-    gradient: { from: "#fbbf24", via: "#fb923c", to: "#f43f5e" },
-    hookRevealStyle: "blur-in",
-    surface: {
-      base: "linear-gradient(160deg, rgba(32,14,8,0.92) 0%, rgba(22,10,8,0.96) 55%, rgba(14,6,6,0.98) 100%)",
-      accent: "rgba(251,146,60,0.08)",
-      ring: "rgba(244,63,94,0.22)",
-    },
-    metrics: [
-      { label: "Draft Time", value: "~2m", trend: [18, 15, 12, 9, 6, 4, 2] },
-      { label: "Reply Uplift", value: "+48%", trend: [12, 18, 24, 30, 36, 42, 48] },
-      { label: "Deal Recall", value: "100%", trend: [62, 70, 78, 84, 90, 96, 100] },
-    ],
-  },
-  {
-    number: "06",
-    title: "Stale Deal Reactivation",
-    hook: "Most deals don't say no. They just disappear.",
-    paragraphs: [
-      "That's usually where revenue is lost.",
-      "We track every open deal daily. When something changes, hiring, funding, activity, the system triggers re-engagement automatically.",
-      "The timing is what matters. Not the message.",
-    ],
-    focusLine: "Deals you thought were gone come back into play.",
+    focusLine: "Opportunities don't disappear. They're just mistimed.",
     gradient: { from: "#60a5fa", via: "#818cf8", to: "#c084fc" },
     hookRevealStyle: "fade-up",
     surface: {
@@ -188,16 +157,15 @@ const features: Feature[] = [
     ],
   },
   {
-    number: "07",
+    number: "06",
     title: "Live Pipeline Visibility",
-    hook: "You shouldn't have to ask what's going on",
+    hook: "You should always know what's moving, and what's stuck",
     paragraphs: [
-      "Everything sits in one place. Every deal, every stage, every next step.",
-      "Calls update the pipeline automatically. Follow-ups are logged. Status changes happen in real time.",
-      "No chasing updates. No fragmented tools.",
+      "Every deal, stage, and next step sits in one place.",
+      "Pipeline updates automatically. No chasing updates. No fragmented tools.",
     ],
-    focusLine: "Just a clear view of what's moving and what's stuck.",
-    proofLine: "Shared Notion pipeline with full visibility across all deals.",
+    focusLine: "Full visibility across your entire pipeline.",
+    proofLine: "Shared pipeline with real-time visibility across all deals.",
     gradient: { from: "#c084fc", via: "#e879f9", to: "#fb7185" },
     hookRevealStyle: "mask-sweep",
     surface: {
@@ -212,15 +180,14 @@ const features: Feature[] = [
     ],
   },
   {
-    number: "08",
-    title: "Revenue Attribution & ROI Tracking",
-    hook: "Most agencies report activity. Emails sent. Replies. Meetings.",
+    number: "07",
+    title: "Revenue Attribution & ROI",
+    hook: "Activity doesn't equal growth",
     paragraphs: [
-      "That's not what matters.",
-      "We track what those meetings turn into. Pipeline created. Deals progressed. Revenue generated.",
-      "You can see exactly what this system is producing, not just what it's doing.",
+      "Most teams track emails, replies, and meetings.",
+      "We track what those turn into, pipeline created, deals progressed, revenue generated.",
     ],
-    focusLine: "And that changes how you make decisions.",
+    focusLine: "Clear input → revenue output visibility.",
     gradient: { from: "#fde047", via: "#fb923c", to: "#dc2626" },
     hookRevealStyle: "blur-in",
     surface: {
