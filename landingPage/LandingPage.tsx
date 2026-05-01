@@ -13,7 +13,6 @@ const Testimonials = dynamic(() => import("./sections/Testimonials").then((m) =>
 const Industries = dynamic(() => import("./sections/Industries").then((m) => m.Industries));
 const WhyUs = dynamic(() => import("./sections/WhyUs").then((m) => m.WhyUs));
 const CTA = dynamic(() => import("./sections/CTA").then((m) => m.CTA));
-const Footer = dynamic(() => import("./sections/Footer").then((m) => m.Footer));
 
 export default function LandingPage() {
   return (
@@ -31,7 +30,6 @@ export default function LandingPage() {
       <Industries />
       <WhyUs />
       <CTA />
-      <Footer />
     </main>
   );
 }

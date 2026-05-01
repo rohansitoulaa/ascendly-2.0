@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 import { FiMenu, FiX, FiPhone, FiChevronDown } from "react-icons/fi";
 import { Button } from "@/design/Button";
 import { AnimatedLink } from "@/design/AnimatedLink";
@@ -73,15 +74,20 @@ export function Navbar() {
         >
           <Link
             href="/"
-            className="group relative inline-flex items-center gap-2 text-[1.02rem] font-semibold tracking-[-0.02em] text-white"
+            aria-label="Ascendly home"
+            className="group relative inline-flex items-center gap-2.5 text-[1.02rem] font-semibold tracking-[-0.02em] text-white"
           >
-            <span className="relative inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-cyan-300 via-sky-400 to-violet-500 shadow-[0_0_18px_rgba(125,211,252,0.45)]">
-              <span className="absolute inset-[2px] rounded-full bg-[#05060A]" />
-              <span className="relative text-[0.62rem] font-bold text-white">
-                A
-              </span>
+            <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center">
+              <Image
+                src="/ascendly_logo.png"
+                alt="Ascendly"
+                fill
+                priority
+                sizes="32px"
+                className="object-contain filter-[brightness(0)_invert(1)]"
+              />
             </span>
-            <span>
+            <span className="hidden sm:inline">
               ascendly<span className="text-cyan-300">.</span>
               <span className="text-white/55">one</span>
             </span>

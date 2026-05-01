@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto_Flex } from "next/font/google";
 import { LenisProvider } from "@/landingPage/providers/LenisProvider";
 import JsonLd from "@/components/JsonLd";
+import LogoLoader from "@/components/LogoLoader";
+import { Footer } from "@/landingPage/sections/Footer";
 import { organizationSchema, webSiteSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
@@ -118,7 +120,11 @@ export default function RootLayout({
         <JsonLd schema={[organizationSchema(), webSiteSchema()]} />
       </head>
       <body className="flex min-h-full flex-col bg-(--page-bg) text-white">
-        <LenisProvider>{children}</LenisProvider>
+        <LogoLoader />
+        <LenisProvider>
+          {children}
+          <Footer />
+        </LenisProvider>
       </body>
 
     </html>
