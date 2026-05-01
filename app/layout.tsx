@@ -23,6 +23,15 @@ const robotoFlex = Roboto_Flex({
 });
 
 const SITE_URL = "https://ascendly.one";
+const TAB_ICON_CONFIG = {
+  /**
+   * Browser tab icons must stay in /public and should point to square PNG/SVG assets.
+   * The dark-mode asset is a lightened copy of the same logo for dark browser chrome.
+   */
+  default: "/ascendly_logo.png",
+  darkMode: "/ascendly_logo_tab_on_dark.png",
+  darkModeMedia: "(prefers-color-scheme: dark)",
+} as const;
 
 /**
  * Root-level metadata  applies to every page as the fallback.
@@ -51,6 +60,18 @@ export const metadata: Metadata = {
   authors: [{ name: "Ascendly", url: SITE_URL }],
   creator: "Ascendly",
   publisher: "Ascendly",
+  icons: {
+    icon: [
+      { url: TAB_ICON_CONFIG.default, type: "image/png" },
+      {
+        url: TAB_ICON_CONFIG.darkMode,
+        type: "image/png",
+        media: TAB_ICON_CONFIG.darkModeMedia,
+      },
+    ],
+    shortcut: [{ url: TAB_ICON_CONFIG.default, type: "image/png" }],
+    apple: [{ url: TAB_ICON_CONFIG.default, type: "image/png" }],
+  },
   robots: {
     index: true,
     follow: true,
