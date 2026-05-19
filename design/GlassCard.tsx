@@ -100,9 +100,9 @@ export function GlassCard({
           : undefined
       }
       className={[
-        "group relative overflow-hidden rounded-[clamp(18px,2.4vw,28px)] border border-white/[0.08] bg-gradient-to-br from-white/[0.035] to-white/[0.01] backdrop-blur-xl transition-[border-color,box-shadow] duration-500",
+        "group relative overflow-hidden rounded-[clamp(18px,2.4vw,28px)] border border-hairline/8 bg-gradient-to-br from-surface/[0.035] to-surface/1 backdrop-blur-xl transition-[border-color,box-shadow] duration-500",
         glow
-          ? "shadow-[0_24px_80px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.06)] hover:border-white/15 hover:shadow-[0_28px_92px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.1)]"
+          ? "shadow-[0_24px_80px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.06)] hover:border-hairline/15 hover:shadow-[0_28px_92px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.1)]"
           : "",
         className,
       ].join(" ")}
@@ -120,7 +120,7 @@ export function GlassCard({
       {/* Top edge light */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-surface/25 to-transparent"
       />
 
       {/* Accent ring (visible on hover) */}

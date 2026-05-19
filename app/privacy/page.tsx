@@ -87,20 +87,20 @@ export default function PrivacyPage() {
         })}
       />
       <Navbar />
-      <main className="min-h-screen bg-[#05060A] text-white">
-        <section className="relative overflow-hidden border-b border-white/[0.06] pt-32 pb-14 sm:pt-36 sm:pb-18">
+      <main className="min-h-screen bg-[#05060A] text-ink">
+        <section className="relative overflow-hidden border-b border-hairline/[0.06] pt-32 pb-14 sm:pt-36 sm:pb-18">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/45 to-transparent" />
           <div className="pointer-events-none absolute left-1/2 top-0 h-[340px] w-[620px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-[140px]" />
           <div className="mx-auto w-full max-w-[1220px] px-6 sm:px-8 lg:px-10">
             <nav
               aria-label="Breadcrumb"
-              className="mb-6 flex items-center gap-2 text-[0.78rem] uppercase tracking-[0.22em] text-white/45"
+              className="mb-6 flex items-center gap-2 text-[0.78rem] uppercase tracking-[0.22em] text-ink/45"
             >
-              <Link href="/" className="transition-colors hover:text-white/80">
+              <Link href="/" className="transition-colors hover:text-ink/80">
                 Home
               </Link>
-              <span className="text-white/20">/</span>
-              <span aria-current="page" className="text-white/65">
+              <span className="text-ink/20">/</span>
+              <span aria-current="page" className="text-ink/65">
                 Privacy Policy
               </span>
             </nav>
@@ -109,15 +109,15 @@ export default function PrivacyPage() {
               <p className="mb-4 text-[0.76rem] uppercase tracking-[0.24em] text-cyan-300/75">
                 Legal
               </p>
-              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-semibold tracking-[-0.04em] text-white">
+              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-semibold tracking-[-0.04em] text-ink">
                 Privacy Policy
               </h1>
-              <p className="mt-5 max-w-3xl text-[1rem] leading-[1.85] text-white/65 sm:text-[1.05rem]">
+              <p className="mt-5 max-w-3xl text-[1rem] leading-[1.85] text-ink/65 sm:text-[1.05rem]">
                 This Privacy Policy explains what information Ascendly collects,
                 how we use it, when we share it, how we protect it, and what
                 rights you may have under applicable privacy laws.
               </p>
-              <p className="mt-6 text-sm text-white/45">
+              <p className="mt-6 text-sm text-ink/45">
                 Last updated: {LAST_UPDATED_LABEL}
               </p>
             </div>
@@ -129,12 +129,12 @@ export default function PrivacyPage() {
             {privacySections.map((section) => (
               <article
                 key={section.title}
-                className="rounded-[28px] border border-white/[0.08] bg-white/[0.03] px-6 py-7 shadow-[0_20px_70px_rgba(0,0,0,0.22)] sm:px-8 sm:py-8"
+                className="rounded-[28px] border border-hairline/[0.08] bg-surface/[0.03] px-6 py-7 shadow-[0_20px_70px_rgba(0,0,0,0.22)] sm:px-8 sm:py-8"
               >
-                <h2 className="text-[1.2rem] font-semibold tracking-[-0.02em] text-white sm:text-[1.35rem]">
+                <h2 className="text-[1.2rem] font-semibold tracking-[-0.02em] text-ink sm:text-[1.35rem]">
                   {section.title}
                 </h2>
-                <div className="mt-4 space-y-4 text-[0.98rem] leading-[1.9] text-white/68">
+                <div className="mt-4 space-y-4 text-[0.98rem] leading-[1.9] text-ink/68">
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}

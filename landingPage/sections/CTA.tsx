@@ -3,6 +3,7 @@
 import { FiArrowRight } from "react-icons/fi";
 import { Button } from "@/design/Button";
 import { Badge } from "@/design/Badge";
+import { CALENDLY_URL } from "@/lib/constants";
 import { SplitText } from "@/animations/SplitText";
 import { Reveal } from "@/animations/Reveal";
 
@@ -28,7 +29,7 @@ export function CTA() {
           </Badge>
         </Reveal>
 
-        <h2 className="mt-7 max-w-[22ch] text-[clamp(2.5rem,7vw,5.2rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-white">
+        <h2 className="mt-7 max-w-[22ch] text-[clamp(2.5rem,7vw,5.2rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-ink">
           <SplitText split="word" animation="rise" stagger={0.05} duration={0.85}>
             Install a revenue system
           </SplitText>
@@ -41,7 +42,7 @@ export function CTA() {
         </h2>
 
         <Reveal delay={0.25}>
-          <p className="mx-auto mt-8 max-w-[54ch] text-[clamp(1rem,1.4vw,1.1rem)] leading-[1.7] text-white/65">
+          <p className="mx-auto mt-8 max-w-[54ch] text-[clamp(1rem,1.4vw,1.1rem)] leading-[1.7] text-ink/65">
             Three-week audit. Six-week build. A system your team keeps.
             We only take on a small number of companies where ROI is clear.
           </p>
@@ -49,17 +50,17 @@ export function CTA() {
 
         <Reveal delay={0.35}>
           <div className="mt-10 flex flex-col items-center gap-3">
-            <Button variant="primary" size="lg" icon={<FiArrowRight />}>
+            <Button variant="primary" size="lg" icon={<FiArrowRight />} href={CALENDLY_URL}>
               Apply for a Revenue Audit
             </Button>
-            <p className="max-w-[52ch] text-[0.78rem] leading-[1.55] text-white/44 italic">
+            <p className="max-w-[52ch] text-[0.78rem] leading-[1.55] text-ink/44 italic">
               (For B2B service companies with $3M–$100M revenue and $15k+ LTV. Not for early-stage or low-ticket models.)
             </p>
           </div>
         </Reveal>
 
         <Reveal delay={0.5}>
-          <p className="mt-6 text-[0.78rem] uppercase tracking-[0.3em] text-white/40">
+          <p className="mt-6 text-[0.78rem] uppercase tracking-[0.3em] text-ink/40">
             Selective onboarding · Outcome-aligned · Built for scale
           </p>
         </Reveal>

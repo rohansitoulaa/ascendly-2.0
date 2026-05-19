@@ -349,7 +349,7 @@ function MapCard({ step }: MapCardProps) {
           scale: 1.02,
           transition: { type: "spring", stiffness: 240, damping: 18 },
         }}
-        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-linear-to-br from-white/6 to-white/1.5 p-5 shadow-[0_18px_48px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+        className="group relative overflow-hidden rounded-2xl border border-hairline/10 bg-linear-to-br from-white/6 to-white/1.5 p-5 shadow-[0_18px_48px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
         style={{ minHeight: CARD_H }}
       >
         <span
@@ -365,7 +365,7 @@ function MapCard({ step }: MapCardProps) {
 
         <div className="relative flex items-start gap-3">
           <div
-            className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-[1.05rem] ${iconTint}`}
+            className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-hairline/10 bg-surface/[0.04] text-[1.05rem] ${iconTint}`}
           >
             {step.icon}
           </div>
@@ -377,10 +377,10 @@ function MapCard({ step }: MapCardProps) {
                 {step.n}
               </span>
             </div>
-            <h3 className="mt-1 text-[1.05rem] font-semibold tracking-[-0.02em] text-white">
+            <h3 className="mt-1 text-[1.05rem] font-semibold tracking-[-0.02em] text-ink">
               {step.title}
             </h3>
-            <p className="mt-2 text-[0.84rem] leading-[1.55] text-white/55">
+            <p className="mt-2 text-[0.84rem] leading-[1.55] text-ink/55">
               {step.copy}
             </p>
           </div>
@@ -529,7 +529,7 @@ function MobileCard({ step }: { step: Step }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.015] p-5 backdrop-blur-xl"
+      className="relative overflow-hidden rounded-2xl border border-hairline/10 bg-gradient-to-br from-white/[0.06] to-white/[0.015] p-5 backdrop-blur-xl"
     >
       <span
         aria-hidden
@@ -537,7 +537,7 @@ function MobileCard({ step }: { step: Step }) {
       />
       <div className="flex items-start gap-3">
         <div
-          className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] ${iconTint}`}
+          className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-hairline/10 bg-surface/[0.04] ${iconTint}`}
         >
           {step.icon}
         </div>
@@ -549,10 +549,10 @@ function MobileCard({ step }: { step: Step }) {
               {step.n}
             </span>
           </div>
-          <h3 className="mt-1 text-[1.05rem] font-semibold tracking-[-0.02em] text-white">
+          <h3 className="mt-1 text-[1.05rem] font-semibold tracking-[-0.02em] text-ink">
             {step.title}
           </h3>
-          <p className="mt-2 text-[0.86rem] leading-[1.6] text-white/55">
+          <p className="mt-2 text-[0.86rem] leading-[1.6] text-ink/55">
             {step.copy}
           </p>
         </div>

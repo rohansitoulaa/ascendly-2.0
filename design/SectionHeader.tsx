@@ -55,7 +55,7 @@ export function SectionHeader({
 
       <h2
         className={[
-          "mt-5 font-semibold leading-[1.02] tracking-[-0.055em] text-white",
+          "mt-5 font-semibold leading-[1.02] tracking-[-0.055em] text-ink",
           sizeMap[size],
           align === "center" ? "max-w-[22ch]" : "max-w-[26ch]",
         ].join(" ")}
@@ -95,7 +95,7 @@ export function SectionHeader({
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className={[
-            "mt-5 text-[clamp(0.95rem,1.6vw,1.1rem)] leading-[1.62] text-white/62 sm:mt-6 sm:leading-[1.7]",
+            "mt-5 text-[clamp(0.95rem,1.6vw,1.1rem)] leading-[1.62] text-ink/62 sm:mt-6 sm:leading-[1.7]",
             align === "center" ? "max-w-[58ch]" : "max-w-[62ch]",
           ].join(" ")}
         >

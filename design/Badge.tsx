@@ -13,9 +13,9 @@ interface BadgeProps {
 
 const variantStyles: Record<NonNullable<BadgeProps["variant"]>, string> = {
   default:
-    "border-white/10 bg-white/[0.04] text-white/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]",
+    "border-hairline/10 bg-surface/4 text-ink/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]",
   solid:
-    "border-white/20 bg-white/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]",
+    "border-hairline/20 bg-surface/10 text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]",
   glow:
     "border-cyan-300/20 bg-cyan-400/[0.06] text-cyan-100 shadow-[0_0_0_1px_rgba(125,211,252,0.05),inset_0_1px_0_rgba(255,255,255,0.04),0_0_18px_rgba(34,211,238,0.14)]",
 };
@@ -29,6 +29,7 @@ export function Badge({
 }: BadgeProps) {
   return (
     <span
+      data-badge-variant={variant}
       className={[
         "inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.66rem] font-medium uppercase tracking-[0.28em] backdrop-blur-md sm:text-[0.7rem]",
         variantStyles[variant],

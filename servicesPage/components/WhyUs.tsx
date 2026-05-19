@@ -57,11 +57,11 @@ export default function WhyUs() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollFloat
             containerClassName="my-0 text-center"
-            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-white/50"
+            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-ink/50"
           >
             What makes us different
           </ScrollFloat>
-          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-white">
+          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-ink">
             Why Us
           </h2>
         </div>
@@ -72,19 +72,19 @@ export default function WhyUs() {
               <div
                 key={diff.headline}
                 data-why-item=""
-                className="group border-b border-white/[0.06] py-10 first:pt-0 last:border-none sm:py-14"
+                className="group border-b border-hairline/[0.06] py-10 first:pt-0 last:border-none sm:py-14"
               >
                 <div className="flex items-start gap-6 sm:gap-10">
                   {/* Index */}
-                  <span className="mt-1.5 shrink-0 text-sm font-medium tabular-nums tracking-[0.12em] text-white/16 sm:text-base">
+                  <span className="mt-1.5 shrink-0 text-sm font-medium tabular-nums tracking-[0.12em] text-ink/16 sm:text-base">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
                   <div className="flex-1">
-                    <h3 className="text-[clamp(1.4rem,3.5vw,2.2rem)] font-semibold leading-[1.1] tracking-[-0.04em] text-white transition-colors duration-300 group-hover:text-white/90">
+                    <h3 className="text-[clamp(1.4rem,3.5vw,2.2rem)] font-semibold leading-[1.1] tracking-[-0.04em] text-ink transition-colors duration-300 group-hover:text-ink/90">
                       {diff.headline}
                     </h3>
-                    <p className="mt-4 max-w-2xl text-[clamp(0.88rem,1.4vw,1.02rem)] leading-7 text-white/40 sm:mt-5 sm:leading-8">
+                    <p className="mt-4 max-w-2xl text-[clamp(0.88rem,1.4vw,1.02rem)] leading-7 text-ink/40 sm:mt-5 sm:leading-8">
                       {diff.description}
                     </p>
                   </div>

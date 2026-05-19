@@ -65,8 +65,8 @@ const variantCfg: Record<Variant, VariantCfg> = {
       "0 18px 52px rgba(38,62,82,0.60), inset 0 1px 0 rgba(255,255,255,0.20)",
   },
   glass: {
-    className: "border border-white/12 bg-white/[0.06] backdrop-blur-xl",
-    textClass: "text-white",
+    className: "border border-hairline/12 bg-surface/6 backdrop-blur-xl",
+    textClass: "text-ink",
     hoverOverlay: "rgba(71,92,112,0.28)",
     shadow:
       "0 10px 40px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08)",
@@ -75,7 +75,7 @@ const variantCfg: Record<Variant, VariantCfg> = {
   },
   ghost: {
     className: "",
-    textClass: "text-white/80",
+    textClass: "text-ink/80",
     hoverOverlay: "rgba(71,92,112,0.20)",
   },
   outline: {
@@ -194,7 +194,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         id: Date.now(),
       });
       window.setTimeout(() => setRipple(null), 600);
-      if (href) window.location.href = href;
+      if (href) {
+        if (/^https?:\/\//i.test(href)) {
+          window.open(href, "_blank", "noopener,noreferrer");
+        } else {
+          window.location.href = href;
+        }
+      }
       onClick?.(e);
     };
 

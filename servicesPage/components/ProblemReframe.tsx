@@ -54,14 +54,14 @@ export default function ProblemReframe() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollFloat
             containerClassName="my-0 text-center"
-            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-white/50"
+            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-ink/50"
           >
             The real bottleneck
           </ScrollFloat>
 
-          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-white">
+          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-ink">
             Most teams don&rsquo;t have a lead problem.{" "}
-            <span className="text-white/50">They have a system problem.</span>
+            <span className="text-ink/50">They have a system problem.</span>
           </h2>
         </div>
 
@@ -70,7 +70,7 @@ export default function ProblemReframe() {
             <div
               key={point.label}
               data-pain-item=""
-              className="group flex items-start gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] px-5 py-5 transition-colors duration-300 hover:border-white/10 hover:bg-white/[0.04] sm:gap-5 sm:rounded-[22px] sm:px-7 sm:py-6"
+              className="group flex items-start gap-4 rounded-2xl border border-hairline/[0.06] bg-surface/[0.02] px-5 py-5 transition-colors duration-300 hover:border-hairline/10 hover:bg-surface/[0.04] sm:gap-5 sm:rounded-[22px] sm:px-7 sm:py-6"
             >
               {/* Pulse indicator */}
               <div className="relative mt-1.5 flex shrink-0 items-center justify-center">
@@ -79,15 +79,15 @@ export default function ProblemReframe() {
               </div>
 
               <div>
-                <p className="text-base font-semibold tracking-[-0.03em] text-white sm:text-lg">
+                <p className="text-base font-semibold tracking-[-0.03em] text-ink sm:text-lg">
                   {point.label}
                 </p>
-                <p className="mt-1.5 text-sm leading-6 text-white/45 sm:text-[0.94rem] sm:leading-7">
+                <p className="mt-1.5 text-sm leading-6 text-ink/45 sm:text-[0.94rem] sm:leading-7">
                   {point.detail}
                 </p>
               </div>
 
-              <span className="ml-auto mt-1 shrink-0 text-xs font-medium uppercase tracking-[0.24em] text-white/20">
+              <span className="ml-auto mt-1 shrink-0 text-xs font-medium uppercase tracking-[0.24em] text-ink/20">
                 {String(i + 1).padStart(2, "0")}
               </span>
             </div>

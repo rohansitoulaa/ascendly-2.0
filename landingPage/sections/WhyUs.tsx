@@ -458,7 +458,7 @@ export function WhyUs() {
               const gradientSoft = `linear-gradient(135deg, ${reason.gradient.from} 0%, ${reason.gradient.via} 50%, ${reason.gradient.to} 100%)`;
               return (
                 <Reveal key={reason.number} direction="up" delay={index * 0.05}>
-                  <article className="relative h-full overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.025] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-7">
+                  <article className="relative h-full overflow-hidden rounded-[26px] border border-hairline/10 bg-surface/[0.025] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-7">
                     <div
                       className="pointer-events-none absolute -top-20 -left-10 h-56 w-56 rounded-full opacity-30 blur-[90px]"
                       style={{ background: reason.gradient.from }}
@@ -482,12 +482,12 @@ export function WhyUs() {
                           style={{ background: gradientSoft }}
                           aria-hidden
                         />
-                        <span className="text-[0.62rem] uppercase tracking-[0.32em] text-white/44">
+                        <span className="text-[0.62rem] uppercase tracking-[0.32em] text-ink/44">
                           {reason.title}
                         </span>
                       </div>
 
-                      <h4 className="mt-5 text-[1.28rem] font-semibold leading-[1.2] tracking-[-0.025em] text-white">
+                      <h4 className="mt-5 text-[1.28rem] font-semibold leading-[1.2] tracking-[-0.025em] text-ink">
                         {reason.hook}
                       </h4>
 
@@ -497,7 +497,7 @@ export function WhyUs() {
                             return (
                               <p
                                 key={`${reason.number}-text-${blockIndex}`}
-                                className="text-[0.95rem] leading-[1.7] text-white/60"
+                                className="text-[0.95rem] leading-[1.7] text-ink/60"
                               >
                                 {block.value}
                               </p>
@@ -521,7 +521,7 @@ export function WhyUs() {
                                   >
                                     <FiCheck className="h-3 w-3" strokeWidth={3} />
                                   </motion.span>
-                                  <span className="text-[0.95rem] leading-[1.65] text-white/74">
+                                  <span className="text-[0.95rem] leading-[1.65] text-ink/74">
                                     {item}
                                   </span>
                                 </li>
@@ -549,17 +549,14 @@ export function WhyUs() {
     >
       <div
         className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(120% 80% at 50% 0%, rgba(15,22,38,0.55) 0%, rgba(5,6,10,0.9) 55%, rgba(5,6,10,1) 100%)",
-        }}
+        style={{ background: "var(--gradient-overlay-top)" }}
         aria-hidden
       />
       <div
         className="pointer-events-none absolute inset-0 z-10 opacity-[0.12]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
           maskImage:
             "radial-gradient(ellipse at center, black 40%, transparent 85%)",
@@ -570,7 +567,7 @@ export function WhyUs() {
       <div className="absolute left-0 right-0 top-0 z-30 px-8 pt-22 sm:px-14">
         <div className="flex items-center gap-3">
           <span className="inline-flex size-1.5 rounded-full bg-cyan-300/80" />
-          <span className="text-[0.68rem] uppercase tracking-[0.32em] text-white/42">
+          <span className="text-[0.68rem] uppercase tracking-[0.32em] text-ink/42">
             Why Ascendly
           </span>
         </div>
@@ -641,7 +638,7 @@ export function WhyUs() {
                       style={{ background: gradientSoft }}
                       aria-hidden
                     />
-                    <span className="text-[0.66rem] uppercase tracking-[0.32em] text-white/44">
+                    <span className="text-[0.66rem] uppercase tracking-[0.32em] text-ink/44">
                       {reason.title}
                     </span>
                   </div>
@@ -650,7 +647,7 @@ export function WhyUs() {
                     as="div"
                     splitBy="word"
                     style={reason.hookRevealStyle}
-                    className="mt-6 text-[clamp(2.4rem,5.5vw,5.8rem)] font-semibold leading-[0.93] tracking-[-0.065em] text-white"
+                    className="mt-6 text-[clamp(2.4rem,5.5vw,5.8rem)] font-semibold leading-[0.93] tracking-[-0.065em] text-ink"
                   >
                     {reason.hook}
                   </TextReveal>
@@ -673,7 +670,7 @@ export function WhyUs() {
                             direction="up"
                             amount={0.22}
                           >
-                            <p className="text-[clamp(1rem,1.35vw,1.16rem)] leading-[1.75] text-white/62">
+                            <p className="text-[clamp(1rem,1.35vw,1.16rem)] leading-[1.75] text-ink/62">
                               {block.value}
                             </p>
                           </Reveal>
@@ -691,7 +688,7 @@ export function WhyUs() {
                             {block.items.map((item, itemIndex) => (
                               <li
                                 key={item}
-                                className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3"
+                                className="flex items-start gap-3 rounded-2xl border border-hairline/10 bg-surface/[0.02] px-4 py-3"
                                 style={{
                                   animationDelay: `${itemIndex * 40}ms`,
                                 }}
@@ -714,7 +711,7 @@ export function WhyUs() {
                                 >
                                   <FiCheck className="h-3.5 w-3.5" strokeWidth={3} />
                                 </motion.span>
-                                <span className="text-[0.98rem] leading-[1.55] text-white/74">
+                                <span className="text-[0.98rem] leading-[1.55] text-ink/74">
                                   {item}
                                 </span>
                               </li>

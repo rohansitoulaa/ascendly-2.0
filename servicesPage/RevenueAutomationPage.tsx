@@ -8,6 +8,7 @@ import Button from "@/design/Button";
 import { Reveal } from "@/animations/Reveal";
 import { Badge } from "@/design/Badge";
 import VariableProximity from "@/animations/VariableProximity";
+import { CALENDLY_URL } from "@/lib/constants";
 
 const DotField = dynamic(() => import("@/design/DotField"), { ssr: false });
 
@@ -32,15 +33,15 @@ function Section({ children, className = "", id }: { children: ReactNode; classN
 function Hairline() {
   return (
     <div className="mx-auto w-full max-w-[1240px] px-6 sm:px-8 lg:px-10">
-      <div className="h-px bg-white/[0.06]" />
+      <div className="h-px bg-surface/[0.06]" />
     </div>
   );
 }
 
 function Kicker({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/45">
-      <span className="h-px w-8 bg-white/25" />
+    <div className="flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/45">
+      <span className="h-px w-8 bg-surface/25" />
       <span>{children}</span>
     </div>
   );
@@ -67,7 +68,7 @@ function ProximityHeading({ lines, as = "h2", className, containerClassName = "w
             containerRef={containerRef}
             radius={PROXIMITY.radius}
             falloff="gaussian"
-            className={["block", index > 0 ? "mt-1" : "", mutedLineIndexes.includes(index) ? "text-white/40" : "text-white"].filter(Boolean).join(" ")}
+            className={["block", index > 0 ? "mt-1" : "", mutedLineIndexes.includes(index) ? "text-ink/40" : "text-ink"].filter(Boolean).join(" ")}
           />
         ))}
       </HeadingTag>
@@ -101,11 +102,11 @@ function Hero() {
 
       <Reveal direction="up" distance={20} delay={0.15}>
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <p className="max-w-[52ch] text-[1.05rem] leading-[1.7] text-white/65 sm:text-[1.125rem]">
+          <p className="max-w-[52ch] text-[1.05rem] leading-[1.7] text-ink/65 sm:text-[1.125rem]">
             You&rsquo;re generating inbound leads, referrals, or interest, but revenue isn&rsquo;t
             predictable. Opportunities stall. Follow-ups don&rsquo;t happen. Deals die in silence.
           </p>
-          <p className="max-w-[52ch] text-[1.05rem] leading-[1.7] text-white/50 sm:text-[1.125rem]">
+          <p className="max-w-[52ch] text-[1.05rem] leading-[1.7] text-ink/50 sm:text-[1.125rem]">
             The Revenue Conversion System is the infrastructure layer that captures every opportunity,
             qualifies it properly, and works it to a decision. Built for B2B companies with $15k+ LTV.
           </p>
@@ -114,14 +115,14 @@ function Hero() {
 
       <Reveal direction="up" distance={16} delay={0.25}>
         <div className="mt-14 flex flex-wrap items-center gap-4">
-          <Button variant="primary" size="lg" icon={<FiArrowRight />} href="#cta">
+          <Button variant="primary" size="lg" icon={<FiArrowRight />} href={CALENDLY_URL}>
             Apply for a Revenue Audit
           </Button>
           <Button variant="ghost" size="lg" href="#what-it-handles" magnetic={false}>
             What it handles
           </Button>
         </div>
-        <p className="mt-4 text-[0.78rem] leading-[1.55] text-white/40 italic">
+        <p className="mt-4 text-[0.78rem] leading-[1.55] text-ink/40 italic">
           (For B2B companies with $3M–$100M revenue and $15k+ LTV. Not for early-stage or low-ticket models.)
         </p>
       </Reveal>
@@ -183,22 +184,22 @@ function WhatItHandles() {
       <div className="mt-20">
         {items.map((item, i) => (
           <Reveal key={item.index} direction="up" delay={0.04 + i * 0.04}>
-            <div className="group grid grid-cols-[auto_1fr] gap-8 border-t border-white/[0.07] py-10 transition-colors duration-500 hover:border-white/[0.18] sm:grid-cols-[140px_1fr] sm:gap-12 sm:py-12">
-              <div className="font-mono text-[0.72rem] tracking-[0.22em] text-white/35">
+            <div className="group grid grid-cols-[auto_1fr] gap-8 border-t border-hairline/[0.07] py-10 transition-colors duration-500 hover:border-hairline/[0.18] sm:grid-cols-[140px_1fr] sm:gap-12 sm:py-12">
+              <div className="font-mono text-[0.72rem] tracking-[0.22em] text-ink/35">
                 {item.index}
               </div>
               <div>
-                <h3 className="text-[1.5rem] font-light tracking-[-0.015em] text-white sm:text-[1.85rem]">
+                <h3 className="text-[1.5rem] font-light tracking-[-0.015em] text-ink sm:text-[1.85rem]">
                   {item.title}
                 </h3>
-                <p className="mt-4 max-w-[58ch] text-[1rem] leading-[1.7] text-white/55">
+                <p className="mt-4 max-w-[58ch] text-[1rem] leading-[1.7] text-ink/55">
                   {item.body}
                 </p>
               </div>
             </div>
           </Reveal>
         ))}
-        <div className="border-t border-white/[0.07]" />
+        <div className="border-t border-hairline/[0.07]" />
       </div>
     </Section>
   );
@@ -241,7 +242,7 @@ function RightFit() {
 
       <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
         <Reveal direction="up" delay={0.1}>
-          <div className="h-full rounded-2xl border border-white/[0.08] bg-white/[0.015] p-8 sm:p-10">
+          <div className="h-full rounded-2xl border border-hairline/[0.08] bg-surface/[0.015] p-8 sm:p-10">
             <div className="mb-6 flex items-center gap-3">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/15">
                 <FiCheck size={12} className="text-emerald-400" />
@@ -254,7 +255,7 @@ function RightFit() {
               {fits.map((f) => (
                 <li key={f} className="flex items-start gap-3">
                   <FiCheck size={14} className="mt-[3px] shrink-0 text-emerald-400/60" />
-                  <span className="text-[0.95rem] leading-[1.6] text-white/70">{f}</span>
+                  <span className="text-[0.95rem] leading-[1.6] text-ink/70">{f}</span>
                 </li>
               ))}
             </ul>
@@ -262,7 +263,7 @@ function RightFit() {
         </Reveal>
 
         <Reveal direction="up" delay={0.15}>
-          <div className="h-full rounded-2xl border border-white/[0.06] bg-white/[0.008] p-8 sm:p-10">
+          <div className="h-full rounded-2xl border border-hairline/[0.06] bg-surface/[0.008] p-8 sm:p-10">
             <div className="mb-6 flex items-center gap-3">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-500/10">
                 <FiX size={12} className="text-red-400/70" />
@@ -275,7 +276,7 @@ function RightFit() {
               {notFits.map((f) => (
                 <li key={f} className="flex items-start gap-3">
                   <FiX size={14} className="mt-[3px] shrink-0 text-red-400/40" />
-                  <span className="text-[0.95rem] leading-[1.6] text-white/40">{f}</span>
+                  <span className="text-[0.95rem] leading-[1.6] text-ink/40">{f}</span>
                 </li>
               ))}
             </ul>
@@ -326,22 +327,22 @@ function HowItWorks() {
       <div className="mt-20">
         {steps.map((s, i) => (
           <Reveal key={s.step} direction="up" delay={0.05 + i * 0.06}>
-            <div className="group grid grid-cols-[auto_1fr] gap-8 border-t border-white/[0.07] py-10 transition-colors duration-500 hover:border-white/[0.18] sm:grid-cols-[180px_1fr] sm:gap-12 sm:py-12">
-              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/40">
+            <div className="group grid grid-cols-[auto_1fr] gap-8 border-t border-hairline/[0.07] py-10 transition-colors duration-500 hover:border-hairline/[0.18] sm:grid-cols-[180px_1fr] sm:gap-12 sm:py-12">
+              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/40">
                 {s.step}
               </div>
               <div>
-                <h3 className="text-[1.5rem] font-light tracking-[-0.015em] text-white sm:text-[1.85rem]">
+                <h3 className="text-[1.5rem] font-light tracking-[-0.015em] text-ink sm:text-[1.85rem]">
                   {s.title}
                 </h3>
-                <p className="mt-4 max-w-[58ch] text-[1rem] leading-[1.7] text-white/55">
+                <p className="mt-4 max-w-[58ch] text-[1rem] leading-[1.7] text-ink/55">
                   {s.body}
                 </p>
               </div>
             </div>
           </Reveal>
         ))}
-        <div className="border-t border-white/[0.07]" />
+        <div className="border-t border-hairline/[0.07]" />
       </div>
     </Section>
   );
@@ -383,17 +384,17 @@ function Commitment() {
         />
       </Reveal>
 
-      <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.06] md:grid-cols-3">
+      <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-hairline/[0.08] bg-surface/[0.06] md:grid-cols-3">
         {items.map((p, i) => (
           <Reveal key={p.index} direction="up" delay={0.08 + i * 0.06}>
             <div className="h-full bg-[#07080c] p-8 sm:p-10">
-              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/35">
+              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/35">
                 {p.index}
               </div>
-              <h3 className="mt-8 text-[1.35rem] font-light tracking-[-0.015em] text-white sm:text-[1.5rem]">
+              <h3 className="mt-8 text-[1.35rem] font-light tracking-[-0.015em] text-ink sm:text-[1.5rem]">
                 {p.title}
               </h3>
-              <p className="mt-4 text-[0.95rem] leading-[1.7] text-white/55">
+              <p className="mt-4 text-[0.95rem] leading-[1.7] text-ink/55">
                 {p.body}
               </p>
             </div>
@@ -411,7 +412,7 @@ function Commitment() {
 function CTA() {
   return (
     <Section id="cta" className="pb-40 pt-28 sm:pb-48 sm:pt-36">
-      <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.015] px-8 py-20 sm:px-16 sm:py-24">
+      <div className="relative overflow-hidden rounded-3xl border border-hairline/[0.08] bg-surface/[0.015] px-8 py-20 sm:px-16 sm:py-24">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -422,29 +423,29 @@ function CTA() {
         />
         <div className="relative">
           <Reveal direction="up">
-            <h2 className="max-w-[22ch] text-balance text-[2.25rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[3rem] lg:text-[3.5rem]">
+            <h2 className="max-w-[22ch] text-balance text-[2.25rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[3rem] lg:text-[3.5rem]">
               Ready to turn pipeline
-              <span className="block text-white/40">into predictable revenue?</span>
+              <span className="block text-ink/40">into predictable revenue?</span>
             </h2>
           </Reveal>
           <Reveal direction="up" delay={0.08}>
-            <p className="mt-8 max-w-[52ch] text-[1.05rem] leading-[1.7] text-white/60">
+            <p className="mt-8 max-w-[52ch] text-[1.05rem] leading-[1.7] text-ink/60">
               We start with a three-week audit so you see the gaps before we build anything.
               Selective intake. We only work with companies where the ROI is clear.
             </p>
           </Reveal>
           <Reveal direction="up" delay={0.16}>
             <div className="mt-12 flex flex-col items-start gap-3">
-              <Button variant="primary" size="lg" icon={<FiArrowRight />}>
+              <Button variant="primary" size="lg" icon={<FiArrowRight />} href={CALENDLY_URL}>
                 Apply for a Revenue Audit
               </Button>
-              <p className="text-[0.78rem] leading-[1.55] text-white/40 italic">
+              <p className="text-[0.78rem] leading-[1.55] text-ink/40 italic">
                 (For B2B companies with $3M–$100M revenue and $15k+ LTV. Not for early-stage or low-ticket models.)
               </p>
             </div>
           </Reveal>
           <Reveal direction="up" delay={0.24}>
-            <p className="mt-6 text-[0.78rem] uppercase tracking-[0.3em] text-white/35">
+            <p className="mt-6 text-[0.78rem] uppercase tracking-[0.3em] text-ink/35">
               Selective onboarding · Outcome-aligned · Built for scale
             </p>
           </Reveal>

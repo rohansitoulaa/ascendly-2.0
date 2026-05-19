@@ -55,14 +55,14 @@ export default function WhatWeBuild() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollFloat
             containerClassName="my-0 text-center"
-            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-white/50"
+            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-ink/50"
           >
             The full stack
           </ScrollFloat>
-          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-white">
+          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-ink">
             What We Build
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-[clamp(0.9rem,1.5vw,1.05rem)] leading-7 text-white/45">
+          <p className="mx-auto mt-5 max-w-xl text-[clamp(0.9rem,1.5vw,1.05rem)] leading-7 text-ink/45">
             Eight interlocking systems that turn pipeline activity into predictable revenue.
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function WhatWeBuild() {
               <div
                 key={box.title}
                 data-build-card=""
-                className="service-shimmer-card group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-400 hover:border-white/12 hover:bg-white/[0.04] sm:rounded-[22px] sm:p-6"
+                className="service-shimmer-card group relative overflow-hidden rounded-2xl border border-hairline/[0.06] bg-surface/[0.02] p-5 transition-all duration-400 hover:border-hairline/12 hover:bg-surface/[0.04] sm:rounded-[22px] sm:p-6"
               >
                 {/* Shimmer border on hover */}
                 <div className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{
@@ -87,18 +87,18 @@ export default function WhatWeBuild() {
 
                 <div className="relative">
                   <div className="flex items-center justify-between">
-                    <div className={`flex h-9 w-9 items-center justify-center rounded-lg sm:h-10 sm:w-10 sm:rounded-xl ${box.accentClass} bg-white/[0.04]`}>
+                    <div className={`flex h-9 w-9 items-center justify-center rounded-lg sm:h-10 sm:w-10 sm:rounded-xl ${box.accentClass} bg-surface/[0.04]`}>
                       <Icon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
                     </div>
-                    <span className="text-[0.55rem] font-medium uppercase tracking-[0.24em] text-white/16">
+                    <span className="text-[0.55rem] font-medium uppercase tracking-[0.24em] text-ink/16">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  <h3 className="mt-4 text-[0.94rem] font-semibold leading-tight tracking-[-0.02em] text-white sm:text-base">
+                  <h3 className="mt-4 text-[0.94rem] font-semibold leading-tight tracking-[-0.02em] text-ink sm:text-base">
                     {box.title}
                   </h3>
-                  <p className="mt-2 text-[0.8rem] leading-[1.6] text-white/40 sm:text-[0.84rem]">
+                  <p className="mt-2 text-[0.8rem] leading-[1.6] text-ink/40 sm:text-[0.84rem]">
                     {box.description}
                   </p>
                 </div>

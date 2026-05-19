@@ -10,6 +10,7 @@ import VariableProximity from "@/animations/VariableProximity";
 import Navbar from "@/landingPage/sections/Navbar";
 import Button from "@/design/Button";
 import dynamic from "next/dynamic";
+import { CALENDLY_URL } from "@/lib/constants";
 
 const ShapeGrid = dynamic(() => import("@/animations/ShapeGrid"), { ssr: false });
 
@@ -43,7 +44,7 @@ function Section({
 function Hairline() {
   return (
     <div className="mx-auto w-full max-w-[1240px] px-6 sm:px-8 lg:px-10">
-      <div className="h-px bg-white/[0.06]" />
+      <div className="h-px bg-surface/[0.06]" />
     </div>
   );
 }
@@ -57,7 +58,7 @@ type KickerColor =
   | "emerald";
 
 const KICKER_TEXT: Record<KickerColor, string> = {
-  default: "text-white/45",
+  default: "text-ink/45",
   cyan: "text-cyan-400/70",
   violet: "text-violet-400/70",
   teal: "text-teal-400/70",
@@ -66,7 +67,7 @@ const KICKER_TEXT: Record<KickerColor, string> = {
 };
 
 const KICKER_LINE: Record<KickerColor, string> = {
-  default: "bg-white/25",
+  default: "bg-surface/25",
   cyan: "bg-cyan-400/30",
   violet: "bg-violet-400/30",
   teal: "bg-teal-400/30",
@@ -227,7 +228,7 @@ function Hero() {
             containerRef={headingRef}
             radius={ABOUT_HERO_PROXIMITY.radius}
             falloff="gaussian"
-            className="text-white"
+            className="text-ink"
             style={{ display: "block", opacity: 0 }}
           />
           <VariableProximity
@@ -242,7 +243,7 @@ function Hero() {
             containerRef={headingRef}
             radius={ABOUT_HERO_PROXIMITY.radius}
             falloff="gaussian"
-            className="mt-1 text-white"
+            className="mt-1 text-ink"
             style={{ display: "block", opacity: 0 }}
           />
         </h1>
@@ -252,15 +253,15 @@ function Hero() {
           className="mt-12"
           style={{ opacity: 0 }}
         >
-          <p className="max-w-[58ch] text-[1.1rem] leading-[1.65] text-white/50 italic sm:text-[1.2rem]">
+          <p className="max-w-[58ch] text-[1.1rem] leading-[1.65] text-ink/50 italic sm:text-[1.2rem]">
             They lack the systems to turn pipeline into revenue.
           </p>
           <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-            <p className="max-w-[52ch] text-[1.05rem] leading-[1.75] text-white/65 sm:text-[1.125rem]">
+            <p className="max-w-[52ch] text-[1.05rem] leading-[1.75] text-ink/65 sm:text-[1.125rem]">
               Pipeline exists, but it&rsquo;s inconsistent, unstructured, and
               under-converted. That&rsquo;s where growth stalls.
             </p>
-            <p className="max-w-[52ch] text-[1.05rem] leading-[1.75] text-white/55 sm:text-[1.125rem]">
+            <p className="max-w-[52ch] text-[1.05rem] leading-[1.75] text-ink/55 sm:text-[1.125rem]">
               Ascendly is built for companies that already have demand
               but lack a system to scale it. We don&rsquo;t add more noise. We
               install the infrastructure that turns pipeline into predictable
@@ -274,7 +275,7 @@ function Hero() {
           className="mt-8"
           style={{ opacity: 0 }}
         >
-          <p className="text-[0.98rem] leading-[1.65] text-white/40 italic">
+          <p className="text-[0.98rem] leading-[1.65] text-ink/40 italic">
             This only works if you already have deal flow.
           </p>
         </div>
@@ -298,7 +299,7 @@ function Hero() {
           <Button
             variant="primary"
             size="lg"
-            href="https://calendly.com/ascendly"
+            href={CALENDLY_URL}
             magnetic
           >
             Book a Strategy Call
@@ -474,12 +475,12 @@ function Founder() {
         <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-24 items-center">
           {/* Image block */}
           <div ref={imgWrapRef} className="relative" style={{ opacity: 0 }}>
-            <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
+            <div className="relative overflow-hidden rounded-2xl border border-hairline/[0.08] bg-surface/[0.02]">
               <div
                 className="absolute inset-0 z-10 pointer-events-none"
                 style={{
                   background:
-                    "linear-gradient(to top, rgba(5,6,10,0.6) 0%, transparent 40%)",
+                    "linear-gradient(to top, color-mix(in srgb, var(--bg-page-deep) 60%, transparent) 0%, transparent 40%)",
                 }}
               />
               <Image
@@ -497,13 +498,13 @@ function Founder() {
 
           {/* Text */}
           <div ref={textRef} style={{ opacity: 0 }}>
-            <h2 className="mt-6 text-[2.75rem] font-light tracking-[-0.03em] text-white sm:text-[3.5rem]">
+            <h2 className="mt-6 text-[2.75rem] font-light tracking-[-0.03em] text-ink sm:text-[3.5rem]">
               Rosis Sitoula
             </h2>
             <p className="mt-2 text-[1rem] tracking-[0.08em] text-violet-400/70 uppercase font-medium">
               Revenue Systems Architect
             </p>
-            <p className="mt-8 max-w-[46ch] text-[1.05rem] leading-[1.75] text-white/60">
+            <p className="mt-8 max-w-[46ch] text-[1.05rem] leading-[1.75] text-ink/60">
               Built from zero with a Gmail account and a belief that outbound
               could still be done right. Now engineering revenue systems that
               turn pipeline into predictable outcomes for B2B companies where
@@ -513,10 +514,10 @@ function Founder() {
             <div ref={statsRef} className="mt-12 grid grid-cols-3 gap-6">
               {FOUNDER_STATS.map((stat) => (
                 <div key={stat.label} className="founder-stat">
-                  <div className="text-[1.85rem] font-light tracking-[-0.035em] text-white sm:text-[2.15rem]">
+                  <div className="text-[1.85rem] font-light tracking-[-0.035em] text-ink sm:text-[2.15rem]">
                     {renderFounderStatValue(stat)}
                   </div>
-                  <div className="mt-1.5 text-[0.8rem] leading-[1.45] text-white/45">
+                  <div className="mt-1.5 text-[0.8rem] leading-[1.45] text-ink/45">
                     {stat.label}
                   </div>
                 </div>
@@ -531,10 +532,10 @@ function Founder() {
                   { value: "15–25", label: "Opps/month/client" },
                 ].map((s) => (
                   <div key={s.label} className="founder-stat">
-                    <div className="text-[1.85rem] font-light tracking-[-0.035em] text-white sm:text-[2.15rem]">
+                    <div className="text-[1.85rem] font-light tracking-[-0.035em] text-ink sm:text-[2.15rem]">
                       {s.value}
                     </div>
-                    <div className="mt-1.5 text-[0.8rem] leading-[1.45] text-white/45">
+                    <div className="mt-1.5 text-[0.8rem] leading-[1.45] text-ink/45">
                       {s.label}
                     </div>
                   </div>
@@ -644,13 +645,13 @@ function Gears() {
       <Section id="systems" className="py-28 sm:py-36">
         <div ref={headRef} style={{ opacity: 0 }}>
           <Kicker color="violet">The System</Kicker>
-          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem]">
+          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
             Pipeline is built in two gears.
-            <span className="block text-white/40">
+            <span className="block text-ink/40">
               Revenue comes from both.
             </span>
           </h2>
-          <p className="mt-6 max-w-[52ch] text-[1rem] leading-[1.7] text-white/50">
+          <p className="mt-6 max-w-[52ch] text-[1rem] leading-[1.7] text-ink/50">
             We treat outreach as a precision manufacturing process, not a volume
             game. Because bad pipeline = wasted sales time.
           </p>
@@ -663,7 +664,7 @@ function Gears() {
           {GEARS.map((g) => (
             <div
               key={g.label}
-              className={`gear-card group relative h-full overflow-hidden rounded-2xl border bg-white/[0.015] p-8 backdrop-blur-[2px] transition-colors duration-500 sm:p-10 ${g.borderClass}`}
+              className={`gear-card group relative h-full overflow-hidden rounded-2xl border bg-surface/[0.015] p-8 backdrop-blur-[2px] transition-colors duration-500 sm:p-10 ${g.borderClass}`}
               style={{ opacity: 0 }}
             >
               <div className="pointer-events-none absolute inset-0 opacity-[0.22]">
@@ -678,20 +679,20 @@ function Gears() {
               </div>
               <div className="relative z-10">
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/40">
+                  <span className="flex items-center gap-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/40">
                     <span
                       className={`h-1.5 w-1.5 rounded-full ${g.dotClass}`}
                     />
                     {g.label}
                   </span>
-                  <span className="h-px w-10 bg-white/20 transition-all duration-500 group-hover:w-16 group-hover:bg-white/40" />
+                  <span className="h-px w-10 bg-surface/20 transition-all duration-500 group-hover:w-16 group-hover:bg-surface/40" />
                 </div>
                 <h3
-                  className={`mt-8 text-[1.65rem] font-light tracking-[-0.02em] text-white sm:text-[2rem]`}
+                  className={`mt-8 text-[1.65rem] font-light tracking-[-0.02em] text-ink sm:text-[2rem]`}
                 >
                   {g.title}
                 </h3>
-                <p className="mt-5 max-w-[46ch] text-[0.98rem] leading-[1.7] text-white/55">
+                <p className="mt-5 max-w-[46ch] text-[0.98rem] leading-[1.7] text-ink/55">
                   {g.body}
                 </p>
               </div>
@@ -701,7 +702,7 @@ function Gears() {
 
         <p
           ref={noteRef}
-          className="mt-14 max-w-[48ch] text-[0.95rem] leading-[1.65] text-white/45"
+          className="mt-14 max-w-[48ch] text-[0.95rem] leading-[1.65] text-ink/45"
           style={{ opacity: 0 }}
         >
           Every opportunity is captured, worked until it closes or disqualifies
@@ -774,9 +775,9 @@ function Proof() {
       <Section id="proof" className="py-28 sm:py-36">
         <div className="proof-head" style={{ opacity: 0 }}>
           <Kicker color="emerald">What We Build</Kicker>
-          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem]">
+          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
             Most teams only build pipeline.
-            <span className="block text-white/40">
+            <span className="block text-ink/40">
               We build what happens after.
             </span>
           </h2>
@@ -800,13 +801,13 @@ function Proof() {
               className={`proof-item pl-8 ${it.borderClass}`}
               style={{ opacity: 0 }}
             >
-              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/45">
+              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/45">
                 Core Outcome
               </div>
-              <div className="mt-4 text-[1.75rem] font-light tracking-[-0.02em] text-white sm:text-[2.15rem]">
+              <div className="mt-4 text-[1.75rem] font-light tracking-[-0.02em] text-ink sm:text-[2.15rem]">
                 {it.kpi}
               </div>
-              <p className="mt-4 max-w-[42ch] text-[0.98rem] leading-[1.7] text-white/55">
+              <p className="mt-4 max-w-[42ch] text-[0.98rem] leading-[1.7] text-ink/55">
                 {it.line}
               </p>
             </div>
@@ -853,7 +854,7 @@ function CTAStrip() {
           <Button
             variant="primary"
             size="lg"
-            href="https://calendly.com/ascendly"
+            href={CALENDLY_URL}
           >
             Book a Strategy Call
           </Button>
@@ -943,13 +944,13 @@ function Philosophy() {
       <Section id="philosophy" className="py-28 sm:py-36">
         <div className="phil-head" style={{ opacity: 0 }}>
           <Kicker color="teal">Operating Philosophy</Kicker>
-          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem]">
+          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
             Volume creates pipeline.
-            <span className="block text-white/40">
+            <span className="block text-ink/40">
               Precision creates revenue.
             </span>
           </h2>
-          <p className="mt-6 max-w-[48ch] text-[1rem] leading-[1.7] text-white/50">
+          <p className="mt-6 max-w-[48ch] text-[1rem] leading-[1.7] text-ink/50">
             Every opportunity we generate is tracked, followed up, and worked
             until it closes or disqualifies.
           </p>
@@ -959,7 +960,7 @@ function Philosophy() {
           {PRINCIPLES.map((p) => (
             <div
               key={p.num}
-              className={`phil-card h-full rounded-xl border border-white/[0.07] bg-white/[0.015] p-8 transition-colors duration-500 hover:bg-white/[0.03] sm:p-10 ${p.top}`}
+              className={`phil-card h-full rounded-xl border border-hairline/[0.07] bg-surface/[0.015] p-8 transition-colors duration-500 hover:bg-surface/[0.03] sm:p-10 ${p.top}`}
               style={{ opacity: 0 }}
             >
               <div
@@ -967,10 +968,10 @@ function Philosophy() {
               >
                 {p.num}
               </div>
-              <h3 className="mt-8 text-[1.35rem] font-light tracking-[-0.015em] text-white sm:text-[1.5rem]">
+              <h3 className="mt-8 text-[1.35rem] font-light tracking-[-0.015em] text-ink sm:text-[1.5rem]">
                 {p.title}
               </h3>
-              <p className="mt-4 text-[0.95rem] leading-[1.7] text-white/55">
+              <p className="mt-4 text-[0.95rem] leading-[1.7] text-ink/55">
                 {p.body}
               </p>
             </div>
@@ -1066,15 +1067,15 @@ function WhoFor() {
       <Section id="who" className="py-28 sm:py-36">
         <div className="who-head" style={{ opacity: 0 }}>
           <Kicker color="indigo">Who This Is For</Kicker>
-          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[2.5rem]">
+          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.5rem]">
             We work with B2B teams where pipeline doesn&rsquo;t just need to be
             generated,
-            <span className="text-white/40">
+            <span className="text-ink/40">
               {" "}
               it needs to be converted into revenue.
             </span>
           </h2>
-          <p className="mt-6 max-w-[56ch] text-[1rem] leading-[1.7] text-white/50">
+          <p className="mt-6 max-w-[56ch] text-[1rem] leading-[1.7] text-ink/50">
             If your deals require multiple touchpoints, follow-ups, and real
             sales effort, this is built for you.
           </p>
@@ -1084,7 +1085,7 @@ function WhoFor() {
           {WHO_ITEMS.map((w) => (
             <div
               key={w.num}
-              className="who-card rounded-xl border border-white/[0.07] bg-white/[0.015] p-7 transition-colors duration-500 hover:bg-white/[0.03] hover:border-white/[0.14]"
+              className="who-card rounded-xl border border-hairline/[0.07] bg-surface/[0.015] p-7 transition-colors duration-500 hover:bg-surface/[0.03] hover:border-hairline/[0.14]"
               style={{ opacity: 0 }}
             >
               <span
@@ -1092,10 +1093,10 @@ function WhoFor() {
               >
                 {w.num}
               </span>
-              <h3 className="mt-5 text-[1.05rem] font-light leading-[1.4] tracking-[-0.01em] text-white">
+              <h3 className="mt-5 text-[1.05rem] font-light leading-[1.4] tracking-[-0.01em] text-ink">
                 {w.title}
               </h3>
-              <p className="mt-3 text-[0.88rem] leading-[1.65] text-white/50">
+              <p className="mt-3 text-[0.88rem] leading-[1.65] text-ink/50">
                 {w.body}
               </p>
             </div>
@@ -1202,10 +1203,10 @@ function Process() {
       <Section id="process" className="py-28 sm:py-36">
         <div className="process-head" style={{ opacity: 0 }}>
           <Kicker>The Process</Kicker>
-          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem]">
+          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
             From Pipeline to predictable revenue.
           </h2>
-          <p className="mt-4 max-w-[48ch] text-[1rem] leading-[1.7] text-white/50">
+          <p className="mt-4 max-w-[48ch] text-[1rem] leading-[1.7] text-ink/50">
             Every step engineered, from lead capture to deal conversion.
           </p>
         </div>
@@ -1220,7 +1221,7 @@ function Process() {
           {PROCESS_STEPS.map((s) => (
             <div
               key={s.step}
-              className="process-row group grid grid-cols-[auto_1fr] gap-8 border-t border-white/[0.07] py-10 transition-colors duration-500 hover:border-white/[0.18] sm:grid-cols-[140px_1fr] sm:gap-12 sm:py-12"
+              className="process-row group grid grid-cols-[auto_1fr] gap-8 border-t border-hairline/[0.07] py-10 transition-colors duration-500 hover:border-hairline/[0.18] sm:grid-cols-[140px_1fr] sm:gap-12 sm:py-12"
               style={{ opacity: 0 }}
             >
               <div className="flex items-start gap-3 pt-1">
@@ -1234,16 +1235,16 @@ function Process() {
                 </span>
               </div>
               <div>
-                <h3 className="text-[1.5rem] font-light tracking-[-0.015em] text-white sm:text-[1.85rem]">
+                <h3 className="text-[1.5rem] font-light tracking-[-0.015em] text-ink sm:text-[1.85rem]">
                   {s.title}
                 </h3>
-                <p className="mt-4 max-w-[58ch] text-[1rem] leading-[1.7] text-white/55">
+                <p className="mt-4 max-w-[58ch] text-[1rem] leading-[1.7] text-ink/55">
                   {s.body}
                 </p>
               </div>
             </div>
           ))}
-          <div className="border-t border-white/[0.07]" />
+          <div className="border-t border-hairline/[0.07]" />
         </div>
       </Section>
     </div>
@@ -1520,11 +1521,11 @@ function Journey() {
       <Section id="journey" className="py-28 sm:py-36">
         <div className="journey-head" style={{ opacity: 0 }}>
           <Kicker color="cyan">Our Journey</Kicker>
-          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem]">
+          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
             From a Gmail to a revenue engine.
-            <span className="block text-white/40">Every stop, every turn.</span>
+            <span className="block text-ink/40">Every stop, every turn.</span>
           </h2>
-          <p className="mt-6 max-w-[56ch] text-[1rem] leading-[1.7] text-white/50">
+          <p className="mt-6 max-w-[56ch] text-[1rem] leading-[1.7] text-ink/50">
             Six stops. One road. Scroll to ride the journey from the first cold
             email to Ascendly.
           </p>
@@ -1748,8 +1749,12 @@ function Journey() {
                 }}
               >
                 <div
-                  className={`milestone-card rounded-xl border ${c.border} bg-[#080b14]/80 p-6 backdrop-blur-md transition-colors duration-400 hover:bg-[#0b0f1c]/90`}
-                  style={{ opacity: 0 }}
+                  className={`milestone-card rounded-xl border ${c.border} p-6 backdrop-blur-md transition-colors duration-400 hover:[background:color-mix(in_srgb,var(--bg-section-elev)_90%,transparent)]`}
+                  style={{
+                    opacity: 0,
+                    background:
+                      "color-mix(in srgb, var(--bg-section-elev) 80%, transparent)",
+                  }}
                 >
                   <div className="flex items-center gap-3">
                     <span
@@ -1757,14 +1762,14 @@ function Journey() {
                     >
                       {s.year}
                     </span>
-                    <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-white/35">
+                    <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-ink/35">
                       {s.stop}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-[1.2rem] font-light tracking-[-0.015em] text-white">
+                  <h3 className="mt-4 text-[1.2rem] font-light tracking-[-0.015em] text-ink">
                     {s.title}
                   </h3>
-                  <p className="mt-3 text-[0.9rem] leading-[1.65] text-white/55">
+                  <p className="mt-3 text-[0.9rem] leading-[1.65] text-ink/55">
                     {s.body}
                   </p>
                 </div>
@@ -1789,19 +1794,19 @@ function Journey() {
                     filter: "drop-shadow(0 0 4px rgba(34,211,238,0.7))",
                   }}
                 />
-                <div className="rounded-xl border border-white/[0.08] bg-white/[0.025] p-6 backdrop-blur-sm">
+                <div className="rounded-xl border border-hairline/[0.08] bg-surface/[0.025] p-6 backdrop-blur-sm">
                   <div className="flex items-center gap-3">
                     <span className="inline-flex items-center rounded-full border border-cyan-500/25 bg-cyan-500/[0.08] px-3 py-1 text-[0.72rem] font-medium tracking-[0.1em] text-cyan-400/80 uppercase">
                       {s.year}
                     </span>
-                    <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-white/30">
+                    <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-ink/30">
                       {s.stop}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-[1.2rem] font-light tracking-[-0.015em] text-white">
+                  <h3 className="mt-4 text-[1.2rem] font-light tracking-[-0.015em] text-ink">
                     {s.title}
                   </h3>
-                  <p className="mt-3 text-[0.9rem] leading-[1.65] text-white/55">
+                  <p className="mt-3 text-[0.9rem] leading-[1.65] text-ink/55">
                     {s.body}
                   </p>
                 </div>
@@ -1919,10 +1924,10 @@ function Stats() {
                   />
                 )}
               </div>
-              <div className="mt-3 text-[1rem] font-light tracking-[-0.01em] text-white/80">
+              <div className="mt-3 text-[1rem] font-light tracking-[-0.01em] text-ink/80">
                 {s.label}
               </div>
-              <div className="mt-1.5 max-w-[22ch] text-[0.85rem] leading-[1.55] text-white/40">
+              <div className="mt-1.5 max-w-[22ch] text-[0.85rem] leading-[1.55] text-ink/40">
                 {s.sub}
               </div>
             </div>
@@ -1969,7 +1974,7 @@ function MissionVision() {
         <div className="grid gap-14 md:grid-cols-2 md:gap-20">
           <div className="mv-block" style={{ opacity: 0 }}>
             <Kicker color="cyan">Mission</Kicker>
-            <p className="mt-8 max-w-[34ch] text-[1.5rem] font-light leading-[1.3] tracking-[-0.015em] text-white sm:text-[1.85rem]">
+            <p className="mt-8 max-w-[34ch] text-[1.5rem] font-light leading-[1.3] tracking-[-0.015em] text-ink sm:text-[1.85rem]">
               To help high-ticket B2B companies build predictable revenue
               systems  combining outbound, inbound, and automation into one
               scalable engine.
@@ -1977,7 +1982,7 @@ function MissionVision() {
           </div>
           <div className="mv-block" style={{ opacity: 0 }}>
             <Kicker color="violet">Vision</Kicker>
-            <p className="mt-8 max-w-[34ch] text-[1.5rem] font-light leading-[1.3] tracking-[-0.015em] text-white sm:text-[1.85rem]">
+            <p className="mt-8 max-w-[34ch] text-[1.5rem] font-light leading-[1.3] tracking-[-0.015em] text-ink sm:text-[1.85rem]">
               To redefine how B2B companies grow  moving from fragmented tools
               and agencies to unified revenue systems that consistently generate
               and convert pipeline.
@@ -2089,7 +2094,7 @@ function Values() {
       <Section className="py-28 sm:py-36">
         <div className="values-head" style={{ opacity: 0 }}>
           <Kicker>Our Values</Kicker>
-          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem]">
+          <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
             How we operate.
           </h2>
         </div>
@@ -2098,7 +2103,7 @@ function Values() {
           {VALUES.map((v, i) => (
             <div
               key={v.title}
-              className={`value-card h-full rounded-xl border bg-white/[0.015] p-8 transition-all duration-500 hover:bg-white/[0.03] sm:p-10 ${v.border} ${v.top} ${i === 4 ? "sm:col-span-2 lg:col-span-1" : ""}`}
+              className={`value-card h-full rounded-xl border bg-surface/[0.015] p-8 transition-all duration-500 hover:bg-surface/[0.03] sm:p-10 ${v.border} ${v.top} ${i === 4 ? "sm:col-span-2 lg:col-span-1" : ""}`}
               style={{ opacity: 0 }}
             >
               <div
@@ -2106,10 +2111,10 @@ function Values() {
               >
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <h3 className="mt-6 text-[1.2rem] font-light tracking-[-0.015em] text-white sm:text-[1.35rem]">
+              <h3 className="mt-6 text-[1.2rem] font-light tracking-[-0.015em] text-ink sm:text-[1.35rem]">
                 {v.title}
               </h3>
-              <p className="mt-4 text-[0.92rem] leading-[1.7] text-white/55">
+              <p className="mt-4 text-[0.92rem] leading-[1.7] text-ink/55">
                 {v.body}
               </p>
             </div>
@@ -2153,7 +2158,7 @@ function FinalCTA() {
   return (
     <div ref={sectionRef}>
       <Section id="cta" className="pb-40 pt-28 sm:pb-48 sm:pt-36">
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.015] px-8 py-20 sm:px-16 sm:py-24">
+        <div className="relative overflow-hidden rounded-3xl border border-hairline/[0.08] bg-surface/[0.015] px-8 py-20 sm:px-16 sm:py-24">
           {/* Interactive grid with hover trail */}
           <div className="absolute inset-0 z-0 opacity-[0.28]">
             <ShapeGrid
@@ -2179,14 +2184,14 @@ function FinalCTA() {
 
           <div className="relative z-[2]">
             <h2
-              className="cta-el max-w-[20ch] text-balance text-[2.25rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[3rem] lg:text-[3.5rem]"
+              className="cta-el max-w-[20ch] text-balance text-[2.25rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[3rem] lg:text-[3.5rem]"
               style={{ opacity: 0 }}
             >
               Ready to build a predictable pipeline?
             </h2>
 
             <p
-              className="cta-el mt-8 max-w-[52ch] text-[1.05rem] leading-[1.7] text-white/60"
+              className="cta-el mt-8 max-w-[52ch] text-[1.05rem] leading-[1.7] text-ink/60"
               style={{ opacity: 0 }}
             >
               We don&rsquo;t just generate leads  we build systems that turn
@@ -2200,11 +2205,11 @@ function FinalCTA() {
               <Button
                 variant="primary"
                 size="lg"
-                href="https://calendly.com/ascendly"
+                href={CALENDLY_URL}
               >
                 Book a Strategy Call
               </Button>
-              <span className="max-w-[36ch] text-[0.9rem] leading-[1.55] text-white/45">
+              <span className="max-w-[36ch] text-[0.9rem] leading-[1.55] text-ink/45">
                 We&rsquo;ll map your pipeline, identify leaks, and show you
                 exactly how this would work for your business.
               </span>
@@ -2224,7 +2229,8 @@ export default function AboutUsPage() {
   return (
     <main
       id="top"
-      className="relative isolate min-h-screen overflow-x-clip bg-[#05060A]"
+      className="relative isolate min-h-screen overflow-x-clip"
+      style={{ background: "var(--bg-page-deep)" }}
     >
       {/* ── Global background: hexagon cyan, diagonal ── */}
       <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.15]">
@@ -2255,7 +2261,7 @@ export default function AboutUsPage() {
         className="pointer-events-none fixed inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 40%, transparent 20%, rgba(5,6,10,0.60) 72%, rgba(5,6,10,0.94) 100%)",
+            "radial-gradient(ellipse at 50% 40%, transparent 20%, color-mix(in srgb, var(--bg-page-deep) 60%, transparent) 72%, color-mix(in srgb, var(--bg-page-deep) 94%, transparent) 100%)",
         }}
       />
 

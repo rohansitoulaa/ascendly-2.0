@@ -75,7 +75,7 @@ export default function LogoLoader() {
             className="object-contain filter-[brightness(0)_invert(1)]"
           />
         </div>
-        <div className="relative h-px w-32 overflow-hidden bg-white/10">
+        <div className="relative h-px w-32 overflow-hidden bg-surface/10">
           <span className="absolute inset-y-0 left-0 w-1/3 animate-[loader-bar_1.2s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
         </div>
       </div>

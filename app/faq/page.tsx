@@ -163,20 +163,20 @@ export default function FAQPage() {
         )}
       />
       <Navbar />
-      <main className="min-h-screen bg-[#05060A] text-white">
-        <section className="relative overflow-hidden border-b border-white/[0.06] pt-32 pb-14 sm:pt-36 sm:pb-18">
+      <main className="min-h-screen bg-[#05060A] text-ink">
+        <section className="relative overflow-hidden border-b border-hairline/[0.06] pt-32 pb-14 sm:pt-36 sm:pb-18">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/45 to-transparent" />
           <div className="pointer-events-none absolute left-1/2 top-0 h-[340px] w-[620px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-[140px]" />
           <div className="mx-auto w-full max-w-[1220px] px-6 sm:px-8 lg:px-10">
             <nav
               aria-label="Breadcrumb"
-              className="mb-6 flex items-center gap-2 text-[0.78rem] uppercase tracking-[0.22em] text-white/45"
+              className="mb-6 flex items-center gap-2 text-[0.78rem] uppercase tracking-[0.22em] text-ink/45"
             >
-              <Link href="/" className="transition-colors hover:text-white/80">
+              <Link href="/" className="transition-colors hover:text-ink/80">
                 Home
               </Link>
-              <span className="text-white/20">/</span>
-              <span aria-current="page" className="text-white/65">
+              <span className="text-ink/20">/</span>
+              <span aria-current="page" className="text-ink/65">
                 FAQ
               </span>
             </nav>
@@ -185,10 +185,10 @@ export default function FAQPage() {
               <p className="mb-4 text-[0.76rem] uppercase tracking-[0.24em] text-cyan-300/75">
                 Support
               </p>
-              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-semibold tracking-[-0.04em] text-white">
+              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-semibold tracking-[-0.04em] text-ink">
                 Frequently Asked Questions
               </h1>
-              <p className="mt-5 max-w-3xl text-[1rem] leading-[1.85] text-white/65 sm:text-[1.05rem]">
+              <p className="mt-5 max-w-3xl text-[1rem] leading-[1.85] text-ink/65 sm:text-[1.05rem]">
                 Answers to common questions about Ascendly's B2B lead
                 generation services, delivery model, and qualification process.
               </p>
@@ -205,26 +205,26 @@ export default function FAQPage() {
               return (
                 <article
                   key={faq.title}
-                  className="rounded-[28px] border border-white/[0.08] bg-white/[0.03] shadow-[0_20px_70px_rgba(0,0,0,0.22)]"
+                  className="rounded-[28px] border border-hairline/[0.08] bg-surface/[0.03] shadow-[0_20px_70px_rgba(0,0,0,0.22)]"
                 >
                   <details className="group">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-6 sm:px-8">
                       <h2
                         id={headingId}
-                        className="text-left text-[1.02rem] font-semibold tracking-[-0.02em] text-white transition-colors group-open:text-cyan-200 sm:text-[1.16rem]"
+                        className="text-left text-[1.02rem] font-semibold tracking-[-0.02em] text-ink transition-colors group-open:text-cyan-200 sm:text-[1.16rem]"
                       >
                         {faq.title}
                       </h2>
-                      <span className="shrink-0 text-[1.5rem] leading-none text-white/40 transition-transform duration-300 group-open:rotate-45 group-open:text-cyan-200">
+                      <span className="shrink-0 text-[1.5rem] leading-none text-ink/40 transition-transform duration-300 group-open:rotate-45 group-open:text-cyan-200">
                         +
                       </span>
                     </summary>
                     <div
                       id={answerId}
                       aria-labelledby={headingId}
-                      className="border-t border-white/[0.08] px-6 pb-7 pt-5 sm:px-8"
+                      className="border-t border-hairline/[0.08] px-6 pb-7 pt-5 sm:px-8"
                     >
-                      <p className="whitespace-pre-line text-[0.97rem] leading-[1.9] text-white/68">
+                      <p className="whitespace-pre-line text-[0.97rem] leading-[1.9] text-ink/68">
                         {faq.details}
                       </p>
                     </div>

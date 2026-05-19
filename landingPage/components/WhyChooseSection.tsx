@@ -235,14 +235,14 @@ export function WhyChooseSection() {
         <div className="max-w-3xl">
           <span
             data-why-heading=""
-            className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-slate-400"
+            className="inline-flex rounded-full border border-hairline/10 bg-surface/[0.04] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-slate-400"
           >
             Why Ascendly
           </span>
 
           {/* <h2
             data-why-heading=""
-            className="mt-6 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.05em] text-white"
+            className="mt-6 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.05em] text-ink"
           >
             Why you should choose{" "}
             <span className="bg-gradient-to-r from-cyan-300 to-sky-400 bg-clip-text text-transparent">
@@ -255,7 +255,7 @@ export function WhyChooseSection() {
         <div className="relative mt-12 sm:mt-16 lg:mt-18">
           {/* left progress bar (desktop) */}
           <div className="pointer-events-none absolute bottom-0 left-0 top-0 hidden w-px lg:block">
-            <div className="h-full w-full bg-white/[0.04]" />
+            <div className="h-full w-full bg-surface/[0.04]" />
             <div
               ref={progressRef}
               className="absolute inset-x-0 top-0 h-full origin-top bg-gradient-to-b from-cyan-400/50 via-sky-400/30 to-transparent"
@@ -267,7 +267,7 @@ export function WhyChooseSection() {
               <article
                 key={prop.number}
                 data-why-card=""
-                className="group relative border-b border-white/[0.04] py-10 first:pt-0 last:border-b-0 last:pb-0 sm:py-12 lg:pl-10 xl:pl-14"
+                className="group relative border-b border-hairline/[0.04] py-10 first:pt-0 last:border-b-0 last:pb-0 sm:py-12 lg:pl-10 xl:pl-14"
               >
                 {/* number dot on progress bar (desktop) */}
                 <div className="absolute -left-[5px] top-10 hidden lg:block first:top-0 sm:top-12">
@@ -281,10 +281,10 @@ export function WhyChooseSection() {
                   {/* number + title + summary */}
                   <div className="min-w-0 shrink-0 lg:w-[320px] xl:w-[380px]">
                     <div className="flex items-baseline gap-3">
-                      <span className="text-[clamp(1.6rem,3vw,2.2rem)] font-bold tabular-nums leading-none tracking-tighter text-white/[0.08]">
+                      <span className="text-[clamp(1.6rem,3vw,2.2rem)] font-bold tabular-nums leading-none tracking-tighter text-ink/[0.08]">
                         {prop.number}
                       </span>
-                      <h3 className="text-[clamp(1.1rem,2.2vw,1.4rem)] font-semibold leading-[1.2] tracking-[-0.03em] text-white">
+                      <h3 className="text-[clamp(1.1rem,2.2vw,1.4rem)] font-semibold leading-[1.2] tracking-[-0.03em] text-ink">
                         {prop.title}
                       </h3>
                     </div>
@@ -301,7 +301,7 @@ export function WhyChooseSection() {
                     <div
                       data-why-contrast=""
                       data-why-side="them"
-                      className="flex-1 rounded-[clamp(14px,2vw,20px)] border border-white/[0.05] bg-white/[0.015] p-5"
+                      className="flex-1 rounded-[clamp(14px,2vw,20px)] border border-hairline/[0.05] bg-surface/[0.015] p-5"
                     >
                       <span className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-slate-600">
                         {prop.contrast.label.them}

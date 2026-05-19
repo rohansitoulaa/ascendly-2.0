@@ -102,7 +102,8 @@ function StepCard({
           className="relative flex h-[15px] w-[15px] items-center justify-center"
         >
           <span
-            className={`absolute h-[15px] w-[15px] rounded-full border bg-[#06090d] ${dotBorder}`}
+            className={`absolute h-[15px] w-[15px] rounded-full border ${dotBorder}`}
+            style={{ background: "var(--dot-bg)" }}
           />
           <span
             className={`absolute h-[5px] w-[5px] rounded-full ${dotColor}`}
@@ -112,7 +113,7 @@ function StepCard({
 
       {/* card surface */}
       <div
-        className={`group flex flex-1 gap-4 rounded-[clamp(16px,2.5vw,24px)] border bg-white/[0.015] p-5 backdrop-blur-sm transition-all duration-300 hover:bg-white/[0.03] sm:gap-5 sm:p-6 ${accentBorder} ${isLeft ? "lg:flex-row-reverse" : ""}`}
+        className={`group flex flex-1 gap-4 rounded-[clamp(16px,2.5vw,24px)] border bg-surface/[0.015] p-5 backdrop-blur-sm transition-all duration-300 hover:bg-surface/[0.03] sm:gap-5 sm:p-6 ${accentBorder} ${isLeft ? "lg:flex-row-reverse" : ""}`}
       >
         {/* step number */}
         <span
@@ -123,7 +124,7 @@ function StepCard({
 
         {/* text */}
         <div className="min-w-0 flex-1">
-          <h3 className="text-[1.05rem] font-semibold leading-tight tracking-[-0.03em] text-white sm:text-[1.15rem]">
+          <h3 className="text-[1.05rem] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[1.15rem]">
             {step.title}
           </h3>
           <p className="mt-2 text-[0.84rem] leading-[1.65] text-slate-400 sm:text-[0.88rem]">
@@ -266,6 +267,9 @@ export function HowItWorksSection() {
         <div className="absolute bottom-0 right-0 h-[320px] w-[480px] rounded-full bg-sky-500/[0.035] blur-[120px]" />
       </div>
 
+      {/* ── background grid ── */}
+      <div className="hiw-grid pointer-events-none absolute inset-0" />
+
       <div className="relative z-10 mx-auto max-w-[1360px]">
         {/* ── section header ── */}
         <div className="mx-auto max-w-3xl text-center">
@@ -273,7 +277,7 @@ export function HowItWorksSection() {
 
           <h2
             data-hiw-heading=""
-            className="mt-6 text-[clamp(2.2rem,5.5vw,4.8rem)] font-semibold leading-[1.02] tracking-[-0.06em] text-white"
+            className="mt-6 text-[clamp(2.2rem,5.5vw,4.8rem)] font-semibold leading-[1.02] tracking-[-0.06em] text-ink"
           >
             How the System{" "}
             <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">
@@ -293,7 +297,7 @@ export function HowItWorksSection() {
         <div className="relative mt-14 sm:mt-18 lg:mt-24">
           {/* centre timeline (desktop only) */}
           <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 lg:block">
-            <div className="h-full w-full bg-white/[0.04]" />
+            <div className="h-full w-full bg-surface/[0.04]" />
             <div
               ref={timelineRef}
               className="absolute inset-x-0 top-0 h-full origin-top bg-gradient-to-b from-cyan-400/40 via-sky-400/20 to-transparent"
@@ -303,13 +307,13 @@ export function HowItWorksSection() {
           {/* column labels */}
           <div className="mb-8 hidden grid-cols-2 lg:grid">
             <div data-hiw-heading="" className="pr-12 text-right xl:pr-20">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.06] bg-white/[0.025] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
+              <span className="inline-flex items-center gap-2 rounded-full border border-hairline/[0.06] bg-surface/[0.025] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400/50" />
                 System Layer
               </span>
             </div>
             <div data-hiw-heading="" className="pl-12 xl:pl-20">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.06] bg-white/[0.025] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
+              <span className="inline-flex items-center gap-2 rounded-full border border-hairline/[0.06] bg-surface/[0.025] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
                 <span className="h-1.5 w-1.5 rounded-full bg-sky-400/50" />
                 Revenue Pipeline
               </span>
@@ -318,7 +322,7 @@ export function HowItWorksSection() {
 
           {/* mobile column labels */}
           <div className="mb-6 flex flex-col gap-4 lg:hidden">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/[0.06] bg-white/[0.025] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-hairline/[0.06] bg-surface/[0.025] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-400/50" />
               System Layer
             </span>
@@ -336,7 +340,7 @@ export function HowItWorksSection() {
             <div className="flex flex-col gap-4 lg:pl-10 xl:pl-16">
               {/* mobile label for right column */}
               <div className="mt-6 lg:hidden">
-                <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/[0.06] bg-white/[0.025] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
+                <span className="inline-flex w-fit items-center gap-2 rounded-full border border-hairline/[0.06] bg-surface/[0.025] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
                   <span className="h-1.5 w-1.5 rounded-full bg-sky-400/50" />
                   Revenue Pipeline
                 </span>

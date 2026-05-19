@@ -7,6 +7,7 @@ import VariableProximity from "@/animations/VariableProximity";
 import Navbar from "@/landingPage/sections/Navbar";
 import Button from "@/design/Button";
 import { Reveal } from "@/animations/Reveal";
+import { CALENDLY_URL } from "@/lib/constants";
 
 const DotField = dynamic(() => import("@/design/DotField"), { ssr: false });
 
@@ -50,15 +51,15 @@ function Section({
 function Hairline() {
   return (
     <div className="mx-auto w-full max-w-[1240px] px-6 sm:px-8 lg:px-10">
-      <div className="h-px bg-white/[0.06]" />
+      <div className="h-px bg-surface/[0.06]" />
     </div>
   );
 }
 
 function Kicker({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/45">
-      <span className="h-px w-8 bg-white/25" />
+    <div className="flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/45">
+      <span className="h-px w-8 bg-surface/25" />
       <span>{children}</span>
     </div>
   );
@@ -99,7 +100,7 @@ function ProximityHeading({
             className={[
               "block",
               index > 0 ? "mt-1" : "",
-              mutedLineIndexes.includes(index) ? "text-white/40" : "text-white",
+              mutedLineIndexes.includes(index) ? "text-ink/40" : "text-ink",
             ]
               .filter(Boolean)
               .join(" ")}
@@ -136,11 +137,11 @@ function Hero() {
 
       <Reveal direction="up" distance={20} delay={0.15}>
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <p className="max-w-[52ch] text-[1.05rem] leading-[1.7] text-white/65 sm:text-[1.125rem]">
+          <p className="max-w-[52ch] text-[1.05rem] leading-[1.7] text-ink/65 sm:text-[1.125rem]">
             Pipeline gets generated but not followed up, not worked properly,
             and not converted. That&rsquo;s where most revenue is lost.
           </p>
-          <p className="max-w-[52ch] text-[1.05rem] leading-[1.7] text-white/55 sm:text-[1.125rem]">
+          <p className="max-w-[52ch] text-[1.05rem] leading-[1.7] text-ink/55 sm:text-[1.125rem]">
             We built Ascendly to fix that. Not by sending more emails  by
             building systems that ensure every opportunity is captured, worked,
             and converted. We work with B2B companies where each deal matters.
@@ -150,7 +151,7 @@ function Hero() {
 
       <Reveal direction="up" distance={16} delay={0.25}>
         <div className="mt-14 flex flex-wrap items-center gap-4">
-          <Button variant="primary" size="lg" href="#cta">
+          <Button variant="primary" size="lg" href={CALENDLY_URL}>
             Book a Strategy Call
           </Button>
           <Button variant="ghost" size="lg" href="#systems" magnetic={false}>
@@ -198,7 +199,7 @@ function Gears() {
       </Reveal>
 
       <Reveal direction="up" delay={0.12}>
-        <p className="mt-8 max-w-[54ch] text-[0.98rem] leading-[1.7] text-white/50">
+        <p className="mt-8 max-w-[54ch] text-[0.98rem] leading-[1.7] text-ink/50">
           We don&rsquo;t rely on volume. We build structured systems that generate and
           convert demand consistently.
         </p>
@@ -207,17 +208,17 @@ function Gears() {
       <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
         {gears.map((g, i) => (
           <Reveal key={g.label} direction="up" delay={0.1 + i * 0.08}>
-            <div className="group relative h-full rounded-2xl border border-white/[0.08] bg-white/[0.015] p-8 backdrop-blur-[2px] transition-colors duration-500 hover:border-white/[0.16] hover:bg-white/[0.03] sm:p-10">
+            <div className="group relative h-full rounded-2xl border border-hairline/[0.08] bg-surface/[0.015] p-8 backdrop-blur-[2px] transition-colors duration-500 hover:border-hairline/[0.16] hover:bg-surface/[0.03] sm:p-10">
               <div className="flex items-center justify-between">
-                <span className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/40">
+                <span className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/40">
                   {g.label}
                 </span>
-                <span className="h-px w-10 bg-white/20 transition-all duration-500 group-hover:w-16 group-hover:bg-white/40" />
+                <span className="h-px w-10 bg-surface/20 transition-all duration-500 group-hover:w-16 group-hover:bg-surface/40" />
               </div>
-              <h3 className="mt-8 text-[1.65rem] font-light tracking-[-0.02em] text-white sm:text-[2rem]">
+              <h3 className="mt-8 text-[1.65rem] font-light tracking-[-0.02em] text-ink sm:text-[2rem]">
                 {g.title}
               </h3>
-              <p className="mt-5 max-w-[46ch] text-[0.98rem] leading-[1.7] text-white/55">
+              <p className="mt-5 max-w-[46ch] text-[0.98rem] leading-[1.7] text-ink/55">
                 {g.body}
               </p>
             </div>
@@ -226,7 +227,7 @@ function Gears() {
       </div>
 
       <Reveal direction="up" delay={0.25}>
-        <p className="mt-14 max-w-[48ch] text-[0.95rem] leading-[1.65] text-white/45">
+        <p className="mt-14 max-w-[48ch] text-[0.95rem] leading-[1.65] text-ink/45">
           One system generates demand. The other converts it.
           Most companies only have one.
         </p>
@@ -270,14 +271,14 @@ function Proof() {
       <div className="mt-16 grid gap-10 md:grid-cols-2 md:gap-14">
         {items.map((it, i) => (
           <Reveal key={it.kpi} direction="up" delay={0.1 + i * 0.08}>
-            <div className="border-l border-white/10 pl-8">
-              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/45">
+            <div className="border-l border-hairline/10 pl-8">
+              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/45">
                 Core Outcome
               </div>
-              <div className="mt-4 text-[1.75rem] font-light tracking-[-0.02em] text-white sm:text-[2.15rem]">
+              <div className="mt-4 text-[1.75rem] font-light tracking-[-0.02em] text-ink sm:text-[2.15rem]">
                 {it.kpi}
               </div>
-              <p className="mt-4 max-w-[42ch] text-[0.98rem] leading-[1.7] text-white/55">
+              <p className="mt-4 max-w-[42ch] text-[0.98rem] leading-[1.7] text-ink/55">
                 {it.line}
               </p>
             </div>
@@ -323,17 +324,17 @@ function Principles() {
         />
       </Reveal>
 
-      <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.06] md:grid-cols-3">
+      <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-hairline/[0.08] bg-surface/[0.06] md:grid-cols-3">
         {items.map((p, i) => (
           <Reveal key={p.index} direction="up" delay={0.08 + i * 0.06}>
             <div className="h-full bg-[#07080c] p-8 sm:p-10">
-              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/35">
+              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/35">
                 {p.index}
               </div>
-              <h3 className="mt-8 text-[1.35rem] font-light tracking-[-0.015em] text-white sm:text-[1.5rem]">
+              <h3 className="mt-8 text-[1.35rem] font-light tracking-[-0.015em] text-ink sm:text-[1.5rem]">
                 {p.title}
               </h3>
-              <p className="mt-4 text-[0.95rem] leading-[1.7] text-white/55">
+              <p className="mt-4 text-[0.95rem] leading-[1.7] text-ink/55">
                 {p.body}
               </p>
             </div>
@@ -376,10 +377,10 @@ function WhoFor() {
           {items.map((label, i) => (
             <Reveal key={label} direction="up" delay={0.08 + i * 0.05}>
               <div className="flex items-center justify-between gap-6 py-6">
-                <span className="font-mono text-[0.8rem] tracking-[0.18em] text-white/35">
+                <span className="font-mono text-[0.8rem] tracking-[0.18em] text-ink/35">
                   0{i + 1}
                 </span>
-                <span className="flex-1 text-[1.05rem] leading-[1.5] text-white/80 sm:text-[1.15rem]">
+                <span className="flex-1 text-[1.05rem] leading-[1.5] text-ink/80 sm:text-[1.15rem]">
                   {label}
                 </span>
               </div>
@@ -434,22 +435,22 @@ function Process() {
       <div className="mt-20">
         {steps.map((s, i) => (
           <Reveal key={s.step} direction="up" delay={0.05 + i * 0.04}>
-            <div className="group grid grid-cols-[auto_1fr] gap-8 border-t border-white/[0.07] py-10 transition-colors duration-500 hover:border-white/[0.18] sm:grid-cols-[140px_1fr] sm:gap-12 sm:py-12">
-              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/40">
+            <div className="group grid grid-cols-[auto_1fr] gap-8 border-t border-hairline/[0.07] py-10 transition-colors duration-500 hover:border-hairline/[0.18] sm:grid-cols-[140px_1fr] sm:gap-12 sm:py-12">
+              <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/40">
                 {s.step}
               </div>
               <div>
-                <h3 className="text-[1.5rem] font-light tracking-[-0.015em] text-white transition-colors duration-500 group-hover:text-white sm:text-[1.85rem]">
+                <h3 className="text-[1.5rem] font-light tracking-[-0.015em] text-ink transition-colors duration-500 group-hover:text-ink sm:text-[1.85rem]">
                   {s.title}
                 </h3>
-                <p className="mt-4 max-w-[58ch] text-[1rem] leading-[1.7] text-white/55">
+                <p className="mt-4 max-w-[58ch] text-[1rem] leading-[1.7] text-ink/55">
                   {s.body}
                 </p>
               </div>
             </div>
           </Reveal>
         ))}
-        <div className="border-t border-white/[0.07]" />
+        <div className="border-t border-hairline/[0.07]" />
       </div>
     </Section>
   );
@@ -519,10 +520,10 @@ function Stats() {
         {stats.map((s, i) => (
           <Reveal key={s.label} direction="up" delay={0.05 + i * 0.06}>
             <div>
-              <div className="text-[3rem] font-light leading-none tracking-[-0.04em] text-white sm:text-[3.5rem]">
+              <div className="text-[3rem] font-light leading-none tracking-[-0.04em] text-ink sm:text-[3.5rem]">
                 {renderStatValue(s.label, s.value)}
               </div>
-              <div className="mt-4 max-w-[22ch] text-[0.92rem] leading-[1.55] text-white/50">
+              <div className="mt-4 max-w-[22ch] text-[0.92rem] leading-[1.55] text-ink/50">
                 {s.label}
               </div>
             </div>
@@ -544,7 +545,7 @@ function MissionVision() {
         <Reveal direction="up">
           <div>
             <Kicker>Mission</Kicker>
-            <p className="mt-8 max-w-[34ch] text-[1.5rem] font-light leading-[1.3] tracking-[-0.015em] text-white sm:text-[1.85rem]">
+            <p className="mt-8 max-w-[34ch] text-[1.5rem] font-light leading-[1.3] tracking-[-0.015em] text-ink sm:text-[1.85rem]">
               Help high-ticket B2B companies build predictable revenue systems.
             </p>
           </div>
@@ -552,7 +553,7 @@ function MissionVision() {
         <Reveal direction="up" delay={0.08}>
           <div>
             <Kicker>Vision</Kicker>
-            <p className="mt-8 max-w-[34ch] text-[1.5rem] font-light leading-[1.3] tracking-[-0.015em] text-white sm:text-[1.85rem]">
+            <p className="mt-8 max-w-[34ch] text-[1.5rem] font-light leading-[1.3] tracking-[-0.015em] text-ink sm:text-[1.85rem]">
               Replace fragmented tools and agencies with unified revenue
               systems.
             </p>
@@ -583,7 +584,7 @@ function Values() {
       <div className="mt-10 flex flex-wrap gap-x-3 gap-y-3">
         {values.map((v, i) => (
           <Reveal key={v} direction="up" delay={0.04 * i} inline>
-            <span className="inline-flex items-center rounded-full border border-white/[0.1] bg-white/[0.02] px-5 py-2.5 text-[0.92rem] tracking-[-0.005em] text-white/75 transition-colors duration-400 hover:border-white/25 hover:text-white">
+            <span className="inline-flex items-center rounded-full border border-hairline/[0.1] bg-surface/[0.02] px-5 py-2.5 text-[0.92rem] tracking-[-0.005em] text-ink/75 transition-colors duration-400 hover:border-hairline/25 hover:text-ink">
               {v}
             </span>
           </Reveal>
@@ -600,7 +601,7 @@ function Values() {
 function CTA() {
   return (
     <Section id="cta" className="pb-40 pt-28 sm:pb-48 sm:pt-36">
-      <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.015] px-8 py-20 sm:px-16 sm:py-24">
+      <div className="relative overflow-hidden rounded-3xl border border-hairline/[0.08] bg-surface/[0.015] px-8 py-20 sm:px-16 sm:py-24">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -611,23 +612,23 @@ function CTA() {
         />
         <div className="relative">
           <Reveal direction="up">
-            <h2 className="max-w-[20ch] text-balance text-[2.25rem] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[3rem] lg:text-[3.5rem]">
+            <h2 className="max-w-[20ch] text-balance text-[2.25rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[3rem] lg:text-[3.5rem]">
               Ready to build a
-              <span className="block text-white/40">predictable pipeline?</span>
+              <span className="block text-ink/40">predictable pipeline?</span>
             </h2>
           </Reveal>
           <Reveal direction="up" delay={0.08}>
-            <p className="mt-8 max-w-[52ch] text-[1.05rem] leading-[1.7] text-white/60">
+            <p className="mt-8 max-w-[52ch] text-[1.05rem] leading-[1.7] text-ink/60">
               We don&rsquo;t just generate leads. We build systems that turn
               pipeline into revenue.
             </p>
           </Reveal>
           <Reveal direction="up" delay={0.16}>
             <div className="mt-12 flex flex-wrap items-center gap-5">
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" href={CALENDLY_URL}>
                 Book a Strategy Call
               </Button>
-              <span className="text-[0.9rem] leading-[1.55] text-white/45">
+              <span className="text-[0.9rem] leading-[1.55] text-ink/45">
                 We&rsquo;ll map your pipeline and show where revenue is leaking.
               </span>
             </div>

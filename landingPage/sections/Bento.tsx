@@ -29,15 +29,15 @@ export function Bento() {
                   <IconShell accent="cyan">
                     <FiActivity />
                   </IconShell>
-                  <span className="text-[0.7rem] uppercase tracking-[0.28em] text-white/45">
+                  <span className="text-[0.7rem] uppercase tracking-[0.28em] text-ink/45">
                     Pipeline engine
                   </span>
                 </div>
-                <h3 className="max-w-[20ch] text-[clamp(1.5rem,2.6vw,2rem)] font-semibold tracking-[-0.03em] text-white">
+                <h3 className="max-w-[20ch] text-[clamp(1.5rem,2.6vw,2rem)] font-semibold tracking-[-0.03em] text-ink">
                   A real-time view of every signal that drives pipeline.
                 </h3>
                 <LiveChart />
-                <p className="max-w-[52ch] text-[0.98rem] leading-[1.7] text-white/60">
+                <p className="max-w-[52ch] text-[0.98rem] leading-[1.7] text-ink/60">
                   ICP scoring, intent fusion, and account routing work together
                    so reps touch opportunities the moment they heat up.
                 </p>
@@ -53,14 +53,14 @@ export function Bento() {
                   <FiTarget />
                 </IconShell>
                 <div className="mt-auto">
-                  <div className="text-[3.2rem] font-semibold leading-none tracking-[-0.05em] text-white sm:text-[3.8rem]">
+                  <div className="text-[3.2rem] font-semibold leading-none tracking-[-0.05em] text-ink sm:text-[3.8rem]">
                     <Counter to={38} suffix="%" />
                   </div>
-                  <p className="mt-2 text-[0.82rem] uppercase tracking-[0.24em] text-white/45">
+                  <p className="mt-2 text-[0.82rem] uppercase tracking-[0.24em] text-ink/45">
                     Avg conversion lift
                   </p>
                 </div>
-                <p className="text-[0.92rem] leading-[1.6] text-white/60">
+                <p className="text-[0.92rem] leading-[1.6] text-ink/60">
                   Multi-stage playbooks with live controls on every touch.
                 </p>
               </div>
@@ -74,10 +74,10 @@ export function Bento() {
                 <IconShell accent="emerald">
                   <FiTrendingUp />
                 </IconShell>
-                <h4 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-white">
+                <h4 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-ink">
                   Deterministic forecast
                 </h4>
-                <p className="text-[0.92rem] leading-[1.6] text-white/60">
+                <p className="text-[0.92rem] leading-[1.6] text-ink/60">
                   Committed, best case, and stretch  backed by signal decay,
                   not gut feel.
                 </p>
@@ -93,10 +93,10 @@ export function Bento() {
                 <IconShell accent="amber">
                   <FiZap />
                 </IconShell>
-                <h4 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-white">
+                <h4 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-ink">
                   Signal automations
                 </h4>
-                <p className="text-[0.92rem] leading-[1.6] text-white/60">
+                <p className="text-[0.92rem] leading-[1.6] text-ink/60">
                   Branching flows that reshape themselves as your pipeline learns.
                 </p>
                 <div className="mt-auto flex flex-wrap gap-1.5">
@@ -120,10 +120,10 @@ export function Bento() {
                 <IconShell accent="rose">
                   <FiLayers />
                 </IconShell>
-                <h4 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-white">
+                <h4 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-ink">
                   Revenue attribution
                 </h4>
-                <p className="text-[0.92rem] leading-[1.6] text-white/60">
+                <p className="text-[0.92rem] leading-[1.6] text-ink/60">
                   Ties every booked dollar to the touch that moved it.
                 </p>
               </div>
@@ -137,10 +137,10 @@ export function Bento() {
                 <IconShell accent="cyan">
                   <FiCpu />
                 </IconShell>
-                <h4 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-white">
+                <h4 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-ink">
                   On-brand intelligence
                 </h4>
-                <p className="text-[0.92rem] leading-[1.6] text-white/60">
+                <p className="text-[0.92rem] leading-[1.6] text-ink/60">
                   Models tuned on your voice, your ICP, your close motion.
                 </p>
               </div>
@@ -182,7 +182,7 @@ function IconShell({
 function LiveChart() {
   const bars = [28, 34, 52, 42, 64, 48, 72, 58, 78, 68, 92, 84];
   return (
-    <div className="flex h-36 items-end gap-1.5 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
+    <div className="flex h-36 items-end gap-1.5 rounded-2xl border border-hairline/[0.06] bg-surface/[0.02] p-4">
       {bars.map((h, i) => (
         <motion.span
           key={i}
@@ -211,10 +211,10 @@ function ForecastBars() {
     <div className="flex flex-col gap-2">
       {rows.map((r, i) => (
         <div key={r.l} className="flex items-center gap-3">
-          <span className="w-20 shrink-0 text-[0.7rem] uppercase tracking-[0.22em] text-white/45">
+          <span className="w-20 shrink-0 text-[0.7rem] uppercase tracking-[0.22em] text-ink/45">
             {r.l}
           </span>
-          <div className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.06]">
+          <div className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-surface/[0.06]">
             <motion.span
               initial={{ width: 0 }}
               whileInView={{ width: `${r.w}%` }}

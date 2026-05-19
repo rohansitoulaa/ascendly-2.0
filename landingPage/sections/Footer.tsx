@@ -9,6 +9,7 @@ import { AnimatedLink } from "@/design/AnimatedLink";
 import { Divider } from "@/design/Divider";
 import { Button } from "@/design/Button";
 import { LenisContext } from "@/landingPage/providers/LenisProvider";
+import { CALENDLY_URL } from "@/lib/constants";
 
 const groups = [
   {
@@ -85,7 +86,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/[0.06] bg-[#05060A]/85 pt-20 pb-10">
+    <footer className="relative overflow-hidden border-t border-hairline/[0.06] bg-[#05060A]/85 pt-20 pb-10">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
 
       <div className="mx-auto w-full max-w-[1220px] px-6 sm:px-8">
@@ -95,7 +96,7 @@ export function Footer() {
             <Link
               href="/"
               aria-label="Ascendly home"
-              className="inline-flex items-center gap-2.5 text-[1.1rem] font-semibold tracking-[-0.02em] text-white"
+              className="inline-flex items-center gap-2.5 text-[1.1rem] font-semibold tracking-[-0.02em] text-ink"
             >
               <span className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center">
                 <Image
@@ -103,15 +104,15 @@ export function Footer() {
                   alt="Ascendly"
                   fill
                   sizes="36px"
-                  className="object-contain filter-[brightness(0)_invert(1)]"
+                  className="object-contain logo-invert"
                 />
               </span>
               <span>
                 ascendly<span className="text-cyan-300">.</span>
-                <span className="text-white/55">one</span>
+                <span className="text-ink/55">one</span>
               </span>
             </Link>
-            <p className="max-w-[38ch] text-[0.92rem] leading-[1.7] text-white/55">
+            <p className="max-w-[38ch] text-[0.92rem] leading-[1.7] text-ink/55">
               Revenue systems, engineered. We design and operate the loop —
               your team runs it.
             </p>
@@ -122,6 +123,7 @@ export function Footer() {
                 size="sm"
                 icon={<FiArrowRight />}
                 iconAnimation="nudge"
+                href={CALENDLY_URL}
               >
                 Book a revenue audit
               </Button>
@@ -132,7 +134,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/ascendly1/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/55 transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+                className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline/10 bg-surface/[0.03] text-ink/55 transition-colors duration-300 hover:border-hairline/20 hover:bg-surface/[0.08] hover:text-ink"
                 aria-label="Ascendly on LinkedIn"
               >
                 <FiLinkedin className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
@@ -144,7 +146,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-10">
             {groups.map((g) => (
               <div key={g.title} className="flex flex-col gap-4">
-                <h5 className="text-[0.7rem] uppercase tracking-[0.28em] text-white/45">
+                <h5 className="text-[0.7rem] uppercase tracking-[0.28em] text-ink/45">
                   {g.title}
                 </h5>
                 <ul className="flex flex-col gap-2.5">
@@ -155,7 +157,7 @@ export function Footer() {
                         onClick={(e) => handleAnchorClick(e, it.href)}
                         showArrow={false}
                         underline={false}
-                        className="text-[0.92rem] text-white/68"
+                        className="text-[0.92rem] text-ink/68"
                       >
                         {it.label}
                       </AnimatedLink>
@@ -171,22 +173,22 @@ export function Footer() {
           <Divider variant="gradient" />
         </div>
 
-        <div className="mt-6 flex flex-col items-start justify-between gap-3 text-[0.78rem] text-white/40 sm:flex-row sm:items-center">
+        <div className="mt-6 flex flex-col items-start justify-between gap-3 text-[0.78rem] text-ink/40 sm:flex-row sm:items-center">
           <span>© 2026 Ascendly. All rights reserved.</span>
           <div className="flex items-center gap-5">
-            <Link href="/privacy" className="transition-colors hover:text-white/80">
+            <Link href="/privacy" className="transition-colors hover:text-ink/80">
               Privacy
             </Link>
-            <Link href="/terms" className="transition-colors hover:text-white/80">
+            <Link href="/terms" className="transition-colors hover:text-ink/80">
               Terms
             </Link>
             <Link
               href="/cookies"
-              className="transition-colors hover:text-white/80"
+              className="transition-colors hover:text-ink/80"
             >
               Cookies
             </Link>
-            <Link href="/faq" className="transition-colors hover:text-white/80">
+            <Link href="/faq" className="transition-colors hover:text-ink/80">
               FAQ
             </Link>
           </div>

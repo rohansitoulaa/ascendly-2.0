@@ -139,8 +139,14 @@ export default function RootLayout({
           Page-specific schemas (WebPage, Breadcrumb, FAQ) are added per-page.
         */}
         <JsonLd schema={[organizationSchema(), webSiteSchema()]} />
+        {/* FOUC prevention: apply stored theme before first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('site-theme');if(t==='light'){document.documentElement.setAttribute('data-site-theme','light');}}catch(e){}})();`,
+          }}
+        />
       </head>
-      <body className="flex min-h-full flex-col bg-(--page-bg) text-white">
+      <body className="flex min-h-full flex-col bg-(--page-bg) text-ink">
         <LogoLoader />
         <LenisProvider>
           {children}

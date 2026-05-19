@@ -5,6 +5,7 @@ import {
   useCallback,
   useLayoutEffect,
   useRef,
+  type CSSProperties,
   type ReactNode,
 } from "react";
 
@@ -25,11 +26,13 @@ interface CardTransformState {
 export interface ScrollStackItemProps {
   children: ReactNode;
   itemClassName?: string;
+  itemStyle?: React.CSSProperties;
 }
 
 export function ScrollStackItem({
   children,
   itemClassName = "",
+  itemStyle,
 }: ScrollStackItemProps) {
   return (
     <article
@@ -37,6 +40,7 @@ export function ScrollStackItem({
       style={{
         backfaceVisibility: "hidden",
         transformStyle: "preserve-3d",
+        ...itemStyle,
       }}
     >
       {children}
@@ -118,8 +122,11 @@ export default function ScrollStack({
   const lenisFrameRef = useRef<number | null>(null);
   const updateFrameRef = useRef<number | null>(null);
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
+  const resizeFrameRef = useRef<number | null>(null);
   const stackCompletedRef = useRef(false);
   const prefersReducedMotionRef = useRef(false);
+  const lastScrollTopRef = useRef<number>(-1);
+  const lastContainerHeightRef = useRef<number>(-1);
 
   const getScrollData = useCallback(() => {
     if (useWindowScroll) {
@@ -159,7 +166,8 @@ export default function ScrollStack({
 
     const root = scrollerRef.current;
     const layoutMetrics = layoutMetricsRef.current;
-    if (!root || !cardsRef.current.length || !layoutMetrics.length) {
+    const cards = cardsRef.current;
+    if (!root || !cards.length || !layoutMetrics.length) {
       return;
     }
 
@@ -168,6 +176,16 @@ export default function ScrollStack({
     if (!containerHeight) {
       return;
     }
+
+    // Early-exit: scroll position + viewport unchanged ⇒ nothing to do.
+    if (
+      scrollTop === lastScrollTopRef.current &&
+      containerHeight === lastContainerHeightRef.current
+    ) {
+      return;
+    }
+    lastScrollTopRef.current = scrollTop;
+    lastContainerHeightRef.current = containerHeight;
 
     const stackPositionPx = parsePosition(stackPosition, containerHeight);
     const pinEnd = endElementTopRef.current - containerHeight / 2;
@@ -181,11 +199,13 @@ export default function ScrollStack({
       }
     }
 
-    cardsRef.current.forEach((card, index) => {
+    const transforms = lastTransformsRef.current;
+    const lastIndex = cards.length - 1;
+
+    for (let index = 0; index < cards.length; index += 1) {
+      const card = cards[index];
       const metric = layoutMetrics[index];
-      if (!metric) {
-        return;
-      }
+      if (!metric) continue;
 
       const scaleProgress = calculateProgress(
         scrollTop,
@@ -232,46 +252,55 @@ export default function ScrollStack({
         }
       }
 
-      const nextState: CardTransformState = {
-        blur: Math.round(blur * 100) / 100,
-        opacity: Math.round(opacity * 1000) / 1000,
-        rotation: Math.round(rotation * 100) / 100,
-        scale: Math.round(scale * 1000) / 1000,
-        translateY: Math.round(translateY * 100) / 100,
-      };
-      const previousState = lastTransformsRef.current.get(index);
-      const changed =
-        !previousState ||
-        Math.abs(previousState.translateY - nextState.translateY) > 0.1 ||
-        Math.abs(previousState.scale - nextState.scale) > 0.001 ||
-        Math.abs(previousState.rotation - nextState.rotation) > 0.1 ||
-        Math.abs(previousState.blur - nextState.blur) > 0.1 ||
-        Math.abs(previousState.opacity - nextState.opacity) > 0.01;
+      const nextTranslateY = Math.round(translateY * 100) / 100;
+      const nextScale = Math.round(scale * 1000) / 1000;
+      const nextRotation = Math.round(rotation * 100) / 100;
+      const nextBlur = Math.round(blur * 100) / 100;
+      const nextOpacity = Math.round(opacity * 1000) / 1000;
 
-      if (!changed) {
-        if (index !== cardsRef.current.length - 1) {
-          return;
-        }
-      } else {
-        card.style.transform = `translate3d(0, ${nextState.translateY}px, 0) scale(${nextState.scale}) rotate(${nextState.rotation}deg)`;
-        card.style.filter =
-          nextState.blur > 0 ? `blur(${nextState.blur}px)` : "none";
-        card.style.opacity = `${nextState.opacity}`;
-        lastTransformsRef.current.set(index, nextState);
+      const prev = transforms.get(index);
+      const transformChanged =
+        !prev ||
+        Math.abs(prev.translateY - nextTranslateY) > 0.1 ||
+        Math.abs(prev.scale - nextScale) > 0.001 ||
+        Math.abs(prev.rotation - nextRotation) > 0.1;
+      const blurChanged = !prev || Math.abs(prev.blur - nextBlur) > 0.1;
+      const opacityChanged =
+        !prev || Math.abs(prev.opacity - nextOpacity) > 0.01;
 
-        if (index !== cardsRef.current.length - 1) {
-          return;
-        }
+      // Per-property writes — avoid touching styles that haven't changed.
+      // Empty string clears the property so the compositor skips filter/opacity entirely at defaults.
+      if (transformChanged) {
+        card.style.transform = `translate3d(0, ${nextTranslateY}px, 0) scale(${nextScale}) rotate(${nextRotation}deg)`;
+      }
+      if (blurChanged) {
+        card.style.filter = nextBlur > 0 ? `blur(${nextBlur}px)` : "";
+      }
+      if (opacityChanged) {
+        card.style.opacity = nextOpacity >= 1 ? "" : `${nextOpacity}`;
       }
 
-      const inView = scrollTop >= metric.pinStart && scrollTop <= pinEnd;
-      if (inView && !stackCompletedRef.current) {
-        stackCompletedRef.current = true;
-        onStackComplete?.();
-      } else if (!inView && stackCompletedRef.current) {
-        stackCompletedRef.current = false;
+      if (transformChanged || blurChanged || opacityChanged) {
+        transforms.set(index, {
+          blur: nextBlur,
+          opacity: nextOpacity,
+          rotation: nextRotation,
+          scale: nextScale,
+          translateY: nextTranslateY,
+        });
       }
-    });
+
+      // Stack-complete signal — only meaningful for the last card.
+      if (index === lastIndex) {
+        const inView = scrollTop >= metric.pinStart && scrollTop <= pinEnd;
+        if (inView && !stackCompletedRef.current) {
+          stackCompletedRef.current = true;
+          onStackComplete?.();
+        } else if (!inView && stackCompletedRef.current) {
+          stackCompletedRef.current = false;
+        }
+      }
+    }
   }, [
     baseScale,
     blurAmount,
@@ -308,21 +337,20 @@ export default function ScrollStack({
         card.style.marginBottom = "";
         card.style.filter = "none";
         card.style.opacity = "";
+        card.style.willChange = "";
       });
       layoutMetricsRef.current = [];
+      lastScrollTopRef.current = -1;
+      lastContainerHeightRef.current = -1;
       return;
     }
 
-    // Force restore styling if coming from mobile resize
-    cardsRef.current.forEach((card, index) => {
-      if (index < cardsRef.current.length - 1) {
-        card.style.marginBottom = `${itemDistance}px`;
-      }
-      card.style.backfaceVisibility = "hidden";
-      card.style.perspective = "1000px";
-      card.style.transformOrigin = "top center";
-      card.style.willChange = "transform, filter";
-    });
+    // Restore base styles in case we just transitioned from mobile.
+    // Only re-apply marginBottom (cheap, idempotent) — perspective / will-change
+    // are set once on mount and don't need re-application per measure.
+    for (let index = 0; index < cardsRef.current.length - 1; index += 1) {
+      cardsRef.current[index].style.marginBottom = `${itemDistance}px`;
+    }
 
     const { containerHeight } = getScrollData();
     if (!containerHeight) {
@@ -346,6 +374,10 @@ export default function ScrollStack({
         triggerEnd: cardTop - scaleEndPositionPx,
       };
     });
+
+    // Force the next update to actually run — cached metrics changed.
+    lastScrollTopRef.current = -1;
+    lastContainerHeightRef.current = -1;
 
     lenisRef.current?.resize();
     scheduleUpdate();
@@ -428,10 +460,17 @@ export default function ScrollStack({
       scroller.addEventListener("scroll", handleScroll, { passive: true });
     }
 
-    resizeObserverRef.current = new ResizeObserver(() => {
-      measureLayout();
-    });
+    // Coalesce ResizeObserver bursts: many entries can fire per tick (one per card).
+    // We only need one measureLayout per frame.
+    const scheduleMeasure = () => {
+      if (resizeFrameRef.current !== null) return;
+      resizeFrameRef.current = window.requestAnimationFrame(() => {
+        resizeFrameRef.current = null;
+        measureLayout();
+      });
+    };
 
+    resizeObserverRef.current = new ResizeObserver(scheduleMeasure);
     resizeObserverRef.current.observe(root);
     cards.forEach((card) => {
       resizeObserverRef.current?.observe(card);
@@ -441,7 +480,7 @@ export default function ScrollStack({
       window.addEventListener("scroll", handleScroll, { passive: true });
     }
 
-    window.addEventListener("resize", measureLayout);
+    window.addEventListener("resize", scheduleMeasure);
     void document.fonts?.ready.then(measureLayout);
     measureLayout();
 
@@ -454,6 +493,10 @@ export default function ScrollStack({
         window.cancelAnimationFrame(updateFrameRef.current);
       }
 
+      if (resizeFrameRef.current !== null) {
+        window.cancelAnimationFrame(resizeFrameRef.current);
+      }
+
       resizeObserverRef.current?.disconnect();
       resizeObserverRef.current = null;
 
@@ -461,16 +504,19 @@ export default function ScrollStack({
         window.removeEventListener("scroll", handleScroll);
       }
 
-      window.removeEventListener("resize", measureLayout);
+      window.removeEventListener("resize", scheduleMeasure);
       scroller?.removeEventListener("scroll", handleScroll);
       lenisRef.current?.destroy();
       lenisRef.current = null;
       lenisFrameRef.current = null;
       updateFrameRef.current = null;
+      resizeFrameRef.current = null;
       cardsRef.current = [];
       layoutMetricsRef.current = [];
       transformCache.clear();
       stackCompletedRef.current = false;
+      lastScrollTopRef.current = -1;
+      lastContainerHeightRef.current = -1;
     };
   }, [itemDistance, measureLayout, scheduleUpdate, useWindowScroll, disableOnMobile]);
 

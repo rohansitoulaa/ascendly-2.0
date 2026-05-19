@@ -60,13 +60,13 @@ export default function CoreSystem() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollFloat
             containerClassName="my-0 text-center"
-            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-white/50"
+            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-ink/50"
           >
             Core differentiation
           </ScrollFloat>
-          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-white">
+          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-ink">
             Two gears.{" "}
-            <span className="text-white/50">One revenue machine.</span>
+            <span className="text-ink/50">One revenue machine.</span>
           </h2>
         </div>
 
@@ -98,21 +98,21 @@ export default function CoreSystem() {
                           <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
                         </svg>
                       </div>
-                      <span className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-white/45">
+                      <span className="inline-flex rounded-full border border-hairline/10 bg-surface/[0.04] px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-ink/45">
                         Gear {i + 1}
                       </span>
                     </div>
-                    <span className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-white/20">
+                    <span className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-ink/20">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 
                   {/* Title */}
                   <div className="mt-6 sm:mt-8">
-                    <h3 className="text-[clamp(1.5rem,3vw,2.2rem)] font-semibold leading-[1.06] tracking-[-0.04em] text-white">
+                    <h3 className="text-[clamp(1.5rem,3vw,2.2rem)] font-semibold leading-[1.06] tracking-[-0.04em] text-ink">
                       {gear.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-white/45 sm:text-[0.94rem] sm:leading-7">
+                    <p className="mt-2 text-sm leading-6 text-ink/45 sm:text-[0.94rem] sm:leading-7">
                       {gear.subtitle}
                     </p>
                   </div>
@@ -122,10 +122,10 @@ export default function CoreSystem() {
                     {gear.points.map((point) => (
                       <div
                         key={point}
-                        className="flex items-start gap-3 rounded-[16px] border border-white/[0.06] bg-white/[0.02] px-4 py-3 sm:rounded-[20px] sm:px-5 sm:py-3.5"
+                        className="flex items-start gap-3 rounded-[16px] border border-hairline/[0.06] bg-surface/[0.02] px-4 py-3 sm:rounded-[20px] sm:px-5 sm:py-3.5"
                       >
                         <FiCheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400/80" />
-                        <p className="text-[0.85rem] leading-6 text-white/65 sm:text-sm sm:leading-6">
+                        <p className="text-[0.85rem] leading-6 text-ink/65 sm:text-sm sm:leading-6">
                           {point}
                         </p>
                       </div>

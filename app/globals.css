@@ -189,6 +189,198 @@ canvas {
   --matte-overlay-opacity: 0;
 }
 
+/* ── Semantic theme tokens ─────────────────────────────────────
+   Phase 1 foundation for the (future) light/dark toggle. The
+   :root values below mirror the existing dark palette exactly —
+   nothing changes visually. Component classes still use the
+   hardcoded Tailwind utilities; subsequent phases migrate them
+   to the semantic tokens defined here and registered with
+   Tailwind via the @theme block further down.
+
+   Token shape:
+   • --c-*           sRGB channel triplets, used with Tailwind
+                     opacity modifiers via @theme (e.g. text-ink/65).
+   • --ink-*         pre-computed foreground tiers for direct CSS
+                     use (inline styles, computed-style reads from
+                     animation components).
+   • --surface-*     translucent layers stacked on the page bg.
+   • --border-*      hairline/border tiers.
+   • --page-*        the page background gradient stops. */
+:root {
+  /* Channel triplets — drive Tailwind utilities via @theme. */
+  --c-ink: 255 255 255;
+  --c-surface: 255 255 255;
+  --c-hairline: 255 255 255;
+  --c-scrim: 0 0 0;
+  --c-accent-cyan: 125 211 252;
+  --c-accent-violet: 167 139 250;
+  --c-accent-sky: 34 211 238;
+
+  /* Foreground ink tiers (direct CSS use). */
+  --ink-primary: rgb(255 255 255);
+  --ink-strong:  rgb(255 255 255 / 0.95);
+  --ink-default: rgb(255 255 255 / 0.85);
+  --ink-muted:   rgb(255 255 255 / 0.70);
+  --ink-subtle:  rgb(255 255 255 / 0.50);
+  --ink-faint:   rgb(255 255 255 / 0.30);
+  --ink-mute-x:  rgb(255 255 255 / 0.18);
+
+  /* Surface tiers — translucent layers on the page bg. */
+  --surface-faint:   rgb(255 255 255 / 0.02);
+  --surface-soft:    rgb(255 255 255 / 0.04);
+  --surface-default: rgb(255 255 255 / 0.06);
+  --surface-raised:  rgb(255 255 255 / 0.08);
+  --surface-strong:  rgb(255 255 255 / 0.10);
+
+  /* Border / hairline tiers. */
+  --border-faint:   rgb(255 255 255 / 0.04);
+  --border-soft:    rgb(255 255 255 / 0.06);
+  --border-default: rgb(255 255 255 / 0.10);
+  --border-strong:  rgb(255 255 255 / 0.20);
+
+  /* Page ambient gradient stops — matches the current body bg. */
+  --page-tint-cyan:   rgba(34, 211, 238, 0.05);
+  --page-tint-violet: rgba(167, 139, 250, 0.05);
+  --page-grad-top:    #06070B;
+  --page-grad-mid:    #05060A;
+  --page-grad-bottom: #04050A;
+
+  /* ── Theme-aware surface variables ─────────────────────────
+     Components reference these via inline style or arbitrary
+     value classes so they flip automatically with the theme. */
+  --bg-page-deep:        #05060A;
+  --bg-section-elev:     #06090d;
+  --bg-section-deeper:   #040506;
+  --gradient-card:       linear-gradient(180deg, rgba(9,14,20,0.96), rgba(5,8,13,0.98));
+  --gradient-card-soft:  linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012));
+  --gradient-overlay-bottom: linear-gradient(180deg, rgba(5,6,10,0) 0%, rgba(5,6,10,0.55) 60%, rgba(5,6,10,1) 100%);
+  --gradient-overlay-top: radial-gradient(120% 80% at 50% 0%, rgba(15,22,38,0.55) 0%, rgba(5,6,10,0.9) 55%, rgba(5,6,10,1) 100%);
+  --grid-line-color:     rgba(255, 255, 255, 0.06);
+  --grid-mask-color:     rgba(255, 255, 255, 0.12);
+  --dot-bg:              #06090d;
+  --silk-color:          #263E52;
+}
+
+/* Light theme — activated by setting data-site-theme="light" on <html>. */
+html[data-site-theme="light"] {
+  color-scheme: light;
+
+  --page-bg: #f8fafc;
+  --page-ink: #0f172a;
+
+  --c-ink: 15 23 42;
+  --c-surface: 0 0 0;
+  --c-hairline: 15 23 42;
+  --c-scrim: 0 0 0;
+
+  --ink-primary: rgb(15 23 42);
+  --ink-strong:  rgb(15 23 42 / 0.95);
+  --ink-default: rgb(15 23 42 / 0.85);
+  --ink-muted:   rgb(15 23 42 / 0.70);
+  --ink-subtle:  rgb(15 23 42 / 0.50);
+  --ink-faint:   rgb(15 23 42 / 0.30);
+  --ink-mute-x:  rgb(15 23 42 / 0.18);
+
+  --surface-faint:   rgb(0 0 0 / 0.02);
+  --surface-soft:    rgb(0 0 0 / 0.04);
+  --surface-default: rgb(0 0 0 / 0.06);
+  --surface-raised:  rgb(0 0 0 / 0.08);
+  --surface-strong:  rgb(0 0 0 / 0.10);
+
+  --border-faint:   rgb(15 23 42 / 0.06);
+  --border-soft:    rgb(15 23 42 / 0.09);
+  --border-default: rgb(15 23 42 / 0.14);
+  --border-strong:  rgb(15 23 42 / 0.28);
+
+  --page-tint-cyan:   rgba(34, 211, 238, 0.06);
+  --page-tint-violet: rgba(167, 139, 250, 0.06);
+  --page-grad-top:    #f9fafb;
+  --page-grad-mid:    #f8fafc;
+  --page-grad-bottom: #f1f5f9;
+
+  /* Light-mode surface variables — flip the values, keep the names. */
+  --bg-page-deep:        #f8fafc;
+  --bg-section-elev:     #f1f5f9;
+  --bg-section-deeper:   #e2e8f0;
+  --gradient-card:       linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.98));
+  --gradient-card-soft:  linear-gradient(180deg, rgba(15,23,42,0.025), rgba(15,23,42,0.008));
+  --gradient-overlay-bottom: linear-gradient(180deg, rgba(248,250,252,0) 0%, rgba(248,250,252,0.55) 60%, rgba(248,250,252,1) 100%);
+  --gradient-overlay-top: radial-gradient(120% 80% at 50% 0%, rgba(219,232,242,0.55) 0%, rgba(248,250,252,0.9) 55%, rgba(248,250,252,1) 100%);
+  --grid-line-color:     rgba(15, 23, 42, 0.18);
+  --grid-mask-color:     rgba(15, 23, 42, 0.26);
+  --dot-bg:              #f1f5f9;
+  --silk-color:          #DBE7EF;
+
+  /* Light glass — scrim becomes white so bg-scrim/N reads as light glass. */
+  --c-scrim: 255 255 255;
+}
+
+html[data-site-theme="light"] body {
+  background:
+    radial-gradient(circle at 14% 4%, rgba(34, 211, 238, 0.06), transparent 28%),
+    radial-gradient(circle at 86% 92%, rgba(167, 139, 250, 0.06), transparent 32%),
+    linear-gradient(180deg, #f9fafb 0%, #f8fafc 46%, #f1f5f9 100%);
+}
+
+/* Light mode: page-level wrappers become transparent so the body light
+   gradient shows through. Section hardcoded dark bg-[#...] classes use
+   background-color (Tailwind @layer utilities); unlayered rules beat them
+   without !important. Inline-style backgrounds (review, outro, services
+   matte sections) use higher-specificity inline styles — they are unaffected. */
+html[data-site-theme="light"] main,
+html[data-site-theme="light"] footer,
+html[data-site-theme="light"] section {
+  background-color: transparent;
+}
+
+/* Logo: white-on-dark → black-on-light */
+.logo-invert { filter: brightness(0) invert(1); }
+html[data-site-theme="light"] .logo-invert { filter: brightness(0); }
+
+/* Brand marquee logos: force black in light mode */
+html[data-site-theme="light"] .brand-logo { filter: brightness(0); }
+
+/* HOW IT WORKS background grid — uses CSS var so it updates with theme */
+.hiw-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  background-size: 72px 72px;
+  /* soft fade only at the extreme edges — keep the grid visible across most of the section */
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* Light mode: stronger grid lines so they read clearly on the light page background */
+html[data-site-theme="light"] .hiw-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.32) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.32) 1px, transparent 1px);
+}
+
+/* Badge "glow" variant: dark text on light backgrounds */
+html[data-site-theme="light"] [data-badge-variant="glow"] {
+  color: rgb(15 23 42 / 0.82);
+  background-color: rgba(15, 23, 42, 0.06);
+  border-color: rgba(15, 23, 42, 0.16);
+  box-shadow: none;
+}
+
+/* Register the channel-triplet tokens as Tailwind color utilities
+   so future refactors can write text-ink/65, bg-surface/8,
+   border-hairline/10 — drop-in replacements for text-white/65,
+   bg-white/8, border-white/10. Opacity modifiers work via
+   color-mix in modern browsers. */
+@theme {
+  --color-ink: rgb(var(--c-ink));
+  --color-surface: rgb(var(--c-surface));
+  --color-hairline: rgb(var(--c-hairline));
+  --color-scrim: rgb(var(--c-scrim));
+  --color-accent-cyan: rgb(var(--c-accent-cyan));
+  --color-accent-violet: rgb(var(--c-accent-violet));
+  --color-accent-sky: rgb(var(--c-accent-sky));
+}
+
 html[data-site-theme="matte"] {
   --review-bg:
     linear-gradient(

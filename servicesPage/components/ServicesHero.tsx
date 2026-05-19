@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/landingPage/components/Button";
 import { FiArrowUpRight } from "react-icons/fi";
+import { CALENDLY_URL } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,14 +82,14 @@ export default function ServicesHero() {
       <div className="relative z-10 mx-auto max-w-[1360px]">
         <div className="max-w-4xl">
           {/* Kicker */}
-          <div className="mb-6 inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-white/50 backdrop-blur-sm sm:mb-8">
+          <div className="mb-6 inline-flex items-center rounded-full border border-hairline/10 bg-surface/[0.04] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-ink/50 backdrop-blur-sm sm:mb-8">
             Revenue Systems
           </div>
 
           {/* Headline */}
           <h1
             ref={headlineRef}
-            className="text-[clamp(2.2rem,5.8vw,5.4rem)] font-semibold leading-[1.04] tracking-[-0.055em] text-white [perspective:800px]"
+            className="text-[clamp(2.2rem,5.8vw,5.4rem)] font-semibold leading-[1.04] tracking-[-0.055em] text-ink [perspective:800px]"
           >
             {headlineWords.map((word, i) => (
               <span key={i} data-word="" className="mr-[0.28em] inline-block will-change-transform last:mr-0">
@@ -99,10 +100,10 @@ export default function ServicesHero() {
 
           {/* Sub-copy */}
           <div ref={subRef} className="mt-6 max-w-2xl sm:mt-8">
-            <p className="text-[clamp(0.95rem,1.8vw,1.2rem)] leading-[1.7] text-white/55">
+            <p className="text-[clamp(0.95rem,1.8vw,1.2rem)] leading-[1.7] text-ink/55">
               Outbound alone doesn&rsquo;t scale. Tools alone don&rsquo;t fix pipeline.
             </p>
-            <p className="mt-2 text-[clamp(0.95rem,1.8vw,1.2rem)] leading-[1.7] text-white/70">
+            <p className="mt-2 text-[clamp(0.95rem,1.8vw,1.2rem)] leading-[1.7] text-ink/70">
               We design and operate your full revenue engine  from lead capture to deal conversion.
             </p>
           </div>
@@ -114,10 +115,11 @@ export default function ServicesHero() {
               className="pl-6 pr-3 py-3 md:pl-7 md:pr-3.5 md:py-3.5"
               trailingAdornmentClassName="ml-1"
               trailingAdornment={<FiArrowUpRight className="text-base" />}
+              href={CALENDLY_URL}
             >
               Book Strategy Call
             </Button>
-            <span className="text-sm text-white/40">
+            <span className="text-sm text-ink/40">
               30-minute call · No commitment
             </span>
           </div>

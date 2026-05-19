@@ -59,7 +59,7 @@ export default function FaqSection({
         className={`w-full ${className}`}
       >
         {heading && (
-          <h2 className="mb-8 text-[clamp(1.5rem,3vw,2.25rem)] font-semibold leading-tight tracking-tight text-white">
+          <h2 className="mb-8 text-[clamp(1.5rem,3vw,2.25rem)] font-semibold leading-tight tracking-tight text-ink">
             {heading}
           </h2>
         )}
@@ -76,9 +76,9 @@ export default function FaqSection({
               <div
                 key={anchor}
                 id={anchor}
-                className="rounded-xl border border-white/10 bg-white/[0.03] px-6 py-5 scroll-mt-24"
+                className="rounded-xl border border-hairline/10 bg-surface/[0.03] px-6 py-5 scroll-mt-24"
               >
-                <dt className="text-[1rem] font-medium leading-snug text-white">
+                <dt className="text-[1rem] font-medium leading-snug text-ink">
                   {/*
                     Deep-link anchor: "#how-long-does-onboarding-take" lets
                     Google link directly to this Q from the SERP rich result.
@@ -90,7 +90,7 @@ export default function FaqSection({
                     {faq.question}
                   </a>
                 </dt>
-                <dd className="mt-3 text-[0.95rem] leading-[1.7] text-white/60">
+                <dd className="mt-3 text-[0.95rem] leading-[1.7] text-ink/60">
                   {faq.answer}
                 </dd>
               </div>

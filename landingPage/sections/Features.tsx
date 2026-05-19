@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useMemo } from "react";
 import { Reveal } from "@/animations/Reveal";
 import { TextReveal } from "@/animations/TextReveal";
+import { useSiteTheme } from "@/lib/useSiteTheme";
 
 const ScrollStack = dynamic(
   () => import("@/landingPage/components/ScrollStack"),
@@ -265,15 +266,23 @@ interface FeatureCardProps {
 }
 
 function FeatureCard({ feature, index, total }: FeatureCardProps) {
+  const theme = useSiteTheme();
   const gradientText = `linear-gradient(120deg, ${feature.gradient.from} 0%, ${feature.gradient.via} 50%, ${feature.gradient.to} 100%)`;
   const gradientSoft = `linear-gradient(135deg, ${feature.gradient.from} 0%, ${feature.gradient.via} 50%, ${feature.gradient.to} 100%)`;
+  const isLight = theme === "light";
+  const cardBackground = isLight
+    ? "linear-gradient(160deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.98) 55%, rgba(241,245,249,1) 100%)"
+    : feature.surface.base;
+  const cardShadow = isLight
+    ? `0 40px 120px rgba(15,23,42,0.12), inset 0 1px 0 rgba(255,255,255,0.6), 0 0 0 1px ${feature.surface.ring} inset`
+    : `0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px ${feature.surface.ring} inset`;
 
   return (
     <article
-      className="scroll-stack-card relative box-border w-full origin-top overflow-hidden rounded-[clamp(22px,3vw,36px)] border border-white/10 will-change-transform"
+      className="scroll-stack-card relative box-border w-full origin-top overflow-hidden rounded-[clamp(22px,3vw,36px)] border border-hairline/10 will-change-transform"
       style={{
-        background: feature.surface.base,
-        boxShadow: `0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px ${feature.surface.ring} inset`,
+        background: cardBackground,
+        boxShadow: cardShadow,
         backfaceVisibility: "hidden",
         transformStyle: "preserve-3d",
       }}
@@ -320,11 +329,11 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
               style={{ background: gradientSoft }}
               aria-hidden
             />
-            <span className="truncate text-[0.62rem] uppercase tracking-[0.32em] text-white/44">
+            <span className="truncate text-[0.62rem] uppercase tracking-[0.32em] text-ink/44">
               {feature.title}
             </span>
           </div>
-          <span className="shrink-0 text-[0.6rem] uppercase tracking-[0.3em] text-white/32">
+          <span className="shrink-0 text-[0.6rem] uppercase tracking-[0.3em] text-ink/32">
             {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
         </div>
@@ -335,7 +344,7 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
             splitBy="word"
             style={feature.hookRevealStyle}
             amount={0.15}
-            className="max-w-[30ch] text-[clamp(1.55rem,3.1vw,2.65rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white"
+            className="max-w-[30ch] text-[clamp(1.55rem,3.1vw,2.65rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-ink"
           >
             {feature.hook}
           </TextReveal>
@@ -356,7 +365,7 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
                 direction="up"
                 amount={0.18}
               >
-                <p className="text-[clamp(0.9rem,1.05vw,1rem)] leading-[1.7] text-white/58">
+                <p className="text-[clamp(0.9rem,1.05vw,1rem)] leading-[1.7] text-ink/58">
                   {paragraph}
                 </p>
               </Reveal>
@@ -382,11 +391,11 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
 
         <div className="flex min-h-0 flex-col gap-4 lg:justify-between">
           <div
-            className="rounded-2xl border border-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+            className="rounded-2xl border border-hairline/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
             style={{ background: feature.surface.accent }}
           >
             <div className="flex items-center justify-between">
-              <span className="text-[0.56rem] font-medium uppercase tracking-[0.3em] text-white/40">
+              <span className="text-[0.56rem] font-medium uppercase tracking-[0.3em] text-ink/40">
                 Signal Layer
               </span>
               <span
@@ -408,9 +417,9 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
               {feature.metrics.map((metric, metricIdx) => (
                 <div
                   key={metric.label}
-                  className="rounded-xl border border-white/8 bg-white/[0.02] p-2.5 sm:p-3"
+                  className="rounded-xl border border-hairline/8 bg-surface/[0.02] p-2.5 sm:p-3"
                 >
-                  <div className="text-[0.52rem] uppercase tracking-[0.26em] text-white/36">
+                  <div className="text-[0.52rem] uppercase tracking-[0.26em] text-ink/36">
                     {metric.label}
                   </div>
                   <div
@@ -437,7 +446,7 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
           </div>
 
           {feature.proofLine ? (
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+            <div className="rounded-2xl border border-hairline/10 bg-surface/[0.02] p-4">
               <div className="flex items-start gap-3">
                 <span
                   className="mt-[0.44rem] h-[2px] w-8 shrink-0 rounded-full"
@@ -456,14 +465,14 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
                   >
                     Grounded Proof
                   </p>
-                  <p className="mt-1.5 text-[0.84rem] leading-[1.55] text-white/55">
+                  <p className="mt-1.5 text-[0.84rem] leading-[1.55] text-ink/55">
                     {feature.proofLine}
                   </p>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="hidden rounded-2xl border border-dashed border-white/5 p-4 lg:block" />
+            <div className="hidden rounded-2xl border border-dashed border-hairline/5 p-4 lg:block" />
           )}
         </div>
       </div>
@@ -481,17 +490,14 @@ export function Features() {
       <div className="pointer-events-none sticky top-0 z-0 h-screen w-full overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(120% 80% at 50% 0%, rgba(15,22,38,0.55) 0%, rgba(5,6,10,0.9) 55%, rgba(5,6,10,1) 100%)",
-          }}
+          style={{ background: "var(--gradient-overlay-top)" }}
           aria-hidden
         />
         <div
           className="absolute inset-0 opacity-[0.12]"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+              "linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
             maskImage:
               "radial-gradient(ellipse at center, black 40%, transparent 85%)",
@@ -513,15 +519,15 @@ export function Features() {
       <div className="relative z-10 -mt-[100vh]">
         <div className="mx-auto w-full max-w-[1320px] px-6 pt-24 sm:px-10 md:pt-28 lg:pt-32">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <span className="text-[0.68rem] uppercase tracking-[0.32em] text-white/42">
+            <span className="text-[0.68rem] uppercase tracking-[0.32em] text-ink/42">
               Primary Features
             </span>
-            <span className="text-[0.6rem] uppercase tracking-[0.3em] text-white/32">
+            <span className="text-[0.6rem] uppercase tracking-[0.3em] text-ink/32">
               01 / {String(FEATURE_COUNT).padStart(2, "0")}
             </span>
           </div>
           <Reveal direction="up" amount={0.2}>
-            <h2 className="mt-5 max-w-[22ch] text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-white">
+            <h2 className="mt-5 max-w-[22ch] text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-ink">
               A stack of systems that compound into revenue.
             </h2>
           </Reveal>

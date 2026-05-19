@@ -6,7 +6,7 @@ import { FiArrowLeft, FiHome } from "react-icons/fi";
 
 export default function NotFound() {
   return (
-    <main className="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#05060A] px-6 text-white">
+    <main className="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#05060A] px-6 text-ink">
       {/* Background atmosphere */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(34,211,238,0.10),transparent_45%),radial-gradient(circle_at_80%_70%,rgba(167,139,250,0.12),transparent_50%)]" />
@@ -49,7 +49,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-2 text-[1.75rem] font-light leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.25rem]"
+          className="mt-2 text-[1.75rem] font-light leading-[1.1] tracking-[-0.03em] text-ink sm:text-[2.25rem]"
         >
           Page not found
         </motion.h1>
@@ -59,7 +59,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-5 max-w-[42ch] text-[1rem] leading-[1.7] text-white/50"
+          className="mt-5 max-w-[42ch] text-[1rem] leading-[1.7] text-ink/50"
         >
           The page you&rsquo;re looking for doesn&rsquo;t exist or has been
           moved. Head back home and we&rsquo;ll get you sorted.
@@ -74,7 +74,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-[0.95rem] font-medium text-white transition-all duration-300"
+            className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-[0.95rem] font-medium text-ink transition-all duration-300"
             style={{
               background: "linear-gradient(135deg, #475C70 0%, #263E52 100%)",
               boxShadow:
@@ -88,7 +88,7 @@ export default function NotFound() {
           <button
             type="button"
             onClick={() => window.history.back()}
-            className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-[0.95rem] font-medium text-white/65 transition-colors duration-200 hover:text-white/90"
+            className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-[0.95rem] font-medium text-ink/65 transition-colors duration-200 hover:text-ink/90"
           >
             <FiArrowLeft className="text-[1em]" />
             Go back
@@ -101,7 +101,7 @@ export default function NotFound() {
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute bottom-12 h-px w-[min(420px,80vw)] bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        className="absolute bottom-12 h-px w-[min(420px,80vw)] bg-gradient-to-r from-transparent via-surface/10 to-transparent"
       />
     </main>
   );

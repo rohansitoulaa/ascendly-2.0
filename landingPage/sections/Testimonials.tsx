@@ -83,7 +83,7 @@ const renderRichReview = (review: string, accent: ReviewAccent) =>
             amount: REVIEW_HIGHLIGHT.inViewAmount,
           }}
           highlightColor={REVIEW_HIGHLIGHT_COLORS[accent]}
-          className="rounded-[0.34em] px-[0.16em] font-semibold text-white"
+          className="rounded-[0.34em] px-[0.16em] font-semibold text-ink"
         >
           {part.slice(2, -2)}
         </TextHighlighter>
@@ -120,7 +120,7 @@ function ReviewCard({
     <GlassCard accent={accent} tilt={false} className="h-full min-h-[28rem] sm:min-h-[30rem]">
       <article className="flex h-full flex-col gap-8 p-7 sm:p-9 lg:p-10">
         <div className="flex items-start gap-4 sm:gap-5">
-          <div className="h-16 w-16 shrink-0 overflow-hidden rounded-[20px] border border-white/12 bg-white/[0.04] sm:h-20 sm:w-20">
+          <div className="h-16 w-16 shrink-0 overflow-hidden rounded-[20px] border border-hairline/12 bg-surface/4 sm:h-20 sm:w-20">
             <img
               src={review.image}
               alt={`${review.name} headshot`}
@@ -130,19 +130,19 @@ function ReviewCard({
           </div>
 
           <div className="min-w-0">
-            <div className="text-[1.12rem] font-semibold tracking-[-0.03em] text-white sm:text-[1.3rem]">
+            <div className="text-[1.12rem] font-semibold tracking-[-0.03em] text-ink sm:text-[1.3rem]">
               {review.name}
             </div>
-            <div className="mt-1 text-sm leading-6 text-white/58 sm:text-[0.98rem]">
+            <div className="mt-1 text-sm leading-6 text-ink/58 sm:text-[0.98rem]">
               {review.position}
             </div>
-            <div className="mt-1 text-sm font-medium leading-6 text-white/82 sm:text-[0.98rem]">
+            <div className="mt-1 text-sm font-medium leading-6 text-ink/82 sm:text-[0.98rem]">
               {review.company}
             </div>
           </div>
         </div>
 
-        <div className="text-[clamp(1.04rem,1.55vw,1.24rem)] leading-[1.82] tracking-[-0.018em] text-white/76">
+        <div className="text-[clamp(1.04rem,1.55vw,1.24rem)] leading-[1.82] tracking-[-0.018em] text-ink/76">
           {renderRichReview(review.review, accent)}
         </div>
       </article>
@@ -322,7 +322,7 @@ export function Testimonials() {
               type="button"
               aria-label="Show previous client reviews"
               onClick={() => moveTrack("left")}
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-white/72 transition-all duration-300 hover:-translate-x-0.5 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-hairline/12 bg-surface/4 text-ink/72 transition-all duration-300 hover:-translate-x-0.5 hover:border-hairline/20 hover:bg-surface/8 hover:text-ink"
             >
               <FiArrowLeft className="h-5 w-5" />
             </button>
@@ -330,7 +330,7 @@ export function Testimonials() {
               type="button"
               aria-label="Show next client reviews"
               onClick={() => moveTrack("right")}
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-white/72 transition-all duration-300 hover:translate-x-0.5 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-hairline/12 bg-surface/4 text-ink/72 transition-all duration-300 hover:translate-x-0.5 hover:border-hairline/20 hover:bg-surface/8 hover:text-ink"
             >
               <FiArrowRight className="h-5 w-5" />
             </button>

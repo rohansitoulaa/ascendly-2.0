@@ -98,7 +98,7 @@ function IndustryCard({ category, index }: { category: IndustryCategory; index: 
   return (
     <article
       data-ind-card=""
-      className={`group relative flex h-[420px] w-[clamp(260px,32vw,380px)] shrink-0 flex-col overflow-hidden rounded-[clamp(18px,2.5vw,26px)] border bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-400 hover:bg-white/[0.045] hover:-translate-y-1 sm:p-7 ${category.accentBorder} ${category.accentHover}`}
+      className={`group relative flex h-[420px] w-[clamp(260px,32vw,380px)] shrink-0 flex-col overflow-hidden rounded-[clamp(18px,2.5vw,26px)] border bg-surface/[0.02] p-6 backdrop-blur-sm transition-all duration-400 hover:bg-surface/[0.045] hover:-translate-y-1 sm:p-7 ${category.accentBorder} ${category.accentHover}`}
     >
       <div
         className={`pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-b ${category.glowClass} opacity-60 transition-opacity duration-500 group-hover:opacity-100`}
@@ -115,16 +115,16 @@ function IndustryCard({ category, index }: { category: IndustryCategory; index: 
             <Icon className="h-[1.15rem] w-[1.15rem]" />
           </div>
           <div>
-            <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-white/40">
+            <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-ink/40">
               Industry {String(index + 1).padStart(2, "0")}
             </span>
-            <h3 className="mt-1 text-[1rem] font-semibold leading-tight tracking-[-0.02em] text-white sm:text-[1.08rem]">
+            <h3 className="mt-1 text-[1rem] font-semibold leading-tight tracking-[-0.02em] text-ink sm:text-[1.08rem]">
               {category.title}
             </h3>
           </div>
         </div>
 
-        <div className="my-5 h-px w-full bg-white/[0.06]" />
+        <div className="my-5 h-px w-full bg-surface/[0.06]" />
 
         <ul className="flex flex-col gap-3.5">
           {category.items.map((item) => (
@@ -146,7 +146,7 @@ function IndustryCard({ category, index }: { category: IndustryCategory; index: 
 
       <div className="mt-auto pt-6">
         <div
-          className={`inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/50 transition-colors group-hover:text-white/80`}
+          className={`inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-ink/50 transition-colors group-hover:text-ink/80`}
         >
           <span>Explore</span>
           <span className="inline-block transition-transform group-hover:translate-x-1">
@@ -223,13 +223,13 @@ export function IndustriesSection() {
       <div className="relative z-10 px-4 pt-20 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32">
         <div className="mx-auto max-w-[1360px]">
           <Reveal direction="up" distance={28} className="max-w-3xl">
-            <span className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-slate-400">
+            <span className="inline-flex rounded-full border border-hairline/10 bg-surface/[0.04] px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-slate-400">
               Industries We Serve
             </span>
           </Reveal>
 
           <Reveal direction="up" distance={36} delay={0.08} className="max-w-3xl">
-            <h2 className="mt-6 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.05em] text-white">
+            <h2 className="mt-6 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.05em] text-ink">
               Revenue Automation{" "}
               <span className="bg-gradient-to-r from-cyan-300 via-violet-300 to-emerald-300 bg-clip-text text-transparent">
                 Service

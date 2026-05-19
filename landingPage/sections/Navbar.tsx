@@ -7,6 +7,8 @@ import Image from "next/image";
 import { FiMenu, FiX, FiPhone, FiChevronDown } from "react-icons/fi";
 import { Button } from "@/design/Button";
 import { AnimatedLink } from "@/design/AnimatedLink";
+import { ThemeToggle } from "@/design/ThemeToggle";
+import { CALENDLY_URL } from "@/lib/constants";
 
 const services = [
   {
@@ -68,14 +70,14 @@ export function Navbar() {
             "relative flex w-full items-center justify-between gap-6 rounded-full border px-4 sm:px-5",
             "transition-[max-width,padding,background-color,border-color,box-shadow] duration-300 ease-out",
             scrolled
-              ? "max-w-[1080px] py-2.5 border-white/10 bg-black/50 shadow-[0_18px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
-              : "max-w-[1180px] py-3.5 border-white/[0.06] bg-white/[0.02] backdrop-blur-md",
+              ? "max-w-[1080px] py-2.5 border-hairline/10 bg-scrim/50 shadow-[0_18px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+              : "max-w-[1180px] py-3.5 border-hairline/[0.06] bg-surface/[0.02] backdrop-blur-md",
           ].join(" ")}
         >
           <Link
             href="/"
             aria-label="Ascendly home"
-            className="group relative inline-flex items-center gap-2.5 text-[1.02rem] font-semibold tracking-[-0.02em] text-white"
+            className="group relative inline-flex items-center gap-2.5 text-[1.02rem] font-semibold tracking-[-0.02em] text-ink"
           >
             <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center">
               <Image
@@ -84,12 +86,12 @@ export function Navbar() {
                 fill
                 priority
                 sizes="32px"
-                className="object-contain filter-[brightness(0)_invert(1)]"
+                className="object-contain logo-invert"
               />
             </span>
             <span className="hidden sm:inline">
               ascendly<span className="text-cyan-300">.</span>
-              <span className="text-white/55">one</span>
+              <span className="text-ink/55">one</span>
             </span>
           </Link>
 
@@ -103,7 +105,7 @@ export function Navbar() {
             >
               <button
                 onClick={() => setServicesOpen((o) => !o)}
-                className="flex items-center gap-1 text-[0.88rem] text-white/65 transition-colors duration-150 hover:text-white"
+                className="flex items-center gap-1 text-[0.88rem] text-ink/65 transition-colors duration-150 hover:text-ink"
               >
                 Services
                 <motion.span
@@ -122,10 +124,10 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.97 }}
                     transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute left-1/2 top-full mt-3 w-[300px] -translate-x-1/2 overflow-hidden rounded-2xl border border-white/9 bg-[#080A10]/95 shadow-[0_24px_64px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+                    className="absolute left-1/2 top-full mt-3 w-[300px] -translate-x-1/2 overflow-hidden rounded-2xl border border-hairline/9 bg-[#080A10]/95 shadow-[0_24px_64px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
                   >
                     <div className="px-2 py-2">
-                      <p className="px-3 pb-2 pt-1 text-[0.66rem] font-medium uppercase tracking-[0.22em] text-white/30">
+                      <p className="px-3 pb-2 pt-1 text-[0.66rem] font-medium uppercase tracking-[0.22em] text-ink/30">
                         Services
                       </p>
                       {services.map((s) => (
@@ -133,12 +135,12 @@ export function Navbar() {
                           key={s.href}
                           href={s.href}
                           onClick={() => setServicesOpen(false)}
-                          className="group flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors duration-150 hover:bg-white/5"
+                          className="group flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors duration-150 hover:bg-surface/5"
                         >
-                          <span className="text-[0.86rem] font-medium text-white/85 transition-colors duration-150 group-hover:text-white">
+                          <span className="text-[0.86rem] font-medium text-ink/85 transition-colors duration-150 group-hover:text-ink">
                             {s.label}
                           </span>
-                          <span className="text-[0.75rem] leading-normal text-white/40">
+                          <span className="text-[0.75rem] leading-normal text-ink/40">
                             {s.description}
                           </span>
                         </Link>
@@ -163,11 +165,13 @@ export function Navbar() {
           </div>
 
           <div className="hidden items-center gap-2 md:flex">
+            <ThemeToggle />
             <Button
               variant="primary"
               size="sm"
               icon={<FiPhone />}
               iconAnimation="shake"
+              href={CALENDLY_URL}
             >
               Book a call
             </Button>
@@ -176,7 +180,7 @@ export function Navbar() {
           <button
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((o) => !o)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline/10 bg-surface/[0.04] text-ink/80 md:hidden"
           >
             {open ? <FiX /> : <FiMenu />}
           </button>
@@ -205,7 +209,7 @@ export function Navbar() {
               animate={{ opacity: open ? 1 : 0, x: open ? 0 : -20 }}
               transition={{ delay: 0.08, duration: 0.5 }}
               onClick={() => setMobileServicesOpen((o) => !o)}
-              className="flex items-center gap-2 text-[2rem] font-semibold tracking-[-0.035em] text-white"
+              className="flex items-center gap-2 text-[2rem] font-semibold tracking-[-0.035em] text-ink"
             >
               Services
               <motion.span
@@ -234,10 +238,10 @@ export function Navbar() {
                         onClick={() => { setOpen(false); setMobileServicesOpen(false); }}
                         className="flex flex-col gap-0.5"
                       >
-                        <span className="text-[1.1rem] font-medium text-white/80">
+                        <span className="text-[1.1rem] font-medium text-ink/80">
                           {s.label}
                         </span>
-                        <span className="text-[0.82rem] leading-normal text-white/35">
+                        <span className="text-[0.82rem] leading-normal text-ink/35">
                           {s.description}
                         </span>
                       </Link>
@@ -256,7 +260,7 @@ export function Navbar() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: open ? 1 : 0, x: open ? 0 : -20 }}
               transition={{ delay: 0.13 + i * 0.05, duration: 0.5 }}
-              className="text-[2rem] font-semibold tracking-[-0.035em] text-white"
+              className="text-[2rem] font-semibold tracking-[-0.035em] text-ink"
             >
               {n.label}
             </motion.a>
@@ -269,6 +273,7 @@ export function Navbar() {
               magnetic={false}
               icon={<FiPhone />}
               iconAnimation="shake"
+              href={CALENDLY_URL}
             >
               Book a call
             </Button>

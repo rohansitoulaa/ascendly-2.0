@@ -13,7 +13,10 @@ export function FeatureStackCard({
   total,
 }: FeatureStackCardProps) {
   return (
-    <ScrollStackItem itemClassName="overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(9,14,20,0.96),rgba(5,8,13,0.98))] shadow-[0_32px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.05)]">
+    <ScrollStackItem
+      itemClassName="overflow-hidden border border-hairline/10 shadow-[0_32px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.05)]"
+      itemStyle={{ background: "var(--gradient-card)" }}
+    >
       <div
         className={`pointer-events-none absolute inset-0 ${feature.theme.cardGlowClassName}`}
       />
@@ -36,10 +39,10 @@ export function FeatureStackCard({
           </div>
 
           <div className="mt-5 max-w-3xl sm:mt-8">
-            <h2 className="max-w-[15ch] text-[clamp(1.5rem,4vw,2.35rem)] font-semibold tracking-[-0.05em] text-white leading-[1.08]">
+            <h2 className="max-w-[15ch] text-[clamp(1.5rem,4vw,2.35rem)] font-semibold tracking-[-0.05em] text-ink leading-[1.08]">
               {feature.title}
             </h2>
-            <p className="mt-4 max-w-[62ch] text-[clamp(0.875rem,1.5vw,1.04rem)] leading-7 text-white/64 sm:mt-5 sm:leading-8">
+            <p className="mt-4 max-w-[62ch] text-[clamp(0.875rem,1.5vw,1.04rem)] leading-7 text-ink/64 sm:mt-5 sm:leading-8">
               {feature.summary}
             </p>
           </div>
@@ -50,16 +53,16 @@ export function FeatureStackCard({
                 key={point}
                 className={`rounded-[18px] border p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:rounded-[24px] sm:p-4 ${feature.theme.detailClassName}`}
               >
-                <div className="mb-2 size-2 rounded-full bg-white/55 sm:mb-3" />
-                <p className="text-[13px] leading-6 text-white/70 sm:text-sm sm:leading-7">{point}</p>
+                <div className="mb-2 size-2 rounded-full bg-surface/55 sm:mb-3" />
+                <p className="text-[13px] leading-6 text-ink/70 sm:text-sm sm:leading-7">{point}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="relative flex h-full min-h-[14rem] flex-col justify-between rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.012))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:min-h-[18rem] sm:rounded-[28px] sm:p-5 md:min-h-0 md:p-6">
+        <div className="relative flex h-full min-h-[14rem] flex-col justify-between rounded-[22px] border border-hairline/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.012))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:min-h-[18rem] sm:rounded-[28px] sm:p-5 md:min-h-0 md:p-6">
           <div className="flex items-center justify-between gap-3">
-            <span className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-white/34 sm:text-[0.62rem]">
+            <span className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-ink/34 sm:text-[0.62rem]">
               Signal Layer
             </span>
             <div
@@ -74,10 +77,10 @@ export function FeatureStackCard({
             <div className="relative flex h-full flex-col">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <div className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-white/34 sm:text-[0.62rem]">
+                  <div className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-ink/34 sm:text-[0.62rem]">
                     Active Focus
                   </div>
-                  <div className="mt-2 text-base font-medium tracking-[-0.03em] text-white/88 sm:mt-3 sm:text-lg">
+                  <div className="mt-2 text-base font-medium tracking-[-0.03em] text-ink/88 sm:mt-3 sm:text-lg">
                     {feature.eyebrow} Motion
                   </div>
                 </div>
@@ -85,19 +88,19 @@ export function FeatureStackCard({
                   <div
                     className={`absolute inset-0 rounded-full blur-2xl ${feature.theme.orbClassName}`}
                   />
-                  <div className="absolute inset-[22%] rounded-full border border-white/10 bg-white/4" />
+                  <div className="absolute inset-[22%] rounded-full border border-hairline/10 bg-surface/4" />
                 </div>
               </div>
 
               <div className="mt-5 space-y-3 sm:mt-8 sm:space-y-4">
                 {feature.signalLabels.map((label, labelIndex) => (
                   <div key={label} className="flex items-center gap-2 sm:gap-3">
-                    <span className="w-10 text-[0.58rem] font-medium uppercase tracking-[0.22em] text-white/28 sm:w-14 sm:text-[0.62rem]">
+                    <span className="w-10 text-[0.58rem] font-medium uppercase tracking-[0.22em] text-ink/28 sm:w-14 sm:text-[0.62rem]">
                       0{labelIndex + 1}
                     </span>
-                    <div className="relative h-2.5 flex-1 overflow-hidden rounded-full bg-white/8 sm:h-3">
+                    <div className="relative h-2.5 flex-1 overflow-hidden rounded-full bg-surface/8 sm:h-3">
                       <div
-                        className={`absolute inset-y-0 left-0 rounded-full bg-white/82 ${labelIndex === 0 ? "w-[78%]" : labelIndex === 1 ? "w-[62%]" : "w-[86%]"}`}
+                        className={`absolute inset-y-0 left-0 rounded-full bg-surface/82 ${labelIndex === 0 ? "w-[78%]" : labelIndex === 1 ? "w-[62%]" : "w-[86%]"}`}
                       />
                     </div>
                     <span
@@ -115,14 +118,14 @@ export function FeatureStackCard({
 
               <div className="mt-4 flex items-end justify-between gap-4 sm:mt-5 sm:gap-6">
                 <div>
-                  <div className="text-[0.58rem] font-medium uppercase tracking-[0.24em] text-white/32 sm:text-[0.62rem]">
+                  <div className="text-[0.58rem] font-medium uppercase tracking-[0.24em] text-ink/32 sm:text-[0.62rem]">
                     Coverage
                   </div>
-                  <div className="mt-1.5 text-2xl font-semibold tracking-[-0.05em] text-white/88 sm:mt-2 sm:text-3xl">
+                  <div className="mt-1.5 text-2xl font-semibold tracking-[-0.05em] text-ink/88 sm:mt-2 sm:text-3xl">
                     {92 + ((index * 3) % 7)}%
                   </div>
                 </div>
-                <div className="max-w-[10rem] text-right text-xs leading-5 text-white/46 sm:max-w-[12rem] sm:text-sm sm:leading-6">
+                <div className="max-w-[10rem] text-right text-xs leading-5 text-ink/46 sm:max-w-[12rem] sm:text-sm sm:leading-6">
                   Different emphasis, same system language. Each card carries its
                   own color signature.
                 </div>

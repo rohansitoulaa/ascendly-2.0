@@ -75,15 +75,15 @@ export default function RevenueAutomationExplainer() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollFloat
             containerClassName="my-0 text-center"
-            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-white/50"
+            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-ink/50"
           >
             A connected system
           </ScrollFloat>
-          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-white">
+          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-ink">
             What Revenue Automation{" "}
-            <span className="text-white/50">Actually Means</span>
+            <span className="text-ink/50">Actually Means</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-[clamp(0.9rem,1.5vw,1.05rem)] leading-7 text-white/45 sm:mt-6 sm:leading-8">
+          <p className="mx-auto mt-5 max-w-2xl text-[clamp(0.9rem,1.5vw,1.05rem)] leading-7 text-ink/45 sm:mt-6 sm:leading-8">
             Not disconnected tools. A single system where every stage feeds the next  and nothing falls through the cracks.
           </p>
         </div>
@@ -114,7 +114,7 @@ export default function RevenueAutomationExplainer() {
                 <div
                   key={node.title}
                   data-flow-card=""
-                  className={`group relative rounded-2xl border bg-white/[0.02] p-5 transition-all duration-300 hover:bg-white/[0.05] sm:rounded-[22px] sm:p-6 ${node.accentClass}`}
+                  className={`group relative rounded-2xl border bg-surface/[0.02] p-5 transition-all duration-300 hover:bg-surface/[0.05] sm:rounded-[22px] sm:p-6 ${node.accentClass}`}
                 >
                   {/* Inner glow on hover */}
                   <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -125,21 +125,21 @@ export default function RevenueAutomationExplainer() {
                       <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${node.iconBgClass}`}>
                         <Icon className="h-[18px] w-[18px]" />
                       </div>
-                      <span className="text-[0.62rem] font-medium uppercase tracking-[0.28em] text-white/20">
+                      <span className="text-[0.62rem] font-medium uppercase tracking-[0.28em] text-ink/20">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
 
-                    <h3 className="mt-5 text-lg font-semibold tracking-[-0.03em] text-white">
+                    <h3 className="mt-5 text-lg font-semibold tracking-[-0.03em] text-ink">
                       {node.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-white/45">
+                    <p className="mt-2 text-sm leading-6 text-ink/45">
                       {node.description}
                     </p>
 
                     {/* Arrow indicator (not on last) */}
                     {i < flowNodes.length - 1 && (
-                      <div className="absolute -right-3 top-5 hidden text-white/12 md:block">
+                      <div className="absolute -right-3 top-5 hidden text-ink/12 md:block">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                           <path d="M1 7h10m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>

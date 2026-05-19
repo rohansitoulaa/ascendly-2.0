@@ -159,7 +159,7 @@ export function PipelineReviewSection() {
         <BorderGlow
           backgroundColor="rgba(7, 9, 10, 0.9)"
           borderRadius={34}
-          className="border-white/10"
+          className="border-hairline/10"
           colors={[
             "rgba(125,211,252,0.24)",
             "rgba(255,255,255,0.14)",
@@ -191,7 +191,7 @@ export function PipelineReviewSection() {
                     containerRef={panelRef}
                     radius={160}
                     falloff="gaussian"
-                    className="block text-[clamp(2.45rem,6vw,6.1rem)] font-medium leading-[0.93] tracking-[-0.075em] text-white"
+                    className="block text-[clamp(2.45rem,6vw,6.1rem)] font-medium leading-[0.93] tracking-[-0.075em] text-ink"
                   />
                 </div>
 
@@ -246,7 +246,7 @@ export function PipelineReviewSection() {
                         <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-slate-400/80">
                           What we review
                         </p>
-                        <h3 className="mt-2 text-[1.5rem] font-semibold tracking-[-0.04em] text-white">
+                        <h3 className="mt-2 text-[1.5rem] font-semibold tracking-[-0.04em] text-ink">
                           Where your pipeline loses momentum.
                         </h3>
                       </div>
@@ -259,15 +259,15 @@ export function PipelineReviewSection() {
                         return (
                           <div
                             key={signal.title}
-                            className="rounded-[22px] border border-white/8 bg-white/[0.03] p-4"
+                            className="rounded-[22px] border border-hairline/8 bg-surface/[0.03] p-4"
                           >
                             <div className="flex items-start gap-3">
-                              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[14px] border border-white/8 bg-white/[0.04] text-slate-100">
+                              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[14px] border border-hairline/8 bg-surface/[0.04] text-slate-100">
                                 <Icon className="text-[0.95rem]" />
                               </span>
 
                               <div>
-                                <p className="text-sm font-semibold tracking-[-0.02em] text-white">
+                                <p className="text-sm font-semibold tracking-[-0.02em] text-ink">
                                   {signal.title}
                                 </p>
                                 <p className="mt-1 text-sm leading-6 text-slate-300/66">

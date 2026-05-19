@@ -315,7 +315,7 @@ export default function BorderGlow({
   return (
     <div
       ref={cardRef}
-      className={`relative isolate grid border border-white/15 ${className}`.trim()}
+      className={`relative isolate grid border border-hairline/15 ${className}`.trim()}
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}
       onPointerMove={handlePointerMove}

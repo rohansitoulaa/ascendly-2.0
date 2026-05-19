@@ -25,7 +25,7 @@ export function AnimatedLink({
       initial="initial"
       className={[
         "group relative inline-flex items-center gap-1.5 text-[0.92rem] font-medium tracking-[-0.01em] transition-colors",
-        accent ? "text-cyan-200 hover:text-cyan-100" : "text-white/78 hover:text-white",
+        accent ? "text-cyan-200 hover:text-cyan-100" : "text-ink/78 hover:text-ink",
         className,
       ].join(" ")}
       {...rest}

@@ -62,7 +62,7 @@ function FAQAccordion({
   return (
     <div
       data-faq-item=""
-      className="group border-b border-white/[0.06] last:border-none"
+      className="group border-b border-hairline/[0.06] last:border-none"
     >
       <button
         type="button"
@@ -70,19 +70,19 @@ function FAQAccordion({
         className="flex w-full items-start gap-4 py-6 text-left transition-colors duration-200 sm:gap-6 sm:py-7"
         aria-expanded={isOpen}
       >
-        <span className="mt-0.5 shrink-0 text-xs font-medium tabular-nums tracking-[0.12em] text-white/16 sm:text-sm">
+        <span className="mt-0.5 shrink-0 text-xs font-medium tabular-nums tracking-[0.12em] text-ink/16 sm:text-sm">
           {String(index + 1).padStart(2, "0")}
         </span>
 
-        <span className="flex-1 text-base font-semibold tracking-[-0.02em] text-white transition-colors duration-200 group-hover:text-white/85 sm:text-lg">
+        <span className="flex-1 text-base font-semibold tracking-[-0.02em] text-ink transition-colors duration-200 group-hover:text-ink/85 sm:text-lg">
           {question}
         </span>
 
         {/* Toggle icon */}
-        <span className="relative mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] transition-colors duration-200 group-hover:border-white/12">
-          <span className="h-px w-3 bg-white/50 transition-transform duration-300" />
+        <span className="relative mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-hairline/[0.08] bg-surface/[0.03] transition-colors duration-200 group-hover:border-hairline/12">
+          <span className="h-px w-3 bg-surface/50 transition-transform duration-300" />
           <span
-            className={`absolute h-3 w-px bg-white/50 transition-transform duration-300 ${
+            className={`absolute h-3 w-px bg-surface/50 transition-transform duration-300 ${
               isOpen ? "rotate-90" : "rotate-0"
             }`}
           />
@@ -99,7 +99,7 @@ function FAQAccordion({
           className="pb-6 pl-8 pr-4 sm:pb-7 sm:pl-12 sm:pr-6"
           style={{ opacity: 0, transform: "translateY(-6px)" }}
         >
-          <p className="max-w-2xl text-sm leading-7 text-white/45 sm:text-[0.94rem] sm:leading-8">
+          <p className="max-w-2xl text-sm leading-7 text-ink/45 sm:text-[0.94rem] sm:leading-8">
             {answer}
           </p>
         </div>
@@ -155,11 +155,11 @@ export default function ServicesFAQ() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollFloat
             containerClassName="my-0 text-center"
-            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-white/50"
+            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-ink/50"
           >
             Common questions
           </ScrollFloat>
-          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-white">
+          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-ink">
             FAQ
           </h2>
         </div>

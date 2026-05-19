@@ -27,23 +27,23 @@ export function Industries() {
     <section id="industries" className="relative py-28 sm:py-36">
       <div className="mx-auto w-full max-w-[1220px] px-6 sm:px-8">
         <Reveal direction="up">
-          <div className="flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/45">
-            <span className="h-px w-8 bg-white/25" />
+          <div className="flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/45">
+            <span className="h-px w-8 bg-surface/25" />
             <span>WHO WE WORK WITH</span>
           </div>
         </Reveal>
 
         <Reveal direction="up" delay={0.05}>
-          <h2 className="mt-6 max-w-[38ch] text-[clamp(1.8rem,3.5vw,3rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-white">
+          <h2 className="mt-6 max-w-[38ch] text-[clamp(1.8rem,3.5vw,3rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-ink">
             We work with B2B companies that already have demand, but need it to convert and scale.
           </h2>
         </Reveal>
 
         <Reveal direction="up" delay={0.1}>
-          <p className="mt-5 max-w-[52ch] text-[0.98rem] leading-[1.7] text-white/55">
+          <p className="mt-5 max-w-[52ch] text-[0.98rem] leading-[1.7] text-ink/55">
             If your deals involve multiple stakeholders, longer cycles, and real
             sales effort, this is built for you.{" "}
-            <span className="text-white/35">If not, it won&rsquo;t.</span>
+            <span className="text-ink/35">If not, it won&rsquo;t.</span>
           </p>
         </Reveal>
 
@@ -51,14 +51,14 @@ export function Industries() {
           {cards.map((card, index) => (
             <Reveal key={card.title} direction="up" delay={index * 0.05}>
               <TiltCard max={5} className="h-full rounded-[24px]">
-                <div className="relative h-full overflow-hidden rounded-[24px] border border-white/[0.08] bg-linear-to-br from-white/[0.04] to-white/[0.01] p-6 backdrop-blur-xl sm:p-7">
-                  <span className="block font-mono text-[0.72rem] tracking-[0.24em] text-white/30">
+                <div className="relative h-full overflow-hidden rounded-[24px] border border-hairline/[0.08] bg-linear-to-br from-white/[0.04] to-white/[0.01] p-6 backdrop-blur-xl sm:p-7">
+                  <span className="block font-mono text-[0.72rem] tracking-[0.24em] text-ink/30">
                     0{index + 1}
                   </span>
-                  <h3 className="mt-5 text-[1rem] font-semibold leading-[1.3] tracking-[-0.02em] text-white/88">
+                  <h3 className="mt-5 text-[1rem] font-semibold leading-[1.3] tracking-[-0.02em] text-ink/88">
                     {card.title}
                   </h3>
-                  <p className="mt-3 text-[0.9rem] leading-[1.65] text-white/50">
+                  <p className="mt-3 text-[0.9rem] leading-[1.65] text-ink/50">
                     {card.body}
                   </p>
                 </div>

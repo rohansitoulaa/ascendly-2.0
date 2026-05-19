@@ -36,9 +36,10 @@ const TESTIMONIAL_HIGHLIGHT = {
 const TESTIMONIAL_BACKGROUND = {
   // Shader opacity. Keep between 0.55 and 0.95 so the cards remain the focus.
   shaderOpacityClassName: "opacity-[0.9]",
-  // Top vignette opacity. Keep between 0.55 and 0.9 so the page stays dark across the full surface.
-  overlayClassName:
-    "bg-[linear-gradient(180deg,rgba(5,6,10,0.52)_0%,rgba(5,6,10,0.74)_30%,rgba(5,6,10,0.9)_100%)]",
+  // Top vignette overlay. Uses theme-aware gradient so it flips in light mode.
+  overlayStyle: {
+    background: "var(--gradient-overlay-top)",
+  },
 } as const;
 
 const FEATURED_REVIEW_NAMES = [
@@ -126,7 +127,7 @@ function renderRichReview(review: string, accent: ReviewAccent) {
             amount: TESTIMONIAL_HIGHLIGHT.inViewAmount,
           }}
           highlightColor={REVIEW_HIGHLIGHT_COLORS[accent]}
-          className="rounded-[0.34em] px-[0.16em] font-semibold text-white"
+          className="rounded-[0.34em] px-[0.16em] font-semibold text-ink"
         >
           {part.slice(2, -2)}
         </TextHighlighter>
@@ -179,7 +180,7 @@ function ReviewLinks({
           target="_blank"
           rel="noreferrer"
           className={[
-            "inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] text-white/68 transition-colors duration-300 hover:border-white/18 hover:bg-white/[0.08] hover:text-white",
+            "inline-flex items-center gap-2 rounded-full border border-hairline/10 bg-surface/[0.04] text-ink/68 transition-colors duration-300 hover:border-hairline/18 hover:bg-surface/[0.08] hover:text-ink",
             featured ? "px-4 py-2 text-[0.78rem]" : "px-3 py-1.5 text-[0.74rem]",
           ].join(" ")}
         >
@@ -222,7 +223,7 @@ function ReviewCard({
           <div className="flex min-w-0 items-start gap-4 sm:gap-5">
             <div
               className={[
-                "shrink-0 overflow-hidden rounded-[22px] border border-white/12 bg-white/[0.04]",
+                "shrink-0 overflow-hidden rounded-[22px] border border-hairline/12 bg-surface/[0.04]",
                 featured
                   ? "h-20 w-20 sm:h-24 sm:w-24"
                   : "h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem]",
@@ -238,13 +239,13 @@ function ReviewCard({
 
             <div className="min-w-0">
               {featured ? (
-                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-white/52">
+                <div className="inline-flex items-center rounded-full border border-hairline/10 bg-surface/[0.05] px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-ink/52">
                   Featured review
                 </div>
               ) : null}
               <div
                 className={[
-                  "mt-3 font-semibold tracking-[-0.03em] text-white",
+                  "mt-3 font-semibold tracking-[-0.03em] text-ink",
                   featured ? "text-[1.5rem] sm:text-[1.75rem]" : "text-[1.12rem] sm:text-[1.24rem]",
                 ].join(" ")}
               >
@@ -252,7 +253,7 @@ function ReviewCard({
               </div>
               <div
                 className={[
-                  "mt-1 leading-6 text-white/60",
+                  "mt-1 leading-6 text-ink/60",
                   featured ? "text-[0.98rem]" : "text-[0.9rem]",
                 ].join(" ")}
               >
@@ -260,7 +261,7 @@ function ReviewCard({
               </div>
               <div
                 className={[
-                  "mt-1 font-medium leading-6 text-white/82",
+                  "mt-1 font-medium leading-6 text-ink/82",
                   featured ? "text-[1rem]" : "text-[0.92rem]",
                 ].join(" ")}
               >
@@ -272,7 +273,7 @@ function ReviewCard({
           <div
             aria-hidden
             className={[
-              "shrink-0 font-light leading-none text-white/10",
+              "shrink-0 font-light leading-none text-ink/10",
               featured ? "text-[4.75rem]" : "text-[3.5rem]",
             ].join(" ")}
           >
@@ -282,7 +283,7 @@ function ReviewCard({
 
         <div
           className={[
-            "tracking-[-0.018em] text-white/76",
+            "tracking-[-0.018em] text-ink/76",
             featured
               ? "text-[1.04rem] leading-[1.9] sm:text-[1.12rem]"
               : "text-[0.96rem] leading-[1.82]",
@@ -299,7 +300,10 @@ function ReviewCard({
 
 export default function TestimonialsPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#05060A] text-white">
+    <main
+      className="relative min-h-screen overflow-x-hidden text-ink"
+      style={{ background: "var(--bg-page-deep)" }}
+    >
       <div
         aria-hidden
         className={`pointer-events-none fixed inset-0 z-0 ${TESTIMONIAL_BACKGROUND.shaderOpacityClassName}`}
@@ -313,14 +317,15 @@ export default function TestimonialsPage() {
       />
       <div
         aria-hidden
-        className={`pointer-events-none fixed inset-0 z-[2] ${TESTIMONIAL_BACKGROUND.overlayClassName}`}
+        className="pointer-events-none fixed inset-0 z-[2]"
+        style={TESTIMONIAL_BACKGROUND.overlayStyle}
       />
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-[3]"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 18%, transparent 24%, rgba(5, 6, 10, 0.36) 60%, rgba(5, 6, 10, 0.82) 100%)",
+            "radial-gradient(ellipse at 50% 18%, transparent 24%, color-mix(in srgb, var(--bg-page-deep) 36%, transparent) 60%, color-mix(in srgb, var(--bg-page-deep) 82%, transparent) 100%)",
         }}
       />
 
@@ -336,14 +341,14 @@ export default function TestimonialsPage() {
 
           <Reveal direction="up" distance={24} delay={0.05}>
             <div className="mt-8 max-w-5xl">
-              <h1 className="text-balance text-[2.8rem] font-light leading-[1.02] tracking-[-0.04em] text-white sm:text-[4.2rem] lg:text-[5.5rem]">
+              <h1 className="text-balance text-[2.8rem] font-light leading-[1.02] tracking-[-0.04em] text-ink sm:text-[4.2rem] lg:text-[5.5rem]">
                 A full wall of what clients say once the pipeline starts converting.
               </h1>
             </div>
           </Reveal>
 
           <Reveal direction="up" distance={18} delay={0.14}>
-            <p className="mt-8 max-w-[62ch] text-[1.02rem] leading-[1.82] text-white/64 sm:text-[1.1rem]">
+            <p className="mt-8 max-w-[62ch] text-[1.02rem] leading-[1.82] text-ink/64 sm:text-[1.1rem]">
               Every testimonial from our current review set lives here. The four
               anchor reviews stay oversized, and the rest build the surrounding
               collage instead of disappearing into a slider.
@@ -352,10 +357,10 @@ export default function TestimonialsPage() {
 
           <Reveal direction="up" distance={14} delay={0.22}>
             <div className="mt-8 flex flex-wrap gap-3">
-              <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.74rem] font-medium uppercase tracking-[0.18em] text-white/56">
+              <div className="rounded-full border border-hairline/10 bg-surface/[0.04] px-4 py-2 text-[0.74rem] font-medium uppercase tracking-[0.18em] text-ink/56">
                 {clientReviews.length} client reviews
               </div>
-              <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.74rem] font-medium uppercase tracking-[0.18em] text-white/56">
+              <div className="rounded-full border border-hairline/10 bg-surface/[0.04] px-4 py-2 text-[0.74rem] font-medium uppercase tracking-[0.18em] text-ink/56">
                 {featuredReviews.length} featured anchors
               </div>
             </div>
@@ -383,8 +388,8 @@ export default function TestimonialsPage() {
           </div>
 
           <Reveal direction="up" distance={16} delay={0.12}>
-            <div className="mt-16 flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/44">
-              <span className="h-px w-8 bg-white/18" />
+            <div className="mt-16 flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/44">
+              <span className="h-px w-8 bg-surface/18" />
               <span>Full Wall</span>
             </div>
           </Reveal>

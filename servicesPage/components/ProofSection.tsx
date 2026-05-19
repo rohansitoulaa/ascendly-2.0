@@ -58,13 +58,13 @@ export default function ProofSection() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollFloat
             containerClassName="my-0 text-center"
-            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-white/50"
+            textClassName="text-[clamp(1.1rem,1.8vw,1.4rem)] font-medium tracking-[-0.02em] text-ink/50"
           >
             Measured impact
           </ScrollFloat>
-          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-white">
+          <h2 className="mt-4 text-[clamp(2rem,5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.055em] text-ink">
             Not meetings booked.{" "}
-            <span className="text-white/50">Revenue generated.</span>
+            <span className="text-ink/50">Revenue generated.</span>
           </h2>
         </div>
 
@@ -75,7 +75,7 @@ export default function ProofSection() {
                 animated={i === 0}
                 backgroundColor="rgba(7,17,28,0.82)"
                 borderRadius={24}
-                className="h-full border-white/[0.06]"
+                className="h-full border-hairline/[0.06]"
                 colors={
                   i === 0
                     ? ["rgba(56,189,248,0.6)", "rgba(14,165,233,0.5)", "rgba(100,116,139,0.4)"]
@@ -91,20 +91,20 @@ export default function ProofSection() {
               >
                 <div className="flex h-full flex-col p-6 sm:p-7">
                   {/* Attribution tag */}
-                  <span className="inline-flex self-start rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-white/35">
+                  <span className="inline-flex self-start rounded-full border border-hairline/[0.08] bg-surface/[0.03] px-3 py-1 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-ink/35">
                     {proof.attribution}
                   </span>
 
                   {/* Big metric */}
-                  <div className="mt-6 text-[clamp(2.4rem,5vw,3.6rem)] font-bold leading-none tracking-[-0.06em] text-white sm:mt-8">
+                  <div className="mt-6 text-[clamp(2.4rem,5vw,3.6rem)] font-bold leading-none tracking-[-0.06em] text-ink sm:mt-8">
                     {proof.metric}
                   </div>
-                  <div className="mt-2 text-base font-semibold tracking-[-0.02em] text-white/70">
+                  <div className="mt-2 text-base font-semibold tracking-[-0.02em] text-ink/70">
                     {proof.label}
                   </div>
 
                   {/* Description */}
-                  <p className="mt-4 text-sm leading-6 text-white/40">
+                  <p className="mt-4 text-sm leading-6 text-ink/40">
                     {proof.description}
                   </p>
                 </div>

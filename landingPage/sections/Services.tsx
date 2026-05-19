@@ -137,11 +137,11 @@ export function Services() {
     <section ref={sectionRef} id="services" className="relative bg-[#05060A]">
       {/* Preamble */}
       <div className="relative mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-28 text-center sm:px-10">
-        <p className="text-[clamp(1.15rem,1.9vw,1.7rem)] font-medium leading-[1.3] tracking-[-0.02em] text-white/55">
+        <p className="text-[clamp(1.15rem,1.9vw,1.7rem)] font-medium leading-[1.3] tracking-[-0.02em] text-ink/55">
           Most teams buy{" "}
           <span
             ref={inlineRef}
-            className="inline-block font-semibold text-white"
+            className="inline-block font-semibold text-ink"
           >
             {splitChars("our services")}
           </span>
@@ -153,13 +153,13 @@ export function Services() {
           splitBy="word"
           style="blur-in"
           stagger={0.04}
-          className="mt-7 max-w-[22ch] text-[clamp(2.1rem,5vw,4.6rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-white"
+          className="mt-7 max-w-[22ch] text-[clamp(2.1rem,5vw,4.6rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-ink"
         >
           We build systems that generate and convert revenue.
         </TextReveal>
 
         <Reveal delay={0.25} direction="up" amount={0.3}>
-          <div className="mt-14 flex flex-col items-center gap-2 text-[0.6rem] uppercase tracking-[0.4em] text-white/28">
+          <div className="mt-14 flex flex-col items-center gap-2 text-[0.6rem] uppercase tracking-[0.4em] text-ink/28">
             <span>Scroll</span>
             <span className="h-10 w-px bg-linear-to-b from-white/30 to-transparent" />
           </div>
@@ -199,7 +199,7 @@ export function Services() {
                 amount={0.15}
                 className="h-full"
               >
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/8 bg-white/1.5 p-8 backdrop-blur-sm transition-colors duration-500 hover:border-white/[0.14] sm:p-10 lg:p-12">
+                <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-hairline/8 bg-surface/1.5 p-8 backdrop-blur-sm transition-colors duration-500 hover:border-hairline/[0.14] sm:p-10 lg:p-12">
                   <div
                     className="pointer-events-none absolute -left-20 -top-24 h-80 w-80 rounded-full opacity-[0.22] blur-[120px] transition-opacity duration-700 group-hover:opacity-[0.35]"
                     style={{ background: service.gradient.from }}
@@ -212,7 +212,7 @@ export function Services() {
                   />
 
                   <div className="relative flex items-center justify-between">
-                    <span className="text-[0.62rem] font-semibold uppercase tracking-[0.4em] text-white/42">
+                    <span className="text-[0.62rem] font-semibold uppercase tracking-[0.4em] text-ink/42">
                       Service / {service.number}
                     </span>
                     <span
@@ -234,7 +234,7 @@ export function Services() {
                     {service.title}
                   </h3>
 
-                  <p className="relative mt-5 max-w-[38ch] text-[clamp(0.98rem,1.2vw,1.08rem)] leading-[1.72] text-white/60">
+                  <p className="relative mt-5 max-w-[38ch] text-[clamp(0.98rem,1.2vw,1.08rem)] leading-[1.72] text-ink/60">
                     {service.subtext}
                   </p>
 
@@ -242,7 +242,7 @@ export function Services() {
                     {service.points.map((point) => (
                       <li
                         key={point}
-                        className="flex items-start gap-3 text-[0.96rem] leading-[1.65] text-white/75"
+                        className="flex items-start gap-3 text-[0.96rem] leading-[1.65] text-ink/75"
                       >
                         <span
                           className="mt-[0.35rem] flex h-4 w-4 shrink-0 items-center justify-center rounded-full"
@@ -259,7 +259,7 @@ export function Services() {
                   <div className="relative mt-10 flex-1" />
 
                   <blockquote
-                    className="relative border-l-2 pl-5 text-[1.05rem] font-medium italic leading-[1.55] tracking-[-0.01em] text-white/85"
+                    className="relative border-l-2 pl-5 text-[1.05rem] font-medium italic leading-[1.55] tracking-[-0.01em] text-ink/85"
                     style={{
                       borderImage: `${gradientText} 1`,
                     }}
@@ -270,7 +270,7 @@ export function Services() {
                   <div className="relative mt-8">
                     <Link
                       href={service.cta.href}
-                      className="group/cta inline-flex items-center gap-3 text-[0.95rem] font-medium tracking-[-0.01em] text-white"
+                      className="group/cta inline-flex items-center gap-3 text-[0.95rem] font-medium tracking-[-0.01em] text-ink"
                     >
                       <span
                         className="transition-colors duration-500"
@@ -284,10 +284,10 @@ export function Services() {
                         {service.cta.label}
                       </span>
                       <span
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 transition-all duration-500 group-hover/cta:translate-x-1 group-hover/cta:border-white/30"
+                        className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline/10 transition-all duration-500 group-hover/cta:translate-x-1 group-hover/cta:border-hairline/30"
                         style={{ background: `${service.gradient.from}14` }}
                       >
-                        <FiArrowUpRight className="text-[1rem] text-white/85" />
+                        <FiArrowUpRight className="text-[1rem] text-ink/85" />
                       </span>
                     </Link>
                   </div>
