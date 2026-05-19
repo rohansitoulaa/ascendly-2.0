@@ -124,7 +124,8 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.97 }}
                     transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute left-1/2 top-full mt-3 w-[300px] -translate-x-1/2 overflow-hidden rounded-2xl border border-hairline/9 bg-[#080A10]/95 shadow-[0_24px_64px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+                    className="absolute left-1/2 top-full mt-3 w-[300px] -translate-x-1/2 overflow-hidden rounded-2xl border border-hairline/9 shadow-[0_24px_64px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+                    style={{ background: "var(--bg-dropdown)" }}
                   >
                     <div className="px-2 py-2">
                       <p className="px-3 pb-2 pt-1 text-[0.66rem] font-medium uppercase tracking-[0.22em] text-ink/30">
@@ -194,7 +195,8 @@ export function Navbar() {
           pointerEvents: open ? "auto" : "none",
         }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 z-[70] bg-[#05060A]/85 backdrop-blur-2xl md:hidden"
+        className="fixed inset-0 z-[70] backdrop-blur-2xl md:hidden"
+        style={{ backgroundColor: "var(--bg-mobile-menu)" }}
       >
         <motion.div
           initial={false}

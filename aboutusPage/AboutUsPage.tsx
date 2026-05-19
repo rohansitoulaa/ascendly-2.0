@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, type ReactNode } from "react";
+import { useSiteTheme } from "@/lib/useSiteTheme";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,6 +14,11 @@ import dynamic from "next/dynamic";
 import { CALENDLY_URL } from "@/lib/constants";
 
 const ShapeGrid = dynamic(() => import("@/animations/ShapeGrid"), { ssr: false });
+
+/* ─── VariableProximity shared config ───────────────────────────── */
+const VP_FROM = "'wght' 300, 'wdth' 100, 'opsz' 14";
+const VP_TO   = "'wght' 720, 'wdth' 120, 'opsz' 144";
+const VP_RADIUS = 200;
 
 /* ─── GSAP registration (client-only) ──────────────────────────── */
 
@@ -106,6 +112,7 @@ function Kicker({
 ═══════════════════════════════════════════════════════════════════ */
 
 function Hero() {
+  const theme = useSiteTheme();
   const sectionRef = useRef<HTMLElement>(null);
   const kickerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -185,24 +192,28 @@ function Hero() {
       ref={sectionRef as React.RefObject<HTMLElement>}
       className="relative mx-auto w-full max-w-none pt-36 pb-28 sm:pt-44 sm:pb-36 overflow-hidden"
     >
-      {/* Hero-local hexagon grid */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.13]">
-        <ShapeGrid
-          direction="diagonal"
-          speed={0.3}
-          borderColor="rgba(34,211,238,0.25)"
-          squareSize={52}
-          hoverFillColor="rgba(34,211,238,0.14)"
-          shape="hexagon"
-        />
-      </div>
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(34,211,238,0.07), transparent 70%), radial-gradient(ellipse 60% 50% at 80% 100%, rgba(167,139,250,0.06), transparent 70%)",
-        }}
-      />
+      {/* Hero-local hexagon grid — dark mode only */}
+      {theme === "dark" && (
+        <>
+          <div className="pointer-events-none absolute inset-0 opacity-[0.13]">
+            <ShapeGrid
+              direction="diagonal"
+              speed={0.3}
+              borderColor="rgba(34,211,238,0.25)"
+              squareSize={52}
+              hoverFillColor="rgba(34,211,238,0.14)"
+              shape="hexagon"
+            />
+          </div>
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(34,211,238,0.07), transparent 70%), radial-gradient(ellipse 60% 50% at 80% 100%, rgba(167,139,250,0.06), transparent 70%)",
+            }}
+          />
+        </>
+      )}
 
       <div className="relative z-10 mx-auto max-w-[1240px] px-6 sm:px-8 lg:px-10">
         <div
@@ -646,9 +657,9 @@ function Gears() {
         <div ref={headRef} style={{ opacity: 0 }}>
           <Kicker color="violet">The System</Kicker>
           <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
-            Pipeline is built in two gears.
+            <VariableProximity label="Pipeline is built in two gears." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             <span className="block text-ink/40">
-              Revenue comes from both.
+              <VariableProximity label="Revenue comes from both." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             </span>
           </h2>
           <p className="mt-6 max-w-[52ch] text-[1rem] leading-[1.7] text-ink/50">
@@ -776,9 +787,9 @@ function Proof() {
         <div className="proof-head" style={{ opacity: 0 }}>
           <Kicker color="emerald">What We Build</Kicker>
           <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
-            Most teams only build pipeline.
+            <VariableProximity label="Most teams only build pipeline." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             <span className="block text-ink/40">
-              We build what happens after.
+              <VariableProximity label="We build what happens after." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             </span>
           </h2>
         </div>
@@ -945,9 +956,9 @@ function Philosophy() {
         <div className="phil-head" style={{ opacity: 0 }}>
           <Kicker color="teal">Operating Philosophy</Kicker>
           <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
-            Volume creates pipeline.
+            <VariableProximity label="Volume creates pipeline." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             <span className="block text-ink/40">
-              Precision creates revenue.
+              <VariableProximity label="Precision creates revenue." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             </span>
           </h2>
           <p className="mt-6 max-w-[48ch] text-[1rem] leading-[1.7] text-ink/50">
@@ -1068,11 +1079,10 @@ function WhoFor() {
         <div className="who-head" style={{ opacity: 0 }}>
           <Kicker color="indigo">Who This Is For</Kicker>
           <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.5rem]">
-            We work with B2B teams where pipeline doesn&rsquo;t just need to be
-            generated,
+            <VariableProximity label="We work with B2B teams where pipeline doesn’t just need to be generated," fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             <span className="text-ink/40">
               {" "}
-              it needs to be converted into revenue.
+              <VariableProximity label="it needs to be converted into revenue." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             </span>
           </h2>
           <p className="mt-6 max-w-[56ch] text-[1rem] leading-[1.7] text-ink/50">
@@ -1204,7 +1214,7 @@ function Process() {
         <div className="process-head" style={{ opacity: 0 }}>
           <Kicker>The Process</Kicker>
           <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
-            From Pipeline to predictable revenue.
+            <VariableProximity label="From Pipeline to predictable revenue." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
           </h2>
           <p className="mt-4 max-w-[48ch] text-[1rem] leading-[1.7] text-ink/50">
             Every step engineered, from lead capture to deal conversion.
@@ -1380,12 +1390,13 @@ const STOP_COLOR: Record<
 };
 
 function Journey() {
+  const theme = useSiteTheme();
+  const isLight = theme === "light";
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const roadRef = useRef<SVGPathElement>(null);
   const roadTrailRef = useRef<SVGPathElement>(null);
   const carRef = useRef<SVGGElement>(null);
-  const dotsRef = useRef<(SVGGElement | null)[]>([]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -1449,25 +1460,6 @@ function Journey() {
           },
           0,
         );
-
-        // Pulse each stop when the car passes over it
-        STOPS.forEach((s, i) => {
-          const dot = dotsRef.current[i];
-          if (!dot) return;
-          gsap.set(dot, { transformOrigin: `${s.x}px ${s.y}px` });
-          const progress = i / (STOPS.length - 1);
-          tl.to(
-            dot,
-            {
-              scale: 1.35,
-              duration: 0.02,
-              ease: "power2.out",
-              yoyo: true,
-              repeat: 1,
-            },
-            Math.max(0, progress - 0.005),
-          );
-        });
       }
 
       gsap.utils.toArray<HTMLElement>(".milestone-card").forEach((el) => {
@@ -1522,8 +1514,10 @@ function Journey() {
         <div className="journey-head" style={{ opacity: 0 }}>
           <Kicker color="cyan">Our Journey</Kicker>
           <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
-            From a Gmail to a revenue engine.
-            <span className="block text-ink/40">Every stop, every turn.</span>
+            <VariableProximity label="From a Gmail to a revenue engine." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
+            <span className="block text-ink/40">
+              <VariableProximity label="Every stop, every turn." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
+            </span>
           </h2>
           <p className="mt-6 max-w-[56ch] text-[1rem] leading-[1.7] text-ink/50">
             Six stops. One road. Scroll to ride the journey from the first cold
@@ -1554,38 +1548,15 @@ function Journey() {
                 <stop offset="1" stopColor="rgba(167,139,250,1)" />
               </linearGradient>
               <linearGradient id="journeyCarBody" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stopColor="#111a2e" />
-                <stop offset="1" stopColor="#1c2a4a" />
+                <stop offset="0" stopColor={isLight ? "#1e293b" : "#111a2e"} />
+                <stop offset="1" stopColor={isLight ? "#334155" : "#1c2a4a"} />
               </linearGradient>
-              <radialGradient id="journeyHeadlight" cx="0.5" cy="0.5" r="0.5">
-                <stop offset="0" stopColor="rgba(254,243,199,0.95)" />
-                <stop offset="1" stopColor="rgba(254,243,199,0)" />
-              </radialGradient>
             </defs>
-
-            {/* Soft aura behind road */}
-            <path
-              d={JOURNEY_ROAD_PATH}
-              stroke="rgba(34,211,238,0.12)"
-              strokeWidth="48"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ filter: "blur(10px)" }}
-            />
 
             {/* Road body (asphalt) */}
             <path
               d={JOURNEY_ROAD_PATH}
-              stroke="#0b111d"
-              strokeWidth="36"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d={JOURNEY_ROAD_PATH}
-              stroke="rgba(255,255,255,0.035)"
+              stroke={isLight ? "#cbd5e1" : "#0b111d"}
               strokeWidth="36"
               fill="none"
               strokeLinecap="round"
@@ -1600,25 +1571,17 @@ function Journey() {
               fill="none"
             />
 
-            {/* Road edge lines */}
+            {/* Center lane marking */}
             <path
               d={JOURNEY_ROAD_PATH}
-              stroke="rgba(255,255,255,0.07)"
-              strokeWidth="19"
+              stroke={isLight ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.18)"}
+              strokeWidth="1.4"
+              strokeDasharray="10 14"
               fill="none"
               strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d={JOURNEY_ROAD_PATH}
-              stroke="rgba(5,8,14,1)"
-              strokeWidth="17"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
             />
 
-            {/* Scroll-driven glowing trail (appears behind the car) */}
+            {/* Scroll-driven trail (appears behind the car) */}
             <path
               ref={roadTrailRef as React.RefObject<SVGPathElement>}
               d={JOURNEY_ROAD_PATH}
@@ -1626,51 +1589,13 @@ function Journey() {
               strokeWidth="3"
               strokeLinecap="round"
               fill="none"
-              style={{ filter: "drop-shadow(0 0 8px rgba(34,211,238,0.75))" }}
             />
-
-            {/* Stops */}
-            {STOPS.map((s, i) => (
-              <g
-                key={i}
-                ref={(el) => {
-                  dotsRef.current[i] = el;
-                }}
-              >
-                <circle cx={s.x} cy={s.y} r="30" fill="rgba(34,211,238,0.06)" />
-                <circle
-                  cx={s.x}
-                  cy={s.y}
-                  r="15"
-                  fill="#080c16"
-                  stroke="rgba(34,211,238,0.55)"
-                  strokeWidth="1.2"
-                />
-                <circle
-                  cx={s.x}
-                  cy={s.y}
-                  r="5.5"
-                  fill="rgba(125,211,252,1)"
-                  style={{
-                    filter: "drop-shadow(0 0 6px rgba(34,211,238,0.9))",
-                  }}
-                />
-              </g>
-            ))}
 
             {/* Car (centered at local origin, nose pointing up → autoRotate: 90) */}
             <g
               ref={carRef as React.RefObject<SVGGElement>}
-              style={{ opacity: 0 }}
+              style={{ opacity: 0, willChange: "transform" }}
             >
-              <ellipse
-                cx="0"
-                cy="-52"
-                rx="26"
-                ry="40"
-                fill="url(#journeyHeadlight)"
-                opacity="0.45"
-              />
               <rect
                 x="-15"
                 y="-26"
@@ -1683,48 +1608,16 @@ function Journey() {
               />
               <path
                 d="M -11 -22 L 11 -22 L 9 -10 L -9 -10 Z"
-                fill="rgba(125,211,252,0.38)"
+                fill="rgba(125,211,252,0.5)"
               />
               <path
                 d="M -9 14 L 9 14 L 11 24 L -11 24 Z"
-                fill="rgba(167,139,250,0.22)"
+                fill="rgba(167,139,250,0.3)"
               />
               <circle cx="-8" cy="-24" r="2" fill="#fef3c7" />
               <circle cx="8" cy="-24" r="2" fill="#fef3c7" />
               <circle cx="-8" cy="24" r="1.5" fill="#ef4444" />
               <circle cx="8" cy="24" r="1.5" fill="#ef4444" />
-              <rect
-                x="-19"
-                y="-14"
-                width="4"
-                height="10"
-                rx="1.5"
-                fill="#05080f"
-              />
-              <rect
-                x="15"
-                y="-14"
-                width="4"
-                height="10"
-                rx="1.5"
-                fill="#05080f"
-              />
-              <rect
-                x="-19"
-                y="4"
-                width="4"
-                height="10"
-                rx="1.5"
-                fill="#05080f"
-              />
-              <rect
-                x="15"
-                y="4"
-                width="4"
-                height="10"
-                rx="1.5"
-                fill="#05080f"
-              />
             </g>
           </svg>
 
@@ -2095,7 +1988,7 @@ function Values() {
         <div className="values-head" style={{ opacity: 0 }}>
           <Kicker>Our Values</Kicker>
           <h2 className="mt-6 text-[2rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
-            How we operate.
+            <VariableProximity label="How we operate." fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
           </h2>
         </div>
 
@@ -2187,7 +2080,7 @@ function FinalCTA() {
               className="cta-el max-w-[20ch] text-balance text-[2.25rem] font-light leading-[1.05] tracking-[-0.03em] text-ink sm:text-[3rem] lg:text-[3.5rem]"
               style={{ opacity: 0 }}
             >
-              Ready to build a predictable pipeline?
+              <VariableProximity label="Ready to build a predictable pipeline?" fromFontVariationSettings={VP_FROM} toFontVariationSettings={VP_TO} containerRef={sectionRef} radius={VP_RADIUS} falloff="gaussian" />
             </h2>
 
             <p
@@ -2226,59 +2119,68 @@ function FinalCTA() {
 ═══════════════════════════════════════════════════════════════════ */
 
 export default function AboutUsPage() {
+  const theme = useSiteTheme();
+  const isLight = theme === "light";
+
   return (
     <main
       id="top"
       className="relative isolate min-h-screen overflow-x-clip"
       style={{ background: "var(--bg-page-deep)" }}
     >
-      {/* ── Global background: hexagon cyan, diagonal ── */}
-      <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.15]">
-        <ShapeGrid
-          direction="diagonal"
-          speed={0.28}
-          borderColor="rgba(34,211,238,0.22)"
-          squareSize={56}
-          hoverFillColor="rgba(34,211,238,0.14)"
-          shape="hexagon"
+      {/* ── Global background grids — dark mode only ── */}
+      {!isLight && (
+        <>
+          <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.15]">
+            <ShapeGrid
+              direction="diagonal"
+              speed={0.28}
+              borderColor="rgba(34,211,238,0.22)"
+              squareSize={56}
+              hoverFillColor="rgba(34,211,238,0.14)"
+              shape="hexagon"
+            />
+          </div>
+          <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.08]">
+            <ShapeGrid
+              direction="up"
+              speed={0.16}
+              borderColor="rgba(167,139,250,0.24)"
+              squareSize={72}
+              hoverFillColor="rgba(167,139,250,0.12)"
+              shape="circle"
+            />
+          </div>
+        </>
+      )}
+
+      {/* ── Vignette — dark mode only ── */}
+      {!isLight && (
+        <div
+          className="pointer-events-none fixed inset-0 z-1"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 40%, transparent 20%, color-mix(in srgb, var(--bg-page-deep) 60%, transparent) 72%, color-mix(in srgb, var(--bg-page-deep) 94%, transparent) 100%)",
+          }}
         />
-      </div>
+      )}
 
-      {/* ── Global background layer 2: circle violet, up ── */}
-      <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.08]">
-        <ShapeGrid
-          direction="up"
-          speed={0.16}
-          borderColor="rgba(167,139,250,0.24)"
-          squareSize={72}
-          hoverFillColor="rgba(167,139,250,0.12)"
-          shape="circle"
-        />
-      </div>
-
-      {/* ── Vignette ── */}
-      <div
-        className="pointer-events-none fixed inset-0 z-[1]"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 40%, transparent 20%, color-mix(in srgb, var(--bg-page-deep) 60%, transparent) 72%, color-mix(in srgb, var(--bg-page-deep) 94%, transparent) 100%)",
-        }}
-      />
-
-      {/* ── Color atmosphere orbs ── */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[2] overflow-hidden"
-      >
-        <div className="absolute -left-[15%] top-[0%] h-[70vh] w-[65vw] rounded-full bg-[radial-gradient(ellipse,rgba(34,211,238,0.07),transparent_65%)] blur-3xl" />
-        <div className="absolute -right-[10%] top-[2%] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.06),transparent_65%)] blur-3xl" />
-        <div className="absolute -left-[10%] top-[18%] h-[60vh] w-[60vw] rounded-full bg-[radial-gradient(ellipse,rgba(59,130,246,0.06),transparent_65%)] blur-3xl" />
-        <div className="absolute -right-[5%] top-[32%] h-[60vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.07),transparent_65%)] blur-3xl" />
-        <div className="absolute left-[15%] top-[46%] h-[55vh] w-[70vw] rounded-full bg-[radial-gradient(ellipse,rgba(20,184,166,0.05),transparent_65%)] blur-3xl" />
-        <div className="absolute -left-[10%] top-[60%] h-[60vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(56,189,248,0.06),transparent_65%)] blur-3xl" />
-        <div className="absolute -right-[5%] top-[74%] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(99,102,241,0.07),transparent_65%)] blur-3xl" />
-        <div className="absolute left-[10%] top-[86%] h-[55vh] w-[80vw] rounded-full bg-[radial-gradient(ellipse,rgba(52,211,153,0.05),transparent_65%)] blur-3xl" />
-      </div>
+      {/* ── Color atmosphere orbs — dark mode only ── */}
+      {!isLight && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-[2] overflow-hidden"
+        >
+          <div className="absolute -left-[15%] top-[0%] h-[70vh] w-[65vw] rounded-full bg-[radial-gradient(ellipse,rgba(34,211,238,0.07),transparent_65%)] blur-3xl" />
+          <div className="absolute -right-[10%] top-[2%] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.06),transparent_65%)] blur-3xl" />
+          <div className="absolute -left-[10%] top-[18%] h-[60vh] w-[60vw] rounded-full bg-[radial-gradient(ellipse,rgba(59,130,246,0.06),transparent_65%)] blur-3xl" />
+          <div className="absolute -right-[5%] top-[32%] h-[60vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.07),transparent_65%)] blur-3xl" />
+          <div className="absolute left-[15%] top-[46%] h-[55vh] w-[70vw] rounded-full bg-[radial-gradient(ellipse,rgba(20,184,166,0.05),transparent_65%)] blur-3xl" />
+          <div className="absolute -left-[10%] top-[60%] h-[60vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(56,189,248,0.06),transparent_65%)] blur-3xl" />
+          <div className="absolute -right-[5%] top-[74%] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(99,102,241,0.07),transparent_65%)] blur-3xl" />
+          <div className="absolute left-[10%] top-[86%] h-[55vh] w-[80vw] rounded-full bg-[radial-gradient(ellipse,rgba(52,211,153,0.05),transparent_65%)] blur-3xl" />
+        </div>
+      )}
 
       {/* ── Navbar ── */}
       <div className="relative z-20">

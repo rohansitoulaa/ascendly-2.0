@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useRef, type ReactNode } from "react";
+import { useSiteTheme } from "@/lib/useSiteTheme";
 import { Counter } from "@/animations/Counter";
 import VariableProximity from "@/animations/VariableProximity";
 import Navbar from "@/landingPage/sections/Navbar";
@@ -644,6 +645,8 @@ function CTA() {
 /* ------------------------------------------------------------------ */
 
 export default function ServicesPage() {
+  const theme = useSiteTheme();
+
   return (
     <main
       id="top"
@@ -674,37 +677,39 @@ export default function ServicesPage() {
         />
       </div>
 
-      {/* Scrolling color atmosphere  blobs scroll with content, one per section band */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-1 overflow-hidden"
-      >
-        {/* Hero  cyan left, violet right */}
-        <div className="absolute -left-[15%] top-[0%] h-[70vh] w-[65vw] rounded-full bg-[radial-gradient(ellipse,rgba(34,211,238,0.09),transparent_65%)] blur-3xl" />
-        <div className="absolute -right-[10%] top-[2%] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.08),transparent_65%)] blur-3xl" />
+      {/* Scrolling color atmosphere — dark mode only */}
+      {theme === "dark" && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-1 overflow-hidden"
+        >
+          {/* Hero  cyan left, violet right */}
+          <div className="absolute -left-[15%] top-[0%] h-[70vh] w-[65vw] rounded-full bg-[radial-gradient(ellipse,rgba(34,211,238,0.09),transparent_65%)] blur-3xl" />
+          <div className="absolute -right-[10%] top-[2%] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.08),transparent_65%)] blur-3xl" />
 
-        {/* Gears  deep blue left */}
-        <div className="absolute -left-[10%] top-[15%] h-[60vh] w-[60vw] rounded-full bg-[radial-gradient(ellipse,rgba(59,130,246,0.07),transparent_65%)] blur-3xl" />
+          {/* Gears  deep blue left */}
+          <div className="absolute -left-[10%] top-[15%] h-[60vh] w-[60vw] rounded-full bg-[radial-gradient(ellipse,rgba(59,130,246,0.07),transparent_65%)] blur-3xl" />
 
-        {/* Proof  violet right */}
-        <div className="absolute -right-[5%] top-[28%] h-[60vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.08),transparent_65%)] blur-3xl" />
+          {/* Proof  violet right */}
+          <div className="absolute -right-[5%] top-[28%] h-[60vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.08),transparent_65%)] blur-3xl" />
 
-        {/* Principles  teal center */}
-        <div className="absolute left-[15%] top-[40%] h-[55vh] w-[70vw] rounded-full bg-[radial-gradient(ellipse,rgba(20,184,166,0.06),transparent_65%)] blur-3xl" />
+          {/* Principles  teal center */}
+          <div className="absolute left-[15%] top-[40%] h-[55vh] w-[70vw] rounded-full bg-[radial-gradient(ellipse,rgba(20,184,166,0.06),transparent_65%)] blur-3xl" />
 
-        {/* WhoFor  sky blue left */}
-        <div className="absolute -left-[10%] top-[53%] h-[60vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(56,189,248,0.07),transparent_65%)] blur-3xl" />
+          {/* WhoFor  sky blue left */}
+          <div className="absolute -left-[10%] top-[53%] h-[60vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(56,189,248,0.07),transparent_65%)] blur-3xl" />
 
-        {/* Process  indigo right */}
-        <div className="absolute -right-[5%] top-[65%] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(99,102,241,0.08),transparent_65%)] blur-3xl" />
+          {/* Process  indigo right */}
+          <div className="absolute -right-[5%] top-[65%] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(99,102,241,0.08),transparent_65%)] blur-3xl" />
 
-        {/* Stats / Mission  cyan center */}
-        <div className="absolute left-[10%] top-[77%] h-[55vh] w-[80vw] rounded-full bg-[radial-gradient(ellipse,rgba(34,211,238,0.06),transparent_65%)] blur-3xl" />
+          {/* Stats / Mission  cyan center */}
+          <div className="absolute left-[10%] top-[77%] h-[55vh] w-[80vw] rounded-full bg-[radial-gradient(ellipse,rgba(34,211,238,0.06),transparent_65%)] blur-3xl" />
 
-        {/* CTA  violet left, sky blue right */}
-        <div className="absolute -left-[5%] top-[90%] h-[50vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.08),transparent_65%)] blur-3xl" />
-        <div className="absolute -right-[5%] top-[92%] h-[45vh] w-[50vw] rounded-full bg-[radial-gradient(ellipse,rgba(125,211,252,0.07),transparent_65%)] blur-3xl" />
-      </div>
+          {/* CTA  violet left, sky blue right */}
+          <div className="absolute -left-[5%] top-[90%] h-[50vh] w-[55vw] rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.08),transparent_65%)] blur-3xl" />
+          <div className="absolute -right-[5%] top-[92%] h-[45vh] w-[50vw] rounded-full bg-[radial-gradient(ellipse,rgba(125,211,252,0.07),transparent_65%)] blur-3xl" />
+        </div>
+      )}
 
       {/* Navbar */}
       <div className="relative z-20">

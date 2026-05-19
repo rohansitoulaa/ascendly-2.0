@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
+import { useSiteTheme } from "@/lib/useSiteTheme";
 import { FiGlobe, FiLinkedin } from "react-icons/fi";
 import { Reveal } from "@/animations/Reveal";
 import { GlassCard } from "@/design/GlassCard";
@@ -299,22 +300,28 @@ function ReviewCard({
 }
 
 export default function TestimonialsPage() {
+  const theme = useSiteTheme();
+
   return (
     <main
       className="relative min-h-screen overflow-x-hidden text-ink"
       style={{ background: "var(--bg-page-deep)" }}
     >
-      <div
-        aria-hidden
-        className={`pointer-events-none fixed inset-0 z-0 ${TESTIMONIAL_BACKGROUND.shaderOpacityClassName}`}
-      >
-        <Grainient className="h-full w-full" />
-      </div>
+      {theme === "dark" && (
+        <div
+          aria-hidden
+          className={`pointer-events-none fixed inset-0 z-0 ${TESTIMONIAL_BACKGROUND.shaderOpacityClassName}`}
+        >
+          <Grainient className="h-full w-full" />
+        </div>
+      )}
 
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-[1] bg-[radial-gradient(circle_at_18%_12%,rgba(34,211,238,0.12),transparent_24%),radial-gradient(circle_at_78%_16%,rgba(99,102,241,0.16),transparent_28%),radial-gradient(circle_at_50%_42%,rgba(8,145,178,0.08),transparent_34%)]"
-      />
+      {theme === "dark" && (
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-0 z-1 bg-[radial-gradient(circle_at_18%_12%,rgba(34,211,238,0.12),transparent_24%),radial-gradient(circle_at_78%_16%,rgba(99,102,241,0.16),transparent_28%),radial-gradient(circle_at_50%_42%,rgba(8,145,178,0.08),transparent_34%)]"
+        />
+      )}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-[2]"

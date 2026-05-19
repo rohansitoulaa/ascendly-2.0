@@ -70,7 +70,9 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-30"
         aria-hidden
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.14),transparent_45%),radial-gradient(circle_at_80%_70%,rgba(167,139,250,0.16),transparent_50%),radial-gradient(circle_at_59%_110%,rgba(59,130,246,0.14),transparent_55%)]" />
+        {!theme || theme === "dark" ? (
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.14),transparent_45%),radial-gradient(circle_at_80%_70%,rgba(167,139,250,0.16),transparent_50%),radial-gradient(circle_at_59%_110%,rgba(59,130,246,0.14),transparent_55%)]" />
+        ) : null}
         <div
           className="absolute inset-0"
           style={{ background: "var(--gradient-overlay-bottom)" }}
@@ -91,15 +93,19 @@ export function Hero() {
         />
       </div>
 
-      {/* Floating orbs  static. Scroll-driven transforms on blurred 500px shapes repaint constantly. */}
-      <div
-        className="pointer-events-none absolute -top-24 -left-24 -z-10 h-[420px] w-[420px] rounded-full bg-cyan-500/20 blur-[90px] sm:h-[540px] sm:w-[540px]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -right-24 top-1/3 -z-10 h-[380px] w-[380px] rounded-full bg-violet-500/18 blur-[100px] sm:h-[520px] sm:w-[520px]"
-        aria-hidden
-      />
+      {/* Floating orbs — dark mode only */}
+      {theme === "dark" && (
+        <>
+          <div
+            className="pointer-events-none absolute -top-24 -left-24 -z-10 h-[420px] w-[420px] rounded-full bg-cyan-500/20 blur-[90px] sm:h-[540px] sm:w-[540px]"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-24 top-1/3 -z-10 h-[380px] w-[380px] rounded-full bg-violet-500/18 blur-[100px] sm:h-[520px] sm:w-[520px]"
+            aria-hidden
+          />
+        </>
+      )}
 
       <div className="mx-auto w-full max-w-[1220px] px-6 sm:px-8">
         <motion.div

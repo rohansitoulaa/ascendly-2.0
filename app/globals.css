@@ -259,6 +259,10 @@ canvas {
   --grid-mask-color:     rgba(255, 255, 255, 0.12);
   --dot-bg:              #06090d;
   --silk-color:          #263E52;
+
+  /* Floating surfaces (nav dropdown, mobile menu overlay) — theme-aware glass. */
+  --bg-dropdown:         rgba(8, 10, 16, 0.95);
+  --bg-mobile-menu:      rgba(5, 6, 10, 0.85);
 }
 
 /* Light theme — activated by setting data-site-theme="light" on <html>. */
@@ -294,32 +298,33 @@ html[data-site-theme="light"] {
 
   --page-tint-cyan:   rgba(34, 211, 238, 0.06);
   --page-tint-violet: rgba(167, 139, 250, 0.06);
-  --page-grad-top:    #f9fafb;
-  --page-grad-mid:    #f8fafc;
-  --page-grad-bottom: #f1f5f9;
+  --page-grad-top:    #ffffff;
+  --page-grad-mid:    #ffffff;
+  --page-grad-bottom: #ffffff;
 
   /* Light-mode surface variables — flip the values, keep the names. */
-  --bg-page-deep:        #f8fafc;
-  --bg-section-elev:     #f1f5f9;
-  --bg-section-deeper:   #e2e8f0;
+  --bg-page-deep:        #ffffff;
+  --bg-section-elev:     #ffffff;
+  --bg-section-deeper:   #f8fafc;
   --gradient-card:       linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.98));
   --gradient-card-soft:  linear-gradient(180deg, rgba(15,23,42,0.025), rgba(15,23,42,0.008));
-  --gradient-overlay-bottom: linear-gradient(180deg, rgba(248,250,252,0) 0%, rgba(248,250,252,0.55) 60%, rgba(248,250,252,1) 100%);
-  --gradient-overlay-top: radial-gradient(120% 80% at 50% 0%, rgba(219,232,242,0.55) 0%, rgba(248,250,252,0.9) 55%, rgba(248,250,252,1) 100%);
+  --gradient-overlay-bottom: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 60%, rgba(255,255,255,1) 100%);
+  --gradient-overlay-top: radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 55%, rgba(255,255,255,1) 100%);
   --grid-line-color:     rgba(15, 23, 42, 0.18);
   --grid-mask-color:     rgba(15, 23, 42, 0.26);
-  --dot-bg:              #f1f5f9;
+  --dot-bg:              #ffffff;
   --silk-color:          #DBE7EF;
 
   /* Light glass — scrim becomes white so bg-scrim/N reads as light glass. */
   --c-scrim: 255 255 255;
+
+  /* Floating surfaces flip to light glass in light mode. */
+  --bg-dropdown:         rgba(255, 255, 255, 0.96);
+  --bg-mobile-menu:      rgba(248, 250, 252, 0.92);
 }
 
 html[data-site-theme="light"] body {
-  background:
-    radial-gradient(circle at 14% 4%, rgba(34, 211, 238, 0.06), transparent 28%),
-    radial-gradient(circle at 86% 92%, rgba(167, 139, 250, 0.06), transparent 32%),
-    linear-gradient(180deg, #f9fafb 0%, #f8fafc 46%, #f1f5f9 100%);
+  background: #ffffff;
 }
 
 /* Light mode: page-level wrappers become transparent so the body light
