@@ -67,11 +67,11 @@ export function Navbar() {
       >
         <nav
           className={[
-            "relative flex w-full items-center justify-between gap-6 rounded-full border px-4 sm:px-5",
-            "transition-[max-width,padding,background-color,border-color,box-shadow] duration-300 ease-out",
+            "relative flex w-full items-center justify-between gap-6 rounded-xl border px-4 sm:px-5",
+            "transition-[max-width,padding,background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-out",
             scrolled
-              ? "max-w-[1080px] py-2.5 border-hairline/10 bg-scrim/50 shadow-[0_18px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
-              : "max-w-[1180px] py-3.5 border-hairline/[0.06] bg-surface/[0.02] backdrop-blur-md",
+              ? "max-w-[1080px] py-2.5 border-hairline/10 bg-scrim/50 shadow-[0_4px_16px_rgba(0,0,0,0.07),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+              : "max-w-[1180px] py-3.5 border-transparent bg-transparent",
           ].join(" ")}
         >
           <Link

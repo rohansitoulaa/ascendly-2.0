@@ -484,7 +484,28 @@ export default function ScrollStack({
     void document.fonts?.ready.then(measureLayout);
     measureLayout();
 
+    // Browser scroll-position restoration (hard reload) happens asynchronously
+    // after useLayoutEffect. A double-rAF lets the browser commit the restored
+    // scrollY before we read it and apply initial card transforms.
+    let scrollRestoreRaf1 = 0;
+    let scrollRestoreRaf2 = 0;
+    scrollRestoreRaf1 = window.requestAnimationFrame(() => {
+      scrollRestoreRaf2 = window.requestAnimationFrame(scheduleUpdate);
+    });
+
+    // bfcache restore fires pageshow with persisted=true — re-measure so
+    // card offsets are recalculated after the browser reinstates the page.
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) measureLayout();
+      else scheduleUpdate();
+    };
+    window.addEventListener("pageshow", handlePageShow);
+
     return () => {
+      window.cancelAnimationFrame(scrollRestoreRaf1);
+      window.cancelAnimationFrame(scrollRestoreRaf2);
+      window.removeEventListener("pageshow", handlePageShow);
+
       if (lenisFrameRef.current !== null) {
         window.cancelAnimationFrame(lenisFrameRef.current);
       }

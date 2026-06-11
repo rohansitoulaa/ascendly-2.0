@@ -9,6 +9,7 @@ import { Reveal } from "@/animations/Reveal";
 import { Badge } from "@/design/Badge";
 import VariableProximity from "@/animations/VariableProximity";
 import { CALENDLY_URL } from "@/lib/constants";
+import { useSiteTheme } from "@/lib/useSiteTheme";
 
 const DotField = dynamic(() => import("@/design/DotField"), { ssr: false });
 
@@ -387,7 +388,7 @@ function Commitment() {
       <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-hairline/[0.08] bg-surface/[0.06] md:grid-cols-3">
         {items.map((p, i) => (
           <Reveal key={p.index} direction="up" delay={0.08 + i * 0.06}>
-            <div className="h-full bg-[#07080c] p-8 sm:p-10">
+            <div className="h-full bg-(--bg-page-deep) p-8 sm:p-10">
               <div className="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-ink/35">
                 {p.index}
               </div>
@@ -460,8 +461,11 @@ function CTA() {
 /* ------------------------------------------------------------------ */
 
 export default function RevenueAutomationPage() {
+  const theme = useSiteTheme();
+  const isLight = theme === "light";
+
   return (
-    <main id="top" className="relative isolate min-h-screen overflow-x-clip bg-[#05060A]">
+    <main id="top" className="relative isolate min-h-screen overflow-x-clip bg-(--page-bg)">
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-0 opacity-[0.50]">
           <DotField
@@ -470,15 +474,17 @@ export default function RevenueAutomationPage() {
             cursorRadius={360}
             bulgeStrength={36}
             glowRadius={180}
-            glowColor="#05060A"
-            gradientFrom="rgba(226, 232, 240, 0.22)"
-            gradientTo="rgba(148, 163, 184, 0.10)"
+            glowColor={isLight ? "#f8fafc" : "#05060A"}
+            gradientFrom={isLight ? "rgba(15,23,42,0.14)" : "rgba(226,232,240,0.22)"}
+            gradientTo={isLight ? "rgba(15,23,42,0.06)" : "rgba(148,163,184,0.10)"}
           />
         </div>
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(180deg, rgba(5,6,10,0.25) 0%, rgba(5,6,10,0.55) 100%)" }}
-        />
+        {!isLight && (
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(180deg, rgba(5,6,10,0.25) 0%, rgba(5,6,10,0.55) 100%)" }}
+          />
+        )}
       </div>
 
       <div aria-hidden className="pointer-events-none absolute inset-0 z-1 overflow-hidden">

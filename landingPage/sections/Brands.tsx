@@ -29,7 +29,7 @@ export function Brands() {
               alt={brand.brandName}
               width={100}
               height={32}
-              className={`brand-logo max-h-8 w-auto object-contain${brand.invert ? " brightness-0 invert" : ""}`}
+              className="brand-logo max-h-8 w-auto object-contain"
               unoptimized
             />
           </a>

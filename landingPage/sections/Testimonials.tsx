@@ -117,7 +117,7 @@ function ReviewCard({
   accent: ReviewAccent;
 }) {
   return (
-    <GlassCard accent={accent} tilt={false} className="h-full min-h-[28rem] sm:min-h-[30rem]">
+    <GlassCard accent={accent} tilt={false} spotlight={false} className="h-full min-h-112 sm:min-h-120">
       <article className="flex h-full flex-col gap-8 p-7 sm:p-9 lg:p-10">
         <div className="flex items-start gap-4 sm:gap-5">
           <div className="h-16 w-16 shrink-0 overflow-hidden rounded-[20px] border border-hairline/12 bg-surface/4 sm:h-20 sm:w-20">

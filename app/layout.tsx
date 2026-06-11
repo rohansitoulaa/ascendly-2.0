@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto_Flex } from "next/font/google";
+import { Montserrat, Roboto_Flex } from "next/font/google";
 import { LenisProvider } from "@/landingPage/providers/LenisProvider";
 import JsonLd from "@/components/JsonLd";
 import LogoLoader from "@/components/LogoLoader";
@@ -7,14 +7,10 @@ import { Footer } from "@/landingPage/sections/Footer";
 import { organizationSchema, webSiteSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const robotoFlex = Roboto_Flex({
@@ -116,7 +112,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${robotoFlex.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${robotoFlex.variable} h-full antialiased`}
     >
       <head>
         {/*

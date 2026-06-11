@@ -13,6 +13,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
+import { useSiteTheme } from "@/lib/useSiteTheme";
 
 interface GlassCardProps extends Omit<HTMLAttributes<HTMLDivElement>, "onAnimationStart" | "onDrag" | "onDragEnd" | "onDragStart"> {
   children: ReactNode;
@@ -63,6 +64,8 @@ export function GlassCard({
 }: GlassCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const theme = useSiteTheme();
+  const isLight = theme === "light";
 
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
@@ -100,8 +103,13 @@ export function GlassCard({
           : undefined
       }
       className={[
-        "group relative overflow-hidden rounded-[clamp(18px,2.4vw,28px)] border border-hairline/8 bg-gradient-to-br from-surface/[0.035] to-surface/1 backdrop-blur-xl transition-[border-color,box-shadow] duration-500",
-        glow
+        "group relative overflow-hidden rounded-[clamp(18px,2.4vw,28px)] border border-hairline/8 backdrop-blur-xl transition-[border-color,box-shadow] duration-500",
+        isLight
+          ? "bg-linear-to-br from-surface/3 to-surface/6"
+          : "bg-linear-to-br from-surface/[0.035] to-surface/[0.07]",
+        glow && isLight
+          ? "shadow-[0_4px_24px_rgba(15,23,42,0.07),0_1px_4px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.9)] hover:border-hairline/20 hover:shadow-[0_8px_32px_rgba(15,23,42,0.10),inset_0_1px_0_rgba(255,255,255,1)]"
+          : glow
           ? "shadow-[0_24px_80px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.06)] hover:border-hairline/15 hover:shadow-[0_28px_92px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.1)]"
           : "",
         className,

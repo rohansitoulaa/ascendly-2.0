@@ -377,6 +377,7 @@ html[data-site-theme="light"] [data-badge-variant="glow"] {
    bg-white/8, border-white/10. Opacity modifiers work via
    color-mix in modern browsers. */
 @theme {
+  --font-sans: var(--font-montserrat), sans-serif;
   --color-ink: rgb(var(--c-ink));
   --color-surface: rgb(var(--c-surface));
   --color-hairline: rgb(var(--c-hairline));
@@ -384,6 +385,10 @@ html[data-site-theme="light"] [data-badge-variant="glow"] {
   --color-accent-cyan: rgb(var(--c-accent-cyan));
   --color-accent-violet: rgb(var(--c-accent-violet));
   --color-accent-sky: rgb(var(--c-accent-sky));
+}
+
+body {
+  font-family: var(--font-montserrat), sans-serif;
 }
 
 html[data-site-theme="matte"] {

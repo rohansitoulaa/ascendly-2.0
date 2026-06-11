@@ -270,16 +270,22 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
   const gradientText = `linear-gradient(120deg, ${feature.gradient.from} 0%, ${feature.gradient.via} 50%, ${feature.gradient.to} 100%)`;
   const gradientSoft = `linear-gradient(135deg, ${feature.gradient.from} 0%, ${feature.gradient.via} 50%, ${feature.gradient.to} 100%)`;
   const isLight = theme === "light";
-  const cardBackground = isLight
-    ? "linear-gradient(160deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.98) 55%, rgba(241,245,249,1) 100%)"
-    : feature.surface.base;
+
+  // Fully opaque — prevents card content from showing through when stacked behind another card.
+  const cardBackground = isLight ? "#ffffff" : "#05060a";
   const cardShadow = isLight
-    ? `0 40px 120px rgba(15,23,42,0.12), inset 0 1px 0 rgba(255,255,255,0.6), 0 0 0 1px ${feature.surface.ring} inset`
+    ? `0 40px 120px rgba(15,23,42,0.10), inset 0 1px 0 rgba(255,255,255,0.8), 0 0 0 1px ${feature.surface.ring} inset`
     : `0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px ${feature.surface.ring} inset`;
+
+  // Full-card color wash — centered radial, no blur filters, spans the whole surface.
+  // Light mode uses higher opacity since white background washes out tints.
+  const colorTint = isLight
+    ? `radial-gradient(ellipse 110% 100% at 50% 40%, ${feature.gradient.from}4a 0%, ${feature.gradient.via}2e 52%, transparent 85%)`
+    : `radial-gradient(ellipse 100% 90% at 50% 42%, ${feature.gradient.from}26 0%, ${feature.gradient.via}18 52%, transparent 82%)`;
 
   return (
     <article
-      className="scroll-stack-card relative box-border w-full origin-top overflow-hidden rounded-[clamp(22px,3vw,36px)] border border-hairline/10 will-change-transform"
+      className="font-sans scroll-stack-card relative box-border w-full origin-top overflow-hidden rounded-[clamp(22px,3vw,36px)] border border-hairline/10 will-change-transform"
       style={{
         background: cardBackground,
         boxShadow: cardShadow,
@@ -288,13 +294,8 @@ function FeatureCard({ feature, index, total }: FeatureCardProps) {
       }}
     >
       <div
-        className="pointer-events-none absolute -top-40 -left-28 h-[22rem] w-[22rem] rounded-full opacity-40 blur-[110px]"
-        style={{ background: feature.gradient.from }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -bottom-36 -right-24 h-[24rem] w-[24rem] rounded-full opacity-25 blur-[130px]"
-        style={{ background: feature.gradient.to }}
+        className="pointer-events-none absolute inset-0"
+        style={{ background: colorTint }}
         aria-hidden
       />
       <div
@@ -487,44 +488,12 @@ export function Features() {
       className="relative bg-[#05060a]"
       aria-label="Primary Features"
     >
-      <div className="pointer-events-none sticky top-0 z-0 h-screen w-full overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ background: "var(--gradient-overlay-top)" }}
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 opacity-[0.12]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-            maskImage:
-              "radial-gradient(ellipse at center, black 40%, transparent 85%)",
-          }}
-          aria-hidden
-        />
-        <div
-          className="absolute -left-40 top-1/4 h-[30rem] w-[30rem] rounded-full opacity-[0.18] blur-[160px]"
-          style={{ background: "#3b82f6" }}
-          aria-hidden
-        />
-        <div
-          className="absolute -right-40 bottom-1/4 h-[28rem] w-[28rem] rounded-full opacity-[0.14] blur-[160px]"
-          style={{ background: "#a855f7" }}
-          aria-hidden
-        />
-      </div>
+     
 
-      <div className="relative z-10 -mt-[100vh]">
-        <div className="mx-auto w-full max-w-[1320px] px-6 pt-24 sm:px-10 md:pt-28 lg:pt-32">
+      <div className="relative z-10">
+        <div className="mx-auto w-full max-w-330 px-6 pt-24 sm:px-10 md:pt-28 lg:pt-32">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <span className="text-[0.68rem] uppercase tracking-[0.32em] text-ink/42">
-              Primary Features
-            </span>
-            <span className="text-[0.6rem] uppercase tracking-[0.3em] text-ink/32">
-              01 / {String(FEATURE_COUNT).padStart(2, "0")}
-            </span>
+            
           </div>
           <Reveal direction="up" amount={0.2}>
             <h2 className="mt-5 max-w-[22ch] text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-ink">
@@ -542,11 +511,10 @@ export function Features() {
           itemDistance={180}
           stackPosition="18%"
           scaleEndPosition="8%"
-          blurAmount={1.4}
           releaseDistance={200}
           releaseOpacity={0.2}
-          className="mx-auto w-full max-w-[1320px]"
-          innerClassName="px-6 pt-10 pb-24 sm:px-10 md:pt-[8vh] md:pb-[34rem]"
+          className="mx-auto w-full max-w-330"
+          innerClassName="px-6 pt-5 pb-24 sm:px-10 md:pt-[4vh] md:pb-[34rem]"
         >
           {features.map((feature, index) => (
             <FeatureCard

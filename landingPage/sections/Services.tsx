@@ -1,14 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import { FiArrowUpRight, FiCheck } from "react-icons/fi";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Reveal } from "@/animations/Reveal";
 import { TextReveal } from "@/animations/TextReveal";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface ServiceCard {
   number: string;
@@ -54,98 +49,13 @@ const services: ServiceCard[] = [
   },
 ];
 
-const NBSP = " ";
-
-function splitChars(text: string, gradient?: string) {
-  return text.split("").map((ch, i) => {
-    const gradientStyle = gradient
-      ? {
-          backgroundImage: gradient,
-          WebkitBackgroundClip: "text" as const,
-          backgroundClip: "text" as const,
-          color: "transparent",
-        }
-      : undefined;
-    return (
-      <span
-        key={i}
-        data-char=""
-        className="inline-block"
-        style={{
-          willChange: "transform, opacity",
-          whiteSpace: "pre",
-          ...gradientStyle,
-        }}
-      >
-        {ch === " " ? NBSP : ch}
-      </span>
-    );
-  });
-}
-
-const LABEL_GRADIENT =
-  "linear-gradient(120deg, #ffffff 0%, #c7d2fe 55%, #a5f3fc 100%)";
-
 export function Services() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const inlineRef = useRef<HTMLSpanElement>(null);
-  const labelRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    const inline = inlineRef.current;
-    const label = labelRef.current;
-    if (!inline || !label) return;
-
-    const ctx = gsap.context(() => {
-      const inlineChars = inline.querySelectorAll<HTMLElement>("[data-char]");
-      const labelChars = label.querySelectorAll<HTMLElement>("[data-char]");
-
-      gsap.set(inlineChars, { yPercent: 60, opacity: 0 });
-      gsap.set(labelChars, { yPercent: 60, opacity: 0 });
-
-      gsap.to(inlineChars, {
-        yPercent: 0,
-        opacity: 1,
-        ease: "power3.out",
-        stagger: 0.022,
-        scrollTrigger: {
-          trigger: inline,
-          start: "top 85%",
-          end: "top 50%",
-          scrub: 0.8,
-        },
-      });
-
-      gsap.to(labelChars, {
-        yPercent: 0,
-        opacity: 1,
-        ease: "power3.out",
-        stagger: 0.022,
-        scrollTrigger: {
-          trigger: label,
-          start: "top 90%",
-          end: "top 60%",
-          scrub: 0.8,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="services" className="relative bg-[#05060A]">
+    <section id="services" className="relative bg-[#05060A]">
       {/* Preamble */}
-      <div className="relative mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-28 text-center sm:px-10">
-        <p className="text-[clamp(1.15rem,1.9vw,1.7rem)] font-medium leading-[1.3] tracking-[-0.02em] text-ink/55">
-          Most teams buy{" "}
-          <span
-            ref={inlineRef}
-            className="inline-block font-semibold text-ink"
-          >
-            {splitChars("our services")}
-          </span>
-          .
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center justify-center px-6 py-15 text-center sm:px-10">
+        <p className="text-[clamp(1.15rem,1.9vw,1.7rem)] font-medium leading-[1.3] tracking-[-0.02em] text-ink">
+          Most teams buy Our Services
         </p>
 
         <TextReveal
@@ -157,38 +67,13 @@ export function Services() {
         >
           We build systems that generate and convert revenue.
         </TextReveal>
-
-        <Reveal delay={0.25} direction="up" amount={0.3}>
-          <div className="mt-14 flex flex-col items-center gap-2 text-[0.6rem] uppercase tracking-[0.4em] text-ink/28">
-            <span>Scroll</span>
-            <span className="h-10 w-px bg-linear-to-b from-white/30 to-transparent" />
-          </div>
-        </Reveal>
-      </div>
-
-      {/* Shared section label */}
-      <div className="relative mx-auto max-w-336 px-6 pt-8 text-center sm:px-10 sm:pt-12">
-        <div
-          ref={labelRef}
-          className="inline-block text-[clamp(2.2rem,4.6vw,4rem)] font-semibold leading-none tracking-[-0.055em]"
-        >
-          {splitChars("Our Services", LABEL_GRADIENT)}
-        </div>
-        <div
-          aria-hidden
-          className="mx-auto mt-5 h-px w-24"
-          style={{
-            background:
-              "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
-          }}
-        />
       </div>
 
       {/* Cards */}
-      <div className="relative mx-auto mt-14 max-w-336 px-6 pb-32 sm:mt-20 sm:px-10 sm:pb-40">
+      <div className="mx-auto max-w-400 px-6 pb-32 sm:mt-20 sm:px-10 sm:pb-40">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           {services.map((service, index) => {
-            const gradientText = `linear-gradient(120deg, ${service.gradient.from} 0%, ${service.gradient.via} 50%, ${service.gradient.to} 100%)`;
+            const accentLine = `linear-gradient(90deg, ${service.gradient.from}, ${service.gradient.to})`;
 
             return (
               <Reveal
@@ -200,94 +85,55 @@ export function Services() {
                 className="h-full"
               >
                 <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-hairline/8 bg-surface/1.5 p-8 backdrop-blur-sm transition-colors duration-500 hover:border-hairline/[0.14] sm:p-10 lg:p-12">
-                  <div
-                    className="pointer-events-none absolute -left-20 -top-24 h-80 w-80 rounded-full opacity-[0.22] blur-[120px] transition-opacity duration-700 group-hover:opacity-[0.35]"
-                    style={{ background: service.gradient.from }}
-                    aria-hidden
-                  />
-                  <div
-                    className="pointer-events-none absolute -bottom-24 -right-20 h-96 w-96 rounded-full opacity-[0.16] blur-[140px] transition-opacity duration-700 group-hover:opacity-[0.28]"
-                    style={{ background: service.gradient.to }}
+                  {/* Single top accent line — the only color hit */}
+                  <span
+                    className="absolute inset-x-0 top-0 h-px"
+                    style={{ background: accentLine }}
                     aria-hidden
                   />
 
-                  <div className="relative flex items-center justify-between">
+                  <div className="flex items-center justify-between">
                     <span className="text-[0.62rem] font-semibold uppercase tracking-[0.4em] text-ink/42">
                       Service / {service.number}
                     </span>
-                    <span
-                      className="h-px w-16"
-                      style={{ background: gradientText }}
-                      aria-hidden
-                    />
                   </div>
 
-                  <h3
-                    className="relative mt-8 text-[clamp(1.6rem,2.8vw,2.6rem)] font-semibold leading-[1.02] tracking-[-0.045em]"
-                    style={{
-                      backgroundImage: gradientText,
-                      WebkitBackgroundClip: "text",
-                      backgroundClip: "text",
-                      color: "transparent",
-                    }}
-                  >
+                  <h3 className="mt-8 text-[clamp(1.6rem,2.8vw,2.6rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-ink">
                     {service.title}
                   </h3>
 
-                  <p className="relative mt-5 max-w-[38ch] text-[clamp(0.98rem,1.2vw,1.08rem)] leading-[1.72] text-ink/60">
+                  <p className="mt-5 max-w-[38ch] text-[clamp(0.98rem,1.2vw,1.08rem)] leading-[1.72] text-ink/60">
                     {service.subtext}
                   </p>
 
-                  <ul className="relative mt-8 space-y-4">
+                  <ul className="mt-8 space-y-4">
                     {service.points.map((point) => (
                       <li
                         key={point}
                         className="flex items-start gap-3 text-[0.96rem] leading-[1.65] text-ink/75"
                       >
-                        <span
-                          className="mt-[0.35rem] flex h-4 w-4 shrink-0 items-center justify-center rounded-full"
-                          style={{ background: gradientText }}
-                          aria-hidden
-                        >
-                          <FiCheck className="text-[0.62rem] text-black/80" />
+                        <span className="mt-[0.35rem] flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-hairline/20">
+                          <FiCheck className="text-[0.58rem] text-ink/60" />
                         </span>
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="relative mt-10 flex-1" />
+                  <div className="mt-10 flex-1" />
 
-                  <blockquote
-                    className="relative border-l-2 pl-5 text-[1.05rem] font-medium italic leading-[1.55] tracking-[-0.01em] text-ink/85"
-                    style={{
-                      borderImage: `${gradientText} 1`,
-                    }}
-                  >
+                  <blockquote className="border-l-2 border-hairline/20 pl-5 text-[1.05rem] font-medium italic leading-[1.55] tracking-[-0.01em] text-ink/70">
                     &ldquo;{service.bottomLine}&rdquo;
                   </blockquote>
 
-                  <div className="relative mt-8">
+                  <div className="mt-8">
                     <Link
                       href={service.cta.href}
-                      className="group/cta inline-flex items-center gap-3 text-[0.95rem] font-medium tracking-[-0.01em] text-ink"
+                      className="group/cta inline-flex items-center gap-3 text-[0.95rem] font-medium tracking-[-0.01em] text-ink/80 transition-colors duration-300 hover:text-ink"
                     >
-                      <span
-                        className="transition-colors duration-500"
-                        style={{
-                          backgroundImage: gradientText,
-                          WebkitBackgroundClip: "text",
-                          backgroundClip: "text",
-                          color: "transparent",
-                        }}
-                      >
-                        {service.cta.label}
-                      </span>
-                      <span
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline/10 transition-all duration-500 group-hover/cta:translate-x-1 group-hover/cta:border-hairline/30"
-                        style={{ background: `${service.gradient.from}14` }}
-                      >
-                        <FiArrowUpRight className="text-[1rem] text-ink/85" />
+                      <span>{service.cta.label}</span>
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline/15 transition-all duration-500 group-hover/cta:translate-x-1 group-hover/cta:border-hairline/30">
+                        <FiArrowUpRight className="text-[1rem] text-ink/70" />
                       </span>
                     </Link>
                   </div>

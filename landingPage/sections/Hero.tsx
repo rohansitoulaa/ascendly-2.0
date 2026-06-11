@@ -86,7 +86,7 @@ export function Hero() {
       >
         <Silk
           color={theme === "light" ? "#DBE7EF" : "#263E52"}
-          speed={2}
+          speed={2.5}
           scale={1}
           noiseIntensity={1.5}
           rotation={0}
@@ -179,7 +179,7 @@ export function Hero() {
 
             <div className="flex flex-col border-l border-hairline/10 pl-4">
               <span className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold tracking-[-0.04em] text-ink">
-                30–60d
+                30-60d
               </span>
               <span className="mt-1 text-[0.72rem] uppercase tracking-[0.26em] text-ink/45">
                 Day Ramp
@@ -207,27 +207,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll cue */}
-      <motion.div
-        aria-hidden
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        className="pointer-events-none absolute inset-x-0 bottom-10 mx-auto hidden w-fit items-center gap-3 text-[0.68rem] uppercase tracking-[0.32em] text-ink/40 md:flex"
-      >
-        <span className="relative inline-flex h-9 w-[2px] overflow-hidden rounded-full bg-surface/10">
-          <motion.span
-            animate={{ y: ["-100%", "120%"] }}
-            transition={{
-              duration: 2.2,
-              repeat: Infinity,
-              ease: [0.65, 0, 0.35, 1],
-            }}
-            className="absolute inset-x-0 h-1/2 rounded-full bg-linear-to-b from-transparent via-cyan-200 to-transparent"
-          />
-        </span>
-        Scroll
-      </motion.div>
     </section>
   );
 }

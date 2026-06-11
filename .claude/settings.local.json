@@ -5,7 +5,17 @@
       "Bash(npx next *)",
       "Bash(echo \"EXIT:$?\")",
       "Bash(npx eslint *)",
-      "Bash(npm show *)"
+      "Bash(npm show *)",
+      "Bash(claude update *)",
+      "Bash(jobs -l)",
+      "Bash(kill -0 100646)",
+      "Bash(ps -p 100646 -o pid,etime,%cpu,rss,cmd)",
+      "Bash(kill 100646)",
+      "Bash(kill -9 100646)",
+      "Read(//home/rohansitoulaa/snap/code/243/.local/share/claude/versions/**)",
+      "Bash(echo \"=== exit: $? ===\")",
+      "Bash(claude --version)",
+      "Bash(xargs ls -la)"
     ]
   }
 }
