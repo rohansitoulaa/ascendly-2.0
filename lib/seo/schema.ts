@@ -11,7 +11,7 @@
  * exactly what your content means, enabling rich results and direct answers.
  */
 
-const SITE_URL = "https://ascendly.one";
+const SITE_URL = "https://www.ascendly.one";
 const ORG_NAME = "Ascendly";
 const ORG_LOGO = `${SITE_URL}/logo.png`;
 const FOUNDER_NAME = "Rosis Sitoula";

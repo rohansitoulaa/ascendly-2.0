@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://ascendly.one";
+const SITE_URL = "https://www.ascendly.one";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

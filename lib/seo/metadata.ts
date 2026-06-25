@@ -16,7 +16,7 @@
 import type { Metadata } from "next";
 import { keywordMap } from "./keywords";
 
-const SITE_URL = "https://ascendly.one";
+const SITE_URL = "https://www.ascendly.one";
 const SITE_NAME = "Ascendly";
 const DEFAULT_OG_IMAGE = "/og/default.png";
 
@@ -67,6 +67,18 @@ const PAGE_DEFAULTS: Record<
     description:
       "Read what clients say after their pipeline starts converting. Featured reviews from Matt Leta, Michael Won, Steve Paganelli, Peter Brand, and more B2B revenue leaders.",
     ogImage: "/og/testimonials.png",
+  },
+  "/services/outbound-pipeline": {
+    title: "Outbound Pipeline System for B2B Companies | Ascendly",
+    description:
+      "Build qualified B2B pipeline without relying on referrals. ICP-targeted outbound with intent signals, multi-channel engagement, and qualified meeting booking.",
+    ogImage: "/og/outbound-pipeline.png",
+  },
+  "/services/revenue-automation": {
+    title: "Revenue Conversion System for B2B Teams | Ascendly",
+    description:
+      "Turn existing demand into predictable revenue. Inbound capture, lead qualification, AI-powered deal follow-up, and full pipeline visibility for B2B companies.",
+    ogImage: "/og/revenue-automation.png",
   },
 };
 

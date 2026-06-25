@@ -70,6 +70,28 @@ export const keywordMap: Record<string, PageKeywords> = {
     ],
     intent: "informational",
   },
+  "/services/outbound-pipeline": {
+    primary: "outbound pipeline system B2B",
+    lsi: [
+      "cold email outreach B2B",
+      "LinkedIn prospecting service",
+      "ICP targeting outbound",
+      "qualified meeting booking B2B",
+      "B2B pipeline generation agency",
+    ],
+    intent: "transactional",
+  },
+  "/services/revenue-automation": {
+    primary: "revenue automation system B2B",
+    lsi: [
+      "B2B deal follow-up automation",
+      "inbound lead capture system",
+      "pipeline conversion automation",
+      "CRM deal progression B2B",
+      "AI-powered sales follow-up",
+    ],
+    intent: "transactional",
+  },
 } as const;
 
 /** Convenience helper  returns keywords for a route or undefined if unmapped. */

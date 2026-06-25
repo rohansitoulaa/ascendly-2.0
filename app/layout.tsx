@@ -18,7 +18,7 @@ const robotoFlex = Roboto_Flex({
   variable: "--font-roboto-flex",
 });
 
-const SITE_URL = "https://ascendly.one";
+const SITE_URL = "https://www.ascendly.one";
 const TAB_ICON_CONFIG = {
   /**
    * Browser tab icons must stay in /public and should point to square PNG/SVG assets.
