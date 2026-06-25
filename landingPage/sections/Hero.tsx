@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import dynamic from "next/dynamic";
 import {
   motion,
   useScroll,
@@ -11,10 +12,15 @@ import {
 import { FiArrowRight } from "react-icons/fi";
 import { Button } from "@/design/Button";
 import { CALENDLY_URL } from "@/lib/constants";
-import { SplitText } from "@/animations/SplitText";
 import { Counter } from "@/animations/Counter";
-import Silk from "@/landingPage/components/Silk";
 import { useSiteTheme } from "@/lib/useSiteTheme";
+
+// The Silk background is a decorative WebGL layer (pulls in the `ogl` runtime).
+// Defer it so it never blocks the hero's first paint / LCP, and skip SSR since
+// it only renders on a canvas.
+const Silk = dynamic(() => import("@/landingPage/components/Silk"), {
+  ssr: false,
+});
 
 function SpinningDollarStat() {
   const ref = useRef<HTMLSpanElement>(null);
@@ -113,61 +119,36 @@ export function Hero() {
           className="flex flex-col items-start"
         >
 
+          {/*
+            LCP element. Rendered at its final, fully-visible state on the
+            server — no SplitText, no opacity:0 initial, no entrance delay — so
+            it paints immediately instead of waiting for hydration/animation.
+          */}
           <h1 className="mt-7 max-w-[34ch] text-[clamp(2rem,4.2vw,4.2rem)] font-semibold leading-[1.05] tracking-[-0.06em] text-ink">
-            <SplitText
-              split="word"
-              animation="rise"
-              stagger={0.06}
-              duration={0.9}
-              className="block"
-            >
-              For B2B firms with strong LTV,
-            </SplitText>
-            <motion.span
+            <span className="block">For B2B firms with strong LTV,</span>
+            <span
               className={`block bg-clip-text pt-2 text-transparent bg-linear-to-r ${theme === "light" ? "from-cyan-600 via-sky-600 to-violet-600" : "from-cyan-200 via-sky-300 to-violet-300"}`}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.9,
-                delay: 0.38,
-                ease: [0.22, 1, 0.36, 1],
-              }}
             >
               but inconsistent pipeline and lost/stalled deals.
-            </motion.span>
+            </span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-8 max-w-[58ch] text-[clamp(1rem,1.6vw,1.2rem)] leading-[1.65] text-ink/66"
-          >
+          <p className="mt-8 max-w-[58ch] text-[clamp(1rem,1.6vw,1.2rem)] leading-[1.65] text-ink/66">
             Ascendly builds and runs revenue systems (inbound and outbound) that
             generate qualified pipelines and turn existing opportunities into
             predictable growth.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.75 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
-          >
+          <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button variant="primary" size="lg" icon={<FiArrowRight />} href={CALENDLY_URL}>
               Apply for a Revenue Audit
             </Button>
             <p className="max-w-[44ch] text-[0.78rem] leading-[1.55] text-ink/44 italic">
               (For B2B service companies with $3M–$100M revenue and $15k+ customer lifetime value. Not for early-stage teams or low-ticket offers.)
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.95 }}
-            className="mt-16 grid w-full max-w-[720px] grid-cols-2 gap-8 sm:grid-cols-4"
-          >
+          <div className="mt-16 grid w-full max-w-[720px] grid-cols-2 gap-8 sm:grid-cols-4">
             <div className="flex flex-col border-l border-hairline/10 pl-4">
               <span className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold tracking-[-0.04em] text-ink">
                 <Counter to={2.4} decimals={1} suffix="x" />
@@ -203,7 +184,7 @@ export function Hero() {
                 Pipeline Managed
               </span>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
 

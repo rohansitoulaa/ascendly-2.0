@@ -19,7 +19,6 @@ export default function LogoLoader() {
       return;
     }
 
-    let fallbackId: number | null = null;
     let removeId: number | null = null;
 
     const finish = () => {
@@ -30,24 +29,15 @@ export default function LogoLoader() {
       removeId = window.setTimeout(() => setUnmount(true), 600);
     };
 
-    if (document.readyState === "complete") {
-      fallbackId = window.setTimeout(finish, 350);
-    } else {
-      const onLoad = () => {
-        fallbackId = window.setTimeout(finish, 250);
-      };
-      window.addEventListener("load", onLoad, { once: true });
-      const hardCap = window.setTimeout(finish, 2200);
-      return () => {
-        window.removeEventListener("load", onLoad);
-        window.clearTimeout(hardCap);
-        if (fallbackId) window.clearTimeout(fallbackId);
-        if (removeId) window.clearTimeout(removeId);
-      };
-    }
+    // Dismiss on a short brand-hold timer rather than `window.load`. Waiting for
+    // the load event holds the opaque splash over the hero until every
+    // below-the-fold image/script finishes, which directly inflates LCP. The
+    // hero is server-rendered and visible underneath, so a brief splash is all
+    // we need.
+    const holdId = window.setTimeout(finish, 450);
 
     return () => {
-      if (fallbackId) window.clearTimeout(fallbackId);
+      window.clearTimeout(holdId);
       if (removeId) window.clearTimeout(removeId);
     };
   }, []);

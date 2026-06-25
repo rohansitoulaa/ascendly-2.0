@@ -1,10 +1,12 @@
+import { cloudinaryUrl } from "@/lib/cloudinary";
+
 export interface BrandItem {
   logo: string;
   brandName: string;
   url: string;
 }
 
-export const brandList: BrandItem[] = [
+const rawBrandList: BrandItem[] = [
   {
     logo: "https://res.cloudinary.com/dzsiqzfub/image/upload/v1754057864/antonioandparis_hmmali.png",
     brandName: "Antonio & Paris",
@@ -66,3 +68,10 @@ export const brandList: BrandItem[] = [
     url: "https://www.xngage.com",
   },
 ];
+
+// Serve every logo as a resized, modern-format, compressed Cloudinary asset
+// instead of the full-resolution PNG. See lib/cloudinary.ts.
+export const brandList: BrandItem[] = rawBrandList.map((brand) => ({
+  ...brand,
+  logo: cloudinaryUrl(brand.logo),
+}));

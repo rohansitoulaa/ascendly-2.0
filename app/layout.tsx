@@ -116,18 +116,12 @@ export default function RootLayout({
     >
       <head>
         {/*
-          Preconnect to Google Fonts CDN  eliminates the DNS+TCP+TLS
-          round-trip latency before the first font byte loads.
-          Critical for LCP (Largest Contentful Paint) score.
+          No manual font preconnects: next/font self-hosts the Montserrat /
+          Roboto Flex files from this origin at build time, so the page never
+          touches fonts.googleapis.com or fonts.gstatic.com at runtime.
+          Cloudinary is likewise not preconnected — the only Cloudinary images
+          (client logos) live below the fold and load lazily.
         */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        {/* Preconnect to Cloudinary for founder/client images */}
-        <link rel="preconnect" href="https://res.cloudinary.com" />
 
         {/*
           Site-wide JSON-LD: Organization + WebSite schemas.
